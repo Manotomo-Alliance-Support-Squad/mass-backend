@@ -1,8 +1,9 @@
+from flask_marshmallow import Marshmallow
+from flask_sqlalchemy import SQLAlchemy
 from marshmallow import fields
 
-from main.server import app
-from main.server import db
-from main.server import ma
+ma = Marshmallow()
+db = SQLAlchemy()
 
 
 class User(db.Model):
