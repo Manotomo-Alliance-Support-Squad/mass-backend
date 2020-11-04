@@ -21,7 +21,7 @@ Please make sure to update tests as appropriate.
 
 ## Pre-Commit
 
-This repo supports pre-commit with some generic rules. To make life easier, install and use [pre-commit](https://pre-commit.com/) when developing here.
+This repo supports pre-commit with some generic rules. To make life easier, ours and yours, install and use [pre-commit](https://pre-commit.com/) when developing for the M.A.S.S. backend.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
