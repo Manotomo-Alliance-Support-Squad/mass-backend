@@ -1,9 +1,11 @@
 import os
+from datetime import timedelta
+
 from flask_jwt import JWT
+from passlib.hash import pbkdf2_sha256
+
 from main.server import app
 from main.server.models import User
-from passlib.hash import pbkdf2_sha256
-from datetime import timedelta
 
 
 def authenticate(username, password):

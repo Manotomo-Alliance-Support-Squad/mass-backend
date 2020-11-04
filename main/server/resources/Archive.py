@@ -1,9 +1,15 @@
-from flask_restful import Resource
-from flask import request
-from main.server import db, cache, app
-from main.server.models import ArchiveCoco, ArchiveHaachama, ArchiveSchema
-from flask_jwt import jwt_required
 import datetime
+
+from flask import request
+from flask_jwt import jwt_required
+from flask_restful import Resource
+
+from main.server import app
+from main.server import cache
+from main.server import db
+from main.server.models import ArchiveCoco
+from main.server.models import ArchiveHaachama
+from main.server.models import ArchiveSchema
 
 archives_schema = ArchiveSchema(many=True)
 archive_schema = ArchiveSchema()

@@ -1,8 +1,12 @@
-from flask_restful import Resource
 from flask import request
-from main.server import db, cache, app
-from main.server.models import Message, MessageSchema
 from flask_jwt import jwt_required
+from flask_restful import Resource
+
+from main.server import app
+from main.server import cache
+from main.server import db
+from main.server.models import Message
+from main.server.models import MessageSchema
 
 messages_schema = MessageSchema(many=True)
 message_schema = MessageSchema()

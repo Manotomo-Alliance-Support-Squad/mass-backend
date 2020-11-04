@@ -1,5 +1,8 @@
-from main.server import app, db, ma
 from marshmallow import fields
+
+from main.server import app
+from main.server import db
+from main.server import ma
 
 
 class User(db.Model):

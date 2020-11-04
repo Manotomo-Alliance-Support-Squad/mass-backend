@@ -1,8 +1,12 @@
-from flask_restful import Resource
 from flask import request
-from main.server import db, cache, app
-from main.server.models import Announcement, AnnouncementSchema
 from flask_jwt import jwt_required
+from flask_restful import Resource
+
+from main.server import app
+from main.server import cache
+from main.server import db
+from main.server.models import Announcement
+from main.server.models import AnnouncementSchema
 
 announcement_schema = AnnouncementSchema()
 announcements_schema = AnnouncementSchema(many=True)
