@@ -57,7 +57,8 @@ class GalleryListResource(Resource):
 
         data = artwork_schema.load(json_data)
 
-        message = Gallery.query.filter_by(artworkLink=data.get('artworkLink')).first()
+        message = Gallery.query.filter_by(
+            artworkLink=data.get('artworkLink')).first()
 
         if message:
             return {'status': 'fail', 'message': 'Artwork already exists'}, 400

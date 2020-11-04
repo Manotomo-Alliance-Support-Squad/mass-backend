@@ -11,6 +11,7 @@ from main.server.models import AnnouncementSchema
 announcement_schema = AnnouncementSchema()
 announcements_schema = AnnouncementSchema(many=True)
 
+
 @app.after_request
 def add_header(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
@@ -27,6 +28,7 @@ class AnnouncementCount(Resource):
         """Gets the number of announcements on the server"""
         return {'status': 'success', 'count': Announcement.query.count()}, 200
 
+
 class AnnouncementListResource(Resource):
     @cache.cached(timeout=100)
     def get(self):
@@ -35,7 +37,8 @@ class AnnouncementListResource(Resource):
         announcements = announcements_schema.dump(announcements)
 
         if not announcements:
-            return {'status': 'success', 'announcements': announcements}, 206  # Partial Content Served
+            # Partial Content Served
+            return {'status': 'success', 'announcements': announcements}, 206
 
         return {'status': 'success', 'announcements': announcements}, 200
 
@@ -54,7 +57,8 @@ class AnnouncementListResource(Resource):
 
         data = announcement_schema.load(json_data)
 
-        announcement = Announcement.query.filter_by(message=data.get('message')).first()
+        announcement = Announcement.query.filter_by(
+            message=data.get('message')).first()
 
         if announcement:
             return {'status': 'fail', 'message': 'Announcement already exists'}, 400
@@ -72,7 +76,8 @@ class AnnouncementResource(Resource):
     def delete(self, announcementID):
         """delete a announcement by ID"""
 
-        announcement = Announcement.query.filter_by(announcementID=announcementID)
+        announcement = Announcement.query.filter_by(
+            announcementID=announcementID)
 
         if not announcement.first():
             return {'status': 'fail', 'message': 'No announcement with ID ' + str(announcementID) + ' exists'}, 404

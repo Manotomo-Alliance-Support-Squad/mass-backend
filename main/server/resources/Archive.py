@@ -24,6 +24,7 @@ def add_header(response):
         'Access-Control-Allow-Headers'] = 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
     return response
 
+
 def tableConversion(who):
     if who == "coco":
         return ArchiveCoco
@@ -31,6 +32,7 @@ def tableConversion(who):
         return ArchiveHaachama
     else:
         return None
+
 
 class ArchiveCount(Resource):
     @cache.cached(timeout=100)
@@ -55,7 +57,8 @@ class ArchiveListResource(Resource):
         archives = archives_schema.dump(archives)
 
         if not archives:
-            return {'status': 'success', 'archives': archives}, 206  # Partial Content Served
+            # Partial Content Served
+            return {'status': 'success', 'archives': archives}, 206
 
         return {'status': 'success', 'archives': archives}, 200
 
@@ -78,7 +81,8 @@ class ArchiveListResource(Resource):
 
         data = archive_schema.load(json_data)
 
-        archive = archiveTable.query.filter_by(archiveURL=data.get('archiveURL')).first()
+        archive = archiveTable.query.filter_by(
+            archiveURL=data.get('archiveURL')).first()
 
         if archive:
             return {'status': 'fail', 'message': 'archive already exists'}, 400
@@ -137,7 +141,8 @@ class ArchiveRandomResource(Resource):
         daysPassed = (datetime.date.today() - datetime.date(2020, 10, 4)).days
         if size == 0:
             return {'status': 'fail', 'message': 'No archives exist for ' + str(who) + ' exists'}, 404
-        archiveID = daysPassed % size + 1   #modulus does not return negative, add one because sqlite index sucks and starts at 1
+        # modulus does not return negative, add one because sqlite index sucks and starts at 1
+        archiveID = daysPassed % size + 1
 
         archive = archiveTable.query.filter_by(archiveID=archiveID)
         archive = archives_schema.dump(archive)

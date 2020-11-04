@@ -31,7 +31,8 @@ class GameListResource(Resource):
         games = games_schema.dump(games)
 
         if not games:
-            return {'status': 'success', 'games': games}, 206  # Partial Content Served
+            # Partial Content Served
+            return {'status': 'success', 'games': games}, 206
 
         return {'status': 'success', 'games': games}, 200
 

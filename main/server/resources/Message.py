@@ -38,7 +38,8 @@ class MessageListRangeResource(Resource):
         if int(lower) > int(upper):
             return {'status': 'fail',
                     'messages': 'Upper range cannot be less than lower range: ' + str(lower) + '>' + str(upper)}, 400
-        messages = Message.query.filter(Message.messageID >= int(lower)).filter(Message.messageID <= int(upper))
+        messages = Message.query.filter(Message.messageID >= int(
+            lower)).filter(Message.messageID <= int(upper))
 
         if not messages:
             return {'status': 'fail',
@@ -46,8 +47,10 @@ class MessageListRangeResource(Resource):
 
         messages = messages_schema.dump(messages)
 
-        if not Message.query.filter_by(messageID=upper).first():  # the last item in the range
-            return {'status': 'success', 'messages': messages}, 206  # Partial Content Served
+        # the last item in the range
+        if not Message.query.filter_by(messageID=upper).first():
+            # Partial Content Served
+            return {'status': 'success', 'messages': messages}, 206
         return {'status': 'success', 'messages': messages}, 200
 
 
@@ -59,7 +62,8 @@ class MessageListResource(Resource):
         messages = messages_schema.dump(messages)
 
         if not messages:
-            return {'status': 'success', 'messages': messages}, 206  # Partial Content Served
+            # Partial Content Served
+            return {'status': 'success', 'messages': messages}, 206
 
         return {'status': 'success', 'messages': messages}, 200
 
