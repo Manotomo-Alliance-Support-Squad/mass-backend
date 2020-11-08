@@ -13,7 +13,8 @@ app_config = os.getenv("APP_CONFIG", "main.server.config.ProductionConfig")
 app.config.from_object(app_config)
 
 cache.init_app(app)
-
+db.init_app(app)
+ma.init_app(app)
 bcrypt = Bcrypt(app)
 
 # These need to be imported here probably due to some serial
