@@ -1,12 +1,22 @@
 from flask import Blueprint
 from flask_restful import Api
 
-from main.server.resources.Message import MessageListResource, MessageResource, MessageListRangeResource, MessageCount
-from main.server.resources.Game import GameCount, GameListResource
-from main.server.resources.Gallery import GalleryCount, GalleryListResource
-from main.server.resources.Archive import ArchiveListResource, ArchiveResource, ArchiveCount, ArchiveRandomResource
-from main.server.resources.Announcement import AnnouncementListResource, AnnouncementCount
-from main.server.resources.Animation import AnimationCount, AnimationListResource
+from main.server.resources.Animation import AnimationCount
+from main.server.resources.Animation import AnimationListResource
+from main.server.resources.Announcement import AnnouncementCount
+from main.server.resources.Announcement import AnnouncementListResource
+from main.server.resources.Archive import ArchiveCount
+from main.server.resources.Archive import ArchiveListResource
+from main.server.resources.Archive import ArchiveRandomResource
+from main.server.resources.Archive import ArchiveResource
+from main.server.resources.Gallery import GalleryCount
+from main.server.resources.Gallery import GalleryListResource
+from main.server.resources.Game import GameCount
+from main.server.resources.Game import GameListResource
+from main.server.resources.Message import MessageCount
+from main.server.resources.Message import MessageListRangeResource
+from main.server.resources.Message import MessageListResource
+from main.server.resources.Message import MessageResource
 
 # Api Blueprint
 api_bp = Blueprint('api', __name__)

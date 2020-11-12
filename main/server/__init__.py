@@ -1,9 +1,10 @@
+import os
+
 from flask import Flask
-from flask_marshmallow import Marshmallow
-from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_caching import Cache
-import os
+from flask_marshmallow import Marshmallow
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, static_url_path='')
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
@@ -16,9 +17,11 @@ db = SQLAlchemy(app)
 
 ma = Marshmallow()
 bcrypt = Bcrypt(app)
-from main.server import jwt
 
-from main.server.api import api_bp
+# These need to be imported here probably due to some serial
+# runtime issue.
+from main.server import jwt  # noqa noreorder
+from main.server.api import api_bp  # noqa noreorder
 
 # Registering of the pai endpoint at "www.domain.xyz/api"
 app.register_blueprint(api_bp, url_prefix="/api")

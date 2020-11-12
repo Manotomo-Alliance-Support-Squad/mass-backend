@@ -1,8 +1,12 @@
-from flask_restful import Resource
 from flask import request
-from main.server import db, cache, app
-from main.server.models import Games, GameSchema
 from flask_jwt import jwt_required
+from flask_restful import Resource
+
+from main.server import app
+from main.server import cache
+from main.server import db
+from main.server.models import Games
+from main.server.models import GameSchema
 
 
 games_schema = GameSchema(many=True)
@@ -27,7 +31,8 @@ class GameListResource(Resource):
         games = games_schema.dump(games)
 
         if not games:
-            return {'status': 'success', 'games': games}, 206  # Partial Content Served
+            # Partial Content Served
+            return {'status': 'success', 'games': games}, 206
 
         return {'status': 'success', 'games': games}, 200
 

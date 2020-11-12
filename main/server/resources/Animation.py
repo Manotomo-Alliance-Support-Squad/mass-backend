@@ -1,8 +1,12 @@
-from flask_restful import Resource
 from flask import request
-from main.server import db, cache, app
-from main.server.models import Animation, AnimationSchema
 from flask_jwt import jwt_required
+from flask_restful import Resource
+
+from main.server import app
+from main.server import cache
+from main.server import db
+from main.server.models import Animation
+from main.server.models import AnimationSchema
 
 animation_schema = AnimationSchema()
 animations_schema = AnimationSchema(many=True)

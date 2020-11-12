@@ -1,5 +1,6 @@
-from main.server import db
 from passlib.hash import pbkdf2_sha256
+
+from main.server import db
 from main.server.models import User
 
 usr = input("username?:")

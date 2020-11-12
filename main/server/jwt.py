@@ -1,9 +1,11 @@
 import os
+from datetime import timedelta
+
 from flask_jwt import JWT
+from passlib.hash import pbkdf2_sha256
+
 from main.server import app
 from main.server.models import User
-from passlib.hash import pbkdf2_sha256
-from datetime import timedelta
 
 
 def authenticate(username, password):
@@ -18,7 +20,8 @@ def identity(payload):
 
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'supersecretkey177013')  # will change on upload
+app.config['SECRET_KEY'] = os.getenv(
+    'SECRET_KEY', 'supersecretkey177013')  # will change on upload
 
 # Allows tokens to be valid for longer
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=60 * 15)

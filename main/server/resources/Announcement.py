@@ -1,11 +1,16 @@
-from flask_restful import Resource
 from flask import request
-from main.server import db, cache, app
-from main.server.models import Announcement, AnnouncementSchema
 from flask_jwt import jwt_required
+from flask_restful import Resource
+
+from main.server import app
+from main.server import cache
+from main.server import db
+from main.server.models import Announcement
+from main.server.models import AnnouncementSchema
 
 announcement_schema = AnnouncementSchema()
 announcements_schema = AnnouncementSchema(many=True)
+
 
 @app.after_request
 def add_header(response):
@@ -23,6 +28,7 @@ class AnnouncementCount(Resource):
         """Gets the number of announcements on the server"""
         return {'status': 'success', 'count': Announcement.query.count()}, 200
 
+
 class AnnouncementListResource(Resource):
     @cache.cached(timeout=100)
     def get(self):
@@ -31,7 +37,8 @@ class AnnouncementListResource(Resource):
         announcements = announcements_schema.dump(announcements)
 
         if not announcements:
-            return {'status': 'success', 'announcements': announcements}, 206  # Partial Content Served
+            # Partial Content Served
+            return {'status': 'success', 'announcements': announcements}, 206
 
         return {'status': 'success', 'announcements': announcements}, 200
 
@@ -50,7 +57,8 @@ class AnnouncementListResource(Resource):
 
         data = announcement_schema.load(json_data)
 
-        announcement = Announcement.query.filter_by(message=data.get('message')).first()
+        announcement = Announcement.query.filter_by(
+            message=data.get('message')).first()
 
         if announcement:
             return {'status': 'fail', 'message': 'Announcement already exists'}, 400
@@ -68,7 +76,8 @@ class AnnouncementResource(Resource):
     def delete(self, announcementID):
         """delete a announcement by ID"""
 
-        announcement = Announcement.query.filter_by(announcementID=announcementID)
+        announcement = Announcement.query.filter_by(
+            announcementID=announcementID)
 
         if not announcement.first():
             return {'status': 'fail', 'message': 'No announcement with ID ' + str(announcementID) + ' exists'}, 404
