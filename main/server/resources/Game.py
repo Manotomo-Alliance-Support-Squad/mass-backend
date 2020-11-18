@@ -2,25 +2,15 @@ from flask import request
 from flask_jwt import jwt_required
 from flask_restful import Resource
 
-from main.server import app
 from main.server import cache
 from main.server import db
 from main.server.models import Games
 from main.server.models import GameSchema
+from main.server.resources.common import make_response_and_add_headers
 
 
 games_schema = GameSchema(many=True)
 game_schema = GameSchema()
-
-
-@app.after_request
-def add_header(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Credentials'] = 'true'
-    response.headers['Access-Control-Allow-Methods'] = 'GET,POST'
-    response.headers[
-        'Access-Control-Allow-Headers'] = 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
-    return response
 
 
 class GameListResource(Resource):
@@ -32,9 +22,11 @@ class GameListResource(Resource):
 
         if not games:
             # Partial Content Served
-            return {'status': 'success', 'games': games}, 206
+            return make_response_and_add_headers(
+                {'status': 'success', 'games': games}, 206)
 
-        return {'status': 'success', 'games': games}, 200
+        return make_response_and_add_headers(
+            {'status': 'success', 'games': games}, 200)
 
     @jwt_required()
     def post(self):
@@ -42,19 +34,22 @@ class GameListResource(Resource):
         json_data = request.get_json(force=True)
 
         if not json_data:
-            return {'status': 'fail', 'message': 'No input data'}, 400
+            return make_response_and_add_headers(
+                {'status': 'fail', 'message': 'No input data'}, 400)
 
         errors = game_schema.validate(json_data)
 
         if errors:
-            return {'status': 'fail', 'message': 'Error handling request'}, 422
+            return make_response_and_add_headers(
+                {'status': 'fail', 'message': 'Error handling request'}, 422)
 
         data = game_schema.load(json_data)
 
         message = Games.query.filter_by(gameLink=data.get('gameLink')).first()
 
         if message:
-            return {'status': 'fail', 'message': 'Game already exists'}, 400
+            return make_response_and_add_headers(
+                {'status': 'fail', 'message': 'Game already exists'}, 400)
 
         message = Games(gameLink=data.get('gameLink'),
                         gitLink=data.get('gitLink'),
@@ -64,11 +59,13 @@ class GameListResource(Resource):
         db.session.add(message)
         db.session.commit()
 
-        return {'status': 'success', 'message': 'Game entry successfully created'}, 201
+        return make_response_and_add_headers(
+            {'status': 'success', 'message': 'Game entry successfully created'}, 201)
 
 
 class GameCount(Resource):
     @cache.cached(timeout=100)
     def get(self):
         """Gets the number of games available on the server"""
-        return {'status': 'success', 'count': Games.query.count()}, 200
+        return make_response_and_add_headers(
+            {'status': 'success', 'count': Games.query.count()}, 200)

@@ -2,31 +2,22 @@ from flask import request
 from flask_jwt import jwt_required
 from flask_restful import Resource
 
-from main.server import app
 from main.server import cache
 from main.server import db
 from main.server.models import Animation
 from main.server.models import AnimationSchema
+from main.server.resources.common import make_response_and_add_headers
 
 animation_schema = AnimationSchema()
 animations_schema = AnimationSchema(many=True)
-
-
-@app.after_request
-def add_header(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Credentials'] = 'true'
-    response.headers['Access-Control-Allow-Methods'] = 'GET,POST'
-    response.headers[
-        'Access-Control-Allow-Headers'] = 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
-    return response
 
 
 class AnimationCount(Resource):
     @cache.cached(timeout=100)
     def get(self):
         """Gets the number of messages available on the server"""
-        return {'status': 'success', 'count': Animation.query.count()}, 200
+        return make_response_and_add_headers(
+            {'status': 'success', 'count': Animation.query.count()}, 200)
 
 
 class AnimationListResource(Resource):
@@ -37,10 +28,11 @@ class AnimationListResource(Resource):
         animations = animations_schema.dump(animations)
 
         if not animations:
-            return {'status': 'success',
-                    'animations': animations}, 206  # Partial Content Served, the other status code never loads
+            return make_response_and_add_headers(
+                {'status': 'success', 'animations': animations}, 206)  # Partial Content Served, the other status code never loads
 
-        return {'status': 'success', 'animations': animations}, 200
+        return make_response_and_add_headers(
+            {'status': 'success', 'animations': animations}, 200)
 
     @jwt_required()
     def post(self):
@@ -48,12 +40,14 @@ class AnimationListResource(Resource):
         json_data = request.get_json(force=True)
 
         if not json_data:
-            return {'status': 'fail', 'message': 'No input data'}, 400
+            return make_response_and_add_headers(
+                {'status': 'fail', 'message': 'No input data'}, 400)
 
         errors = animation_schema.validate(json_data)
 
         if errors:
-            return {'status': 'fail', 'message': 'Error handling request'}, 422
+            return make_response_and_add_headers(
+                {'status': 'fail', 'message': 'Error handling request'}, 422)
 
         data = animation_schema.load(json_data)
 
@@ -61,7 +55,8 @@ class AnimationListResource(Resource):
             animationLink=data.get('animationLink')).first()
 
         if message:
-            return {'status': 'fail', 'message': 'Animation already exists'}, 400
+            return make_response_and_add_headers(
+                {'status': 'fail', 'message': 'Animation already exists'}, 400)
 
         message = Animation(
             animationLink=data.get('animationLink'),
@@ -72,4 +67,5 @@ class AnimationListResource(Resource):
         db.session.add(message)
         db.session.commit()
 
-        return {'status': 'success', 'message': 'Animation entry successfully created'}, 201
+        return make_response_and_add_headers(
+            {'status': 'success', 'message': 'Animation entry successfully created'}, 201)
