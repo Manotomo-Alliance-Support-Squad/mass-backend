@@ -1,0 +1,31 @@
+.base-card {
+    --card-text-width: 420px;
+
+    display: block;
+    width: auto;
+    min-height: 1px;  /*DO NOT REMOVE THIS LINE. OTHERWISE YOU WILL EXPERIENCE PAIN IN TRYING TO FIX COLUMN STACKING ON CHROME/IOS*/
+    overflow: auto;
+    border-radius: 15px;
+
+    margin-bottom: 1rem;
+    padding: 10px;
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    color: white;
+
+    list-style-type: none;
+    /*object-fit: fill;*/
+
+    transition: all 0.4s ease;
+}
+
+@media (max-width: 1000px) {
+    .base-card {
+        --card-text-width: 330px;
+        width: 100%;
+        max-width: 100vw;
+    }
+}
+

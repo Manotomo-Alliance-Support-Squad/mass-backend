@@ -1,0 +1,21 @@
+.wrapper-overlay {
+    padding: 2rem;
+}
+
+.video-container {
+    width: 100%;
+    box-sizing: border-box;
+    height: 75vh;
+    max-height: 768px;
+    background-attachment: fixed;
+}
+
+@media (max-width: 900px) {
+    .video-container {
+        height: 50vh;
+    }
+}
+
+.video-tag {
+    float: left;
+}

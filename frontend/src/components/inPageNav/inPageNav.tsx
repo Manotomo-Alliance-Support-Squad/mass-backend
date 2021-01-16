@@ -2,18 +2,15 @@ import { Button } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import React, {Component} from 'react'
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 
-import YogiriPage from '../../pages/yogiri/yogiri';
-import CiviaPage from '../../pages/civia/civia';
-import ArtiaPage from '../../pages/artia/artia';
-import DorisPage from '../../pages/doris/doris';
-import RosalynPage from '../../pages/rosalyn/rosalyn';
-import SpadeEchoPage from '../../pages/spade_echo/spade_echo';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import './inPageNav.css'
+import '../../shared/globalStyles/global.css'
+
 
 interface InPageNavState{
 }
@@ -31,6 +28,7 @@ const NavButton = withStyles({
         },
       },
 })(Button);
+
 
 export default class InPageNav extends Component<InPageNavProps, InPageNavState>{
     navButtons: Array<Object>;
