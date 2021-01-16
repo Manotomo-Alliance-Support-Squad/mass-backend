@@ -1,0 +1,13 @@
+.padding-top {
+    padding-top: 2rem;
+}
+
+.padding-bottom {
+    padding-bottom: 2rem;
+}
+
+.separator {
+    height: 40px;
+    width: 100%;
+    background-color: #bbbbbb;
+}

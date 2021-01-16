@@ -1,0 +1,89 @@
+.App-header {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+}
+
+
+@media (max-height: 800px) {
+    .App-header {
+        min-height: 580px;
+    }
+    .slide-content {
+        font-size: 30px;
+    }
+}
+
+
+.slide-content {
+    font-size: 7vw;
+    overflow: hidden;
+}
+
+/*Width using spade echo's text wrap max*/
+@media (max-width: 825px) {
+    .slide-content {
+        font-size: 0px;
+    }
+}
+
+
+#manotomo1 {
+    position: absolute;
+    width: 400px;
+    left: 10px;
+    bottom: 50px;
+    z-index: 0;
+}
+
+#manotomo2 {
+    position: absolute;
+    width: 200px;
+    right: 10px;
+    bottom: 50px;
+    z-index: 0;
+}
+
+@media (max-width: 700px) {
+    #manotomo1 {
+        bottom: 50px;
+    }
+    #manotomo2 {
+        opacity: 0;
+    }
+    .birthday-card {
+        position: relative;
+        left: 0px;
+        max-width: 100%;
+    }
+    .App-header {
+    }
+    /*Handle mobile layouts since everything is freaking tiny*/
+    .community-message-card {
+        margin-top: 0px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    #manotomo1 {
+        opacity: 0;
+        width: 0px;
+    }
+    #manotomo2 {
+        width: 0px;
+    }
+}
+
+@keyframes fadeIn {
+   0% {opacity: 0;}
+   100% {opacity: 1;}
+}
