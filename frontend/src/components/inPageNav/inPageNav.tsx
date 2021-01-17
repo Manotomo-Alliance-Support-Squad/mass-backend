@@ -8,8 +8,10 @@ import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-import './inPageNav.css'
-import '../../shared/globalStyles/global.css'
+import './inPageNav.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../shared/globalStyles/global.css';
+import Carousel from 'react-bootstrap/Carousel';
 
 
 interface InPageNavState{

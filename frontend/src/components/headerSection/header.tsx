@@ -5,15 +5,14 @@ import '../../shared/globalStyles/global.css';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 
-import yogiri from '../../assets/sprites/yogiri.webp'
-import civia from '../../assets/sprites/civia.webp'
-import spade_echo from '../../assets/sprites/spade_echo.webp'
-import doris from '../../assets/sprites/doris.webp'
-import artia from '../../assets/sprites/artia.webp'
-import rosalyn from '../../assets/sprites/rosalyn.webp'
+import YogiriPage from '../../pages/yogiri/yogiri';
+import CiviaPage from '../../pages/civia/civia';
+import ArtiaPage from '../../pages/artia/artia';
+import DorisPage from '../../pages/doris/doris';
+import RosalynPage from '../../pages/rosalyn/rosalyn';
+import SpadeEchoPage from '../../pages/spade_echo/spade_echo';
 
-
-import './header.css'
+import './header.css';
 
 interface HeaderState {
 }
