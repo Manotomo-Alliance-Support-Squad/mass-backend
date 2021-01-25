@@ -5,12 +5,7 @@ import '../../shared/globalStyles/global.css';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 
-import YogiriPage from '../../pages/yogiri/yogiri';
-import CiviaPage from '../../pages/civia/civia';
-import ArtiaPage from '../../pages/artia/artia';
-import DorisPage from '../../pages/doris/doris';
-import RosalynPage from '../../pages/rosalyn/rosalyn';
-import SpadeEchoPage from '../../pages/spade_echo/spade_echo';
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 
 import './header.css';
 
@@ -23,55 +18,43 @@ interface HeaderProps {
 // FIXME: Images below hard coded as 300px in inPageNav.css
 const headerNav = [
     {
-        link: "/yogiri",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/yogiri.jpg"/>Yogiri</div>,
-        page: <YogiriPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/civia",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/civia.jpg"/>Civia</div>,
-        page: <CiviaPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/spade_echo",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/spadeecho.jpg"/>Spade Echo</div>,
-        page: <SpadeEchoPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/doris",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/doris.jpg"/>Doris</div>,
-        page: <DorisPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/artia",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/artia.jpg"/>Artia</div>,
-        page: <ArtiaPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/rosalyn",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/rosalyn.jpg"/>Rosalyn</div>,
-        page: <RosalynPage/>,
-        startIcon: ""
+        link: "/game",
+        buttonContent: "Games",
+        page: "",
+        startIcon: <SportsEsportsIcon />
     },
 ]
 
 export default class HeaderSection extends Component<HeaderProps, HeaderState>
 {
-    renderDefaultSection(): JSX.Element {
+    constructor(props: HeaderProps)
+    {
+        super(props);
+    }
+
+    renderDefaultSection(): JSX.Element
+    {
         return (
             <>
                 <header className="App-header">
+                    <div className="community-message-card">
+                        <h1 className="community-message-header">A Community Message for Aloe</h1>
+                        <div className="community-message-body">
+                            <p>Dear Aloe, thank you for everything. While it may have been but for a short while, we appreciate every little thing you've given us. We wish you the best of luck going forward.</p>
+                            <p>親愛なるアロエ様。短い間ではありましたが、一緒に過ごした時間に心より感謝しております。本当にありがとうございました。アロエ様のご健勝とご多幸をお祈り申し上げます。</p>
+                        </div>
+                    </div>
                     <div style={{height: 50}}/>
                     <InPageNav navButtons={headerNav}/>
+                    <div style={{height: 50}}/>
                 </header>
-                <div className="separator"/>
+                <div className="separator">
+                    <AnchorLink offset='120' href='#video-anchor'>
+                        <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
+                    </AnchorLink>
+                </div>
             </>
-        )
+       )
     }
 
     render() {
