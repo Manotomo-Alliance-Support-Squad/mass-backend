@@ -13,29 +13,10 @@
     background-attachment: fixed;
 }
 
-
-@media (max-height: 800px) {
-    .App-header {
-        min-height: 580px;
-    }
-    .slide-content {
-        font-size: 30px;
-    }
-}
-
-
 .slide-content {
     font-size: 7vw;
     overflow: hidden;
 }
-
-/*Width using spade echo's text wrap max*/
-@media (max-width: 825px) {
-    .slide-content {
-        font-size: 0px;
-    }
-}
-
 
 #manotomo1 {
     position: absolute;
