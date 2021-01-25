@@ -6,6 +6,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import InfoIcon from '@material-ui/icons/Info';
 
 import './header.css';
 
@@ -15,13 +16,18 @@ interface HeaderState {
 interface HeaderProps {
 }
 
-// FIXME: Images below hard coded as 300px in inPageNav.css
 const headerNav = [
     {
         link: "/game",
         buttonContent: "Games",
         page: "",
         startIcon: <SportsEsportsIcon />
+    },
+    {
+        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holocn-graduation',
+        buttonContent: "Credits",
+        page: "",
+        startIcon: <InfoIcon />
     },
 ]
 
