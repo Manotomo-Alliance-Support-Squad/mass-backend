@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import InfoIcon from '@material-ui/icons/Info';
 
@@ -12,6 +13,12 @@ export default function ButtonAppBar() {
             <div className="title">Minna Have a Very Holo Valentine &lt;3</div>
             <div className="icons">
                 {[
+                    {
+                        externalLink: false,
+                        link: '/home',
+                        altText: "Home",
+                        iconFunc: () => <HomeIcon/>
+                    },
                     {
                         externalLink: false,
                         link: '/game',
