@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    background-color: #ffffff;
+    background-color: #ffbbc1;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
@@ -16,22 +16,6 @@
 .slide-content {
     font-size: 7vw;
     overflow: hidden;
-}
-
-#manotomo1 {
-    position: absolute;
-    width: 400px;
-    left: 10px;
-    bottom: 50px;
-    z-index: 0;
-}
-
-#manotomo2 {
-    position: absolute;
-    width: 200px;
-    right: 10px;
-    bottom: 50px;
-    z-index: 0;
 }
 
 @media (max-width: 700px) {
