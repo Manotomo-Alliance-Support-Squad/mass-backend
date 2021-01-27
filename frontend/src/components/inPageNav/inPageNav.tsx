@@ -19,9 +19,9 @@ interface InPageNavProps{
 const NavButton = withStyles({
       containedPrimary: {
         color: "#ffffff",
-        backgroundColor: "#724683",
+        backgroundColor: "#c00000",
         '&:hover': {
-          backgroundColor: "#fd418d",
+          backgroundColor: "#ff0000",
         },
       },
 })(Button);
