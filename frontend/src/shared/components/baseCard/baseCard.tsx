@@ -21,12 +21,9 @@ export const CardStyleLength: number =
 export interface BaseCardProps<T> {
     object: T;
     cardStyleNum: number;
-    language: DisplayedLanguage;
 }
 
 export interface BaseCardState {
-    currentLanguage: DisplayedLanguage;
-    globalLanguage: DisplayedLanguage;
     inViewport: boolean;
 }
 
@@ -39,8 +36,6 @@ export default class BaseCard<T, P extends BaseCardProps<T>, S extends BaseCardS
     }
 
     state = {
-        currentLanguage: this.props.language,
-        globalLanguage: this.props.language,
         inViewport: false
     } as S
 
