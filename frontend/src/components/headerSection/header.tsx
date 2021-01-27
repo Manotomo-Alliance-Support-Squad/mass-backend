@@ -24,7 +24,7 @@ const headerNav = [
         startIcon: <SportsEsportsIcon />
     },
     {
-        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holocn-graduation',
+        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holo-valentine-2021',
         buttonContent: "Credits",
         page: "",
         startIcon: <InfoIcon />
