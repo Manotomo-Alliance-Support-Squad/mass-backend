@@ -1,3 +1,17 @@
+.anchor-link {
+  position: absolute;
+  /*make smaller than separator*/
+  padding-top: 1px;
+  height: 35px;
+  width: 35px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color:white;
+
+  transition: all 0.25s ease;
+}
+
 .padding-top {
     padding-top: 2rem;
 }
@@ -25,7 +39,7 @@
 .separator {
     height: 40px;
     width: 100%;
-    background-color: #bbbbbb;
+    background-color: #c00000;
 }
 
 .notice-container {
