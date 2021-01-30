@@ -5,12 +5,8 @@ import '../../shared/globalStyles/global.css';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 
-import YogiriPage from '../../pages/yogiri/yogiri';
-import CiviaPage from '../../pages/civia/civia';
-import ArtiaPage from '../../pages/artia/artia';
-import DorisPage from '../../pages/doris/doris';
-import RosalynPage from '../../pages/rosalyn/rosalyn';
-import SpadeEchoPage from '../../pages/spade_echo/spade_echo';
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import InfoIcon from '@material-ui/icons/Info';
 
 import './header.css';
 
@@ -20,58 +16,51 @@ interface HeaderState {
 interface HeaderProps {
 }
 
-// FIXME: Images below hard coded as 300px in inPageNav.css
 const headerNav = [
     {
-        link: "/yogiri",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/yogiri.jpg"/>Yogiri</div>,
-        page: <YogiriPage/>,
-        startIcon: ""
+        link: "/game",
+        buttonContent: "Games",
+        page: "",
+        startIcon: <SportsEsportsIcon />
     },
     {
-        link: "/civia",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/civia.jpg"/>Civia</div>,
-        page: <CiviaPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/spade_echo",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/spadeecho.jpg"/>Spade Echo</div>,
-        page: <SpadeEchoPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/doris",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/doris.jpg"/>Doris</div>,
-        page: <DorisPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/artia",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/artia.jpg"/>Artia</div>,
-        page: <ArtiaPage/>,
-        startIcon: ""
-    },
-    {
-        link: "/rosalyn",
-        buttonContent: <div className="slide-content"><img src="https://u.cubeupload.com/zapple/rosalyn.jpg"/>Rosalyn</div>,
-        page: <RosalynPage/>,
-        startIcon: ""
+        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holo-valentine-2021',
+        buttonContent: "Credits",
+        page: "",
+        startIcon: <InfoIcon />
     },
 ]
 
 export default class HeaderSection extends Component<HeaderProps, HeaderState>
 {
-    renderDefaultSection(): JSX.Element {
+    constructor(props: HeaderProps)
+    {
+        super(props);
+    }
+
+    renderDefaultSection(): JSX.Element
+    {
         return (
             <>
                 <header className="App-header">
+                    <div className="community-message-card">
+                        <h1 className="community-message-header">For Everyone At Hololive</h1>
+                        <div className="community-message-body">
+                            <p>We have collected Valentine messages from your fans across the world. Thanks for all the entertainment all of you have provided, in the past, and yet to come.</p>
+                            <p>Happy Valentines day &lt;3</p>
+                        </div>
+                    </div>
                     <div style={{height: 50}}/>
                     <InPageNav navButtons={headerNav}/>
+                    <div style={{height: 50}}/>
                 </header>
-                <div className="separator"/>
+                <div className="separator">
+                    <AnchorLink offset='120' href='#video-anchor'>
+                        <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
+                    </AnchorLink>
+                </div>
             </>
-        )
+       )
     }
 
     render() {

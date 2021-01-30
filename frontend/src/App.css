@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #282c34;
 }
 
 .community-message-card {
@@ -57,20 +57,17 @@ body {
   left: 0;
   right: 0;
   margin: auto;
+  color:white;
 
   transition: all 0.25s ease;
 }
 
 .main {
-    position:absolute;
-    padding: 20px;
-    background-color: #ffffff;
+    background-image: url(assets/backgrounds/App-root-bg.svg);
+    background-color: #a7bee3;
     background-repeat: repeat;
     min-height: 100vh;
     background-size: 100%;
-    font-size: 20px;
-    /*Making sure links are on top most layer*/
-    z-index:5;
 }
 
 .App-logo {

@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: #333031;
+    background-color: #c00000;
     box-shadow: 0 5px 50px 0 rgba(0, 0, 0, 0.2);
 
     font-size: 2.125rem;
@@ -65,7 +65,7 @@
 
 
 .inactive-page-icon {
-    opacity: 0.4;
+    opacity: 0.6;
     text-decoration: none;
 }
 

@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    background-color: #ffffff;
+    background-color: #ffbbc1;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
@@ -13,44 +13,9 @@
     background-attachment: fixed;
 }
 
-
-@media (max-height: 800px) {
-    .App-header {
-        min-height: 580px;
-    }
-    .slide-content {
-        font-size: 30px;
-    }
-}
-
-
 .slide-content {
     font-size: 7vw;
     overflow: hidden;
-}
-
-/*Width using spade echo's text wrap max*/
-@media (max-width: 825px) {
-    .slide-content {
-        font-size: 0px;
-    }
-}
-
-
-#manotomo1 {
-    position: absolute;
-    width: 400px;
-    left: 10px;
-    bottom: 50px;
-    z-index: 0;
-}
-
-#manotomo2 {
-    position: absolute;
-    width: 200px;
-    right: 10px;
-    bottom: 50px;
-    z-index: 0;
 }
 
 @media (max-width: 700px) {

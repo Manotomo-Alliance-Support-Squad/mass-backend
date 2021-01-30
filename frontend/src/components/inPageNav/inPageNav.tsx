@@ -5,13 +5,8 @@ import React, {Component} from 'react'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-
 import './inPageNav.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../shared/globalStyles/global.css';
-import Carousel from 'react-bootstrap/Carousel';
 
 
 interface InPageNavState{
@@ -24,9 +19,9 @@ interface InPageNavProps{
 const NavButton = withStyles({
       containedPrimary: {
         color: "#ffffff",
-        backgroundColor: "#908d8d",
+        backgroundColor: "#c00000",
         '&:hover': {
-          backgroundColor: "#bbbbbb",
+          backgroundColor: "#ff0000",
         },
       },
 })(Button);
@@ -44,18 +39,17 @@ export default class InPageNav extends Component<InPageNavProps, InPageNavState>
     // TODO: Uses similar style as navbar. Potentially refactor that with the common code here.
     buildNavRender() : JSX.Element {
         return (
-                <Carousel className="w-100">
-                    {this.navButtons.map((obj, idx) => {
-                        return (
-                            <Carousel.Item>
+            <div>
+                {this.navButtons.map((obj, idx) => {
+                    return (
+                        <NavLink to={Object(obj)["link"]}>
+                            <NavButton variant="contained" startIcon={Object(obj)["startIcon"]} size="large" color="primary">
                                 {Object(obj)["buttonContent"]}
-                                <div className="carousel-text">
-                                    {Object(obj)["page"]}
-                                </div>
-                            </Carousel.Item>
-                        );
-                    })}
-                </Carousel>
+                            </NavButton>
+                        </NavLink>
+                    );
+                })}
+            </div>
         );
     }
 
