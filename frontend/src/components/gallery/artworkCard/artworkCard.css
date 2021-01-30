@@ -5,6 +5,7 @@
 
     border-radius: 15px;
     padding: 10px;
+    margin-bottom: 1rem;
 
     background-color: #581e77;
     color: white;
@@ -18,7 +19,7 @@
 .artwork-card-img > * {
     width: 100%;
     height: 100%;
-    
+
     position: absolute;
     top: 0;
     left: 0;
