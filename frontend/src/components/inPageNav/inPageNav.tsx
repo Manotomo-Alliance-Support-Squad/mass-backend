@@ -39,7 +39,7 @@ export default class InPageNav extends Component<InPageNavProps, InPageNavState>
     // TODO: Uses similar style as navbar. Potentially refactor that with the common code here.
     buildNavRender() : JSX.Element {
         return (
-            <div>
+            <div className="in-page-nav-container">
                 {this.navButtons.map((obj, idx) => {
                     return (
                         <NavLink to={Object(obj)["link"]}>
