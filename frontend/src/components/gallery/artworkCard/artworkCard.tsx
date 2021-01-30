@@ -1,5 +1,7 @@
 import React from 'react';
+import BaseCard, {BaseCardProps, BaseCardState} from "../../../shared/components/baseCard/baseCard";
 import classNames from 'classnames';
+import DisplayedLanguage from "../../../models/language";
 import handleViewport from 'react-in-viewport';
 import { Artwork } from '../../../models/artwork';
 import './artworkCard.css';
@@ -11,22 +13,24 @@ enum ImageLoadingState {
     Loaded,
 }
 
-interface ArtworkCardProps {
-    artwork: Artwork,
-    inViewport: boolean,
+interface ArtworkCardProps extends BaseCardProps<Artwork> {
+    // artwork: Artwork,
+    language: DisplayedLanguage;
 }
 
-interface ArtworkCardState {
+interface ArtworkCardState extends BaseCardState {
     loadingState: ImageLoadingState,
+    currentLanguage: DisplayedLanguage;
+    globalLanguage: DisplayedLanguage;
 }
 
-class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
+export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, ArtworkCardState> {
     private readonly artwork: Artwork;
     private imageElement: HTMLImageElement;
 
     constructor(props: ArtworkCardProps) {
         super(props);
-        this.artwork = props.artwork;
+        this.artwork = props.object;
         this.imageElement = document.createElement("img");
 
         this.imageLoaded = this.imageLoaded.bind(this);
@@ -34,6 +38,9 @@ class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
 
     state: ArtworkCardState = {
         loadingState: ImageLoadingState.NotLoaded,
+        currentLanguage: this.props.language,
+        globalLanguage: this.props.language,
+        inViewport: false
     }
 
     private imageLoaded() {
@@ -45,7 +52,7 @@ class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
     }
 
     private setImage() {
-        if (this.props.inViewport && this.state.loadingState === ImageLoadingState.NotLoaded) {
+        if (this.state.inViewport && this.state.loadingState === ImageLoadingState.NotLoaded) {
             this.imageElement.src = linkToString(this.artwork.artworkLink);
             this.imageElement.addEventListener("load", this.imageLoaded);
 
@@ -88,4 +95,4 @@ class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
     }
 }
 
-export default handleViewport(ArtworkCard, { rootMargin: "0px 0px 250px 0px" }, { disconnectOnLeave: true });
+// export default handleViewport(ArtworkCard, { rootMargin: "0px 0px 250px 0px" }, { disconnectOnLeave: true });
