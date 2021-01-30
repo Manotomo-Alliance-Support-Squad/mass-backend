@@ -14,7 +14,6 @@ enum ImageLoadingState {
 }
 
 interface ArtworkCardProps extends BaseCardProps<Artwork> {
-    // artwork: Artwork,
     language: DisplayedLanguage;
 }
 
@@ -94,5 +93,3 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
         )
     }
 }
-
-// export default handleViewport(ArtworkCard, { rootMargin: "0px 0px 250px 0px" }, { disconnectOnLeave: true });

@@ -13,7 +13,7 @@ interface GallerySectionState extends BaseSectionState {
 
 }
 
-// export default class GallerySection extends React.Component<GallerySectionProps, GallerySectionState> {
+
 export default class GallerySection extends BaseSection<Artwork> {
     renderCard(object: Artwork, cardStyleNum: number, language: DisplayedLanguage, id: number): JSX.Element {
         return (
@@ -23,21 +23,4 @@ export default class GallerySection extends BaseSection<Artwork> {
             </div>
         );
     }
-
-    // private data: Artwork[];
-
-    // constructor(props: GallerySectionProps) {
-    //     super(props);
-    //     this.data = props.data;
-    // }
-
-    // render() {
-    //     return (
-    //         <div className="gallery-section">
-    //             {this.data.map((artwork: Artwork) =>
-    //                 <ArtworkCard key={artwork.artworkID} artwork={artwork} />
-    //             )}
-    //         </div>
-    //     )
-    // }
 }
