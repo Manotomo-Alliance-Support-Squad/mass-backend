@@ -8,19 +8,23 @@ import SessionService from "../../services/session.service";
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import {Announcement} from "../../models/announcement"
+import {Artwork} from "../../models/artwork"
 import './home.css';
 import '../../shared/globalStyles/global.css'
 import AnnouncementSection from "../../components/announcementSection/announcementSection"
+import GallerySection from "../../components/gallery/gallerySection"
 
 export interface HomePageProps {
 
 }
 
 export interface HomePageState {
+    artloading: boolean;
     messageLoaded: boolean;
     announcementLoaded: boolean;
     messages: Message[];
     announcements: Announcement[];
+    artworks: Artwork[];
 }
 
 export default class HomePage extends React.Component<HomePageProps, HomePageState> {
@@ -32,10 +36,12 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
     }
 
     state: HomePageState = {
+        artloading: true,
         messageLoaded: false,
         announcementLoaded: false,
         messages: [],
         announcements: [],
+        artworks: [],
     }
 
     componentDidMount() {
@@ -67,6 +73,19 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
             .catch((error: Error) => {
                 console.error(error);
             });
+        const cachedArtworks: Artwork[] | null = SessionService.getGallery();
+        if (cachedArtworks && cachedArtworks.length) {
+            this.setState({artloading: false, artworks: cachedArtworks});
+        } else {
+            this.manoAloeService.getGallery()
+                .then((artworks: Artwork[]) => {
+                    SessionService.saveGallery(artworks);
+                    this.setState({artloading: false, artworks});
+                })
+                .catch((error: Error) => {
+                    console.error(error);
+                })
+        }
     }
 
     renderMessageCardSection() {
@@ -79,17 +98,20 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         )
     }
 
+    renderGallerySection() {
+        return (
+            <div>
+                <div className="wrapper-overlay">
+                    <GallerySection data={this.state.artworks}/>
+                </div>
+            </div>
+        )
+    }
+
     render() {
         return (
             <section id='anchor'>
                 <div className="home-root">
-                    <div className="video-container">
-                    <section id='video-anchor'/>
-                    <iframe title="Mano Aloe Fanmade Video" className="video-tag height-width-100"
-                            src="https://www.youtube-nocookie.com/embed/1QdGzRGSuOM?rel=0" frameBorder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen/>
-                    </div>
                     <div className="separator">
                         <AnchorLink offset='120' href='#message-anchor'>
                             <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
@@ -100,6 +122,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container"/>
                         </div>
                     </div>
+                    {this.renderGallerySection()}
                     {this.renderMessageCardSection()}
                     <div className="justify-center">
                         <div className="notice-container">
