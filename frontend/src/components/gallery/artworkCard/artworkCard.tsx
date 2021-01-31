@@ -39,7 +39,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
         loadingState: ImageLoadingState.NotLoaded,
         currentLanguage: this.props.language,
         globalLanguage: this.props.language,
-        inViewport: false
+        inViewport: false // From BaseCardState
     }
 
     private imageLoaded() {
@@ -62,6 +62,8 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     }
 
     componentDidMount() {
+        // TODO: Is this the right place to set the state?
+        this.setState({inViewport: true});
         this.setImage();
     }
 
@@ -72,6 +74,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     render() {
         const hasLoaded = this.state.loadingState === ImageLoadingState.Loaded;
         const artworkLink = linkToString(this.artwork.artworkLink);
+        const artistLink = linkToString(this.artwork.artistLink);
 
         return (
             <div className="artwork-card">
@@ -87,7 +90,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
                 </div>
                 <div className="artwork-card-footer">
                     <div className="title">{this.artwork.title}</div>
-                    <div className="artist"><a href={linkToString(this.artwork.artistLink)}>{this.artwork.username}</a></div>
+                    <div className="artist"><a href={artistLink}>{this.artwork.username}</a></div>
                 </div>
             </div>
         )
