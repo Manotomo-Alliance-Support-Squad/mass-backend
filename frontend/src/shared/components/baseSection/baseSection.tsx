@@ -20,8 +20,10 @@ export default abstract class BaseSection<T> extends React.Component<BaseSection
         super(props);
     }
 
+    // TODO: renderCard should probably be an interface not abstract method
     abstract renderCard(object: T, cardStyleNum: number, language: DisplayedLanguage, id: number): JSX.Element
 
+    // TODO: render should probably be an interface also, since we don't want to corner people into rending using this specific render code
     render(): JSX.Element {
         const sectionStyle: string = this.props.customSectionStyle ? this.props.customSectionStyle : "base-section";
         return (

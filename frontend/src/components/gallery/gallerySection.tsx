@@ -19,7 +19,7 @@ export default class GallerySection extends BaseSection<Artwork> {
         return (
             // TODO: edit gallery-section to display at a specific scale
             <div className="gallery-section">
-                <ArtworkCard key={object.artworkID} object={object} cardStyleNum={id % CardStyleLength} language={language}/>
+                <ArtworkCard key={object.artworkID} object={object} cardStyleNum={id % CardStyleLength}/>
             </div>
         );
     }

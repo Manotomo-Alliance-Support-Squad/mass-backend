@@ -14,13 +14,10 @@ enum ImageLoadingState {
 }
 
 interface ArtworkCardProps extends BaseCardProps<Artwork> {
-    language: DisplayedLanguage;
 }
 
 interface ArtworkCardState extends BaseCardState {
     loadingState: ImageLoadingState,
-    currentLanguage: DisplayedLanguage;
-    globalLanguage: DisplayedLanguage;
 }
 
 export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, ArtworkCardState> {
@@ -37,8 +34,6 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
     state: ArtworkCardState = {
         loadingState: ImageLoadingState.NotLoaded,
-        currentLanguage: this.props.language,
-        globalLanguage: this.props.language,
         inViewport: false // From BaseCardState
     }
 
