@@ -5,8 +5,9 @@ import '../../shared/globalStyles/global.css';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 
-import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 
 import './header.css';
 
@@ -16,7 +17,15 @@ interface HeaderState {
 interface HeaderProps {
 }
 
-const headerNav = [
+const AltNav = () => {
+    const location = useLocation();
+    if (location.pathname == "/home") {
+        return <InPageNav navButtons={homeNav}/>;
+    }
+    return <span />
+};
+
+const homeNav = [
     {
         link: "/game",
         buttonContent: "Games",
@@ -51,7 +60,7 @@ export default class HeaderSection extends Component<HeaderProps, HeaderState>
                         </div>
                     </div>
                     <div style={{height: 50}}/>
-                    <InPageNav navButtons={headerNav}/>
+                    <AltNav />
                     <div style={{height: 50}}/>
                 </header>
                 <div className="separator">
