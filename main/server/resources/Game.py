@@ -59,7 +59,8 @@ class GameListResource(Resource):
         message = Games(gameLink=data.get('gameLink'),
                         gitLink=data.get('gitLink'),
                         description=data.get('description'),
-                        title=data.get('title'))
+                        title=data.get('title'),
+                        thumbnail=data.get('thumbnail'))
 
         db.session.add(message)
         db.session.commit()
