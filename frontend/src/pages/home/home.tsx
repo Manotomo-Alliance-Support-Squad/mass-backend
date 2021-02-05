@@ -50,9 +50,6 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
             this.setState({messageLoaded: false});
             this.manoAloeService.getAllMessages()
                 .then((messages: Message[]) => {
-                    for (let message of messages) {
-                        message.country = toCountry(message.country as string);
-                    }
                     SessionService.saveMessages(messages);
                     this.setState({messages, messageLoaded: true});
                 })
