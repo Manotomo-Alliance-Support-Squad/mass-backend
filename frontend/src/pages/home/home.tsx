@@ -104,15 +104,8 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     <div className="justify-center">
                         <div className="notice-container">
                             <div className="notice-content">
-                                <p>Those were all the messages we managed to collect, but there were many more sent your
-                                    way! Please check <a
-                                        href="https://twitter.com/hashtag/%E3%82%A2%E3%83%AD%E3%82%A8Worldwide?src=hashtag">#アロエWorldwide</a> and <a
-                                        href="https://twitter.com/hashtag/Global%E3%82%A2%E3%83%AD%E3%82%A8?src=hashtag">#Globalアロエ</a> on
-                                    Twitter, or visit <a href="https://manoaloe.jetri.co/">dragonjet</a>'s site!</p>
-                                <p>これがすべての取集したメッセージですが、他にもたくさん送りましたよ！<a
-                                    href="https://twitter.com/hashtag/%E3%82%A2%E3%83%AD%E3%82%A8Worldwide?src=hashtag">#アロエWorldwide</a> と <a
-                                    href="https://twitter.com/hashtag/Global%E3%82%A2%E3%83%AD%E3%82%A8?src=hashtag">#Globalアロエ</a> をツイッターでチェックしてくださいね！
-                                    そして<a href="https://manoaloe.jetri.co/">dragonjet</a>のサイトでもメッセージが収集してあります！</p>
+                                <p>These are all the messages we managed to collect! Happy Valentine's Day!</p>
+                                <p>これがすべての取集したメッセージですが！ハッピーバレンタイン！</p>
                             </div>
                         </div>
                     </div>
