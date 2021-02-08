@@ -90,7 +90,7 @@ class MessageListResource(Resource):
 
         message = Message(orig_msg=data.get('orig_msg'),
                           tl_msg=data.get('tl_msg'),
-                          region=data.get('region'),
+                          recipient=data.get('recipient'),
                           username=data.get('username'))
 
         db.session.add(message)
