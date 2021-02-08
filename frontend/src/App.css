@@ -3,11 +3,13 @@ body {
 }
 
 .community-message-card {
+    top:50px;
     padding: 15px;
     border-radius: 15px;
     margin: 15px;
     margin-top: 50px;
     width: 50%;
+    text-align: center;
 
     background-color: #f12169bf;
     color: #ffffff;
@@ -30,7 +32,7 @@ body {
 @media (min-width: 900px) {
     .community-message-card {
         position: relative;
-        left: -20vw;
+        width: 60%;
     }
 }
 
