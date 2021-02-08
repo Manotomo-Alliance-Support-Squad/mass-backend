@@ -3,16 +3,13 @@ body {
 }
 
 .community-message-card {
-    background-image: url(assets/cards/card2.svg);
-    background-size: 100%;
-    background-repeat: no-repeat;
     padding: 15px;
     border-radius: 15px;
     margin: 15px;
-    margin-top: 2rem;
+    margin-top: 50px;
     width: 50%;
 
-    background-color: #fd438c;
+    background-color: #f12169bf;
     color: #ffffff;
     font-size: 25px;
 }
@@ -63,8 +60,8 @@ body {
 }
 
 .main {
-    background-image: url(assets/backgrounds/App-root-bg.svg);
-    background-color: #a7bee3;
+    /*background-image: url(assets/backgrounds/App-root-bg.svg);*/
+    background-color: #fffde2;
     background-repeat: repeat;
     min-height: 100vh;
     background-size: 100%;
