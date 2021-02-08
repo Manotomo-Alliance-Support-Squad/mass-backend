@@ -1,12 +1,9 @@
+from flask_restful import Resource
 from flask import request
 from flask_jwt import jwt_required
-from flask_restful import Resource
 
-from main.server import app
-from main.server import cache
-from main.server import db
-from main.server.models import Games
-from main.server.models import GameSchema
+from main.server import app, cache, db
+from main.server.models import Games, GameSchema
 
 
 games_schema = GameSchema(many=True)
