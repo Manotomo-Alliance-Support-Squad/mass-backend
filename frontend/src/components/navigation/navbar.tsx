@@ -27,7 +27,7 @@ export default function ButtonAppBar() {
                     },
                     {
                         externalLink: true,
-                        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holocn-graduation',
+                        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holo-valentine-2021',
                         altText: "github",
                         iconFunc: () => <InfoIcon/>
                     },

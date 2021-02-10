@@ -41,13 +41,23 @@ export default class InPageNav extends Component<InPageNavProps, InPageNavState>
         return (
             <div className="in-page-nav-container">
                 {this.navButtons.map((obj, idx) => {
-                    return (
-                        <NavLink to={Object(obj)["link"]}>
-                            <NavButton variant="contained" startIcon={Object(obj)["startIcon"]} size="large" color="primary">
-                                {Object(obj)["buttonContent"]}
-                            </NavButton>
-                        </NavLink>
-                    );
+                    if (Object(obj)["link"].startsWith("http")) {
+                        return (
+                            <a target="_blank" rel="noopener noreferrer" href={Object(obj)["link"]}>
+                                <NavButton variant="contained" startIcon={Object(obj)["startIcon"]} size="large" color="primary">
+                                    {Object(obj)["buttonContent"]}
+                                </NavButton>
+                            </a>
+                        );
+                    } else {
+                        return (
+                            <NavLink to={Object(obj)["link"]}>
+                                <NavButton variant="contained" startIcon={Object(obj)["startIcon"]} size="large" color="primary">
+                                    {Object(obj)["buttonContent"]}
+                                </NavButton>
+                            </NavLink>
+                        );
+                    }
                 })}
             </div>
         );
