@@ -1,5 +1,4 @@
 import React from "react";
-import DisplayedLanguage from "../../../models/language";
 import CSS from "csstype";
 // Throwing in a fake card style in until we have actual cards
 import CardStyle1 from "../../../assets/cards/card1.svg";
@@ -21,12 +20,9 @@ export const CardStyleLength: number =
 export interface BaseCardProps<T> {
     object: T;
     cardStyleNum: number;
-    language: DisplayedLanguage;
 }
 
 export interface BaseCardState {
-    currentLanguage: DisplayedLanguage;
-    globalLanguage: DisplayedLanguage;
     inViewport: boolean;
 }
 
@@ -39,8 +35,6 @@ export default class BaseCard<T, P extends BaseCardProps<T>, S extends BaseCardS
     }
 
     state = {
-        currentLanguage: this.props.language,
-        globalLanguage: this.props.language,
         inViewport: false
     } as S
 

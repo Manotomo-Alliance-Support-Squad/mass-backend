@@ -9,9 +9,12 @@ import { Twemoji } from 'react-emoji-render';
 import BaseCard, {BaseCardProps, BaseCardState} from "../../../shared/components/baseCard/baseCard";
 
 interface MessageCardProps extends BaseCardProps<Message>{
+    language: DisplayedLanguage;
 }
 
 interface MessageCardState extends BaseCardState{
+    currentLanguage: DisplayedLanguage;
+    globalLanguage: DisplayedLanguage;
 }
 
 function countryCodeToFlag(code: Country): string {
@@ -44,6 +47,12 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
 
         this.toggleCurrentLanguage = this.toggleCurrentLanguage.bind(this);
     }
+
+    state = {
+        currentLanguage: this.props.language,
+        globalLanguage: this.props.language
+    } as MessageCardState
+
     private toggleCurrentLanguage(): void {
         this.setState((state: MessageCardState) => ({
             currentLanguage: state.currentLanguage === DisplayedLanguage.Original

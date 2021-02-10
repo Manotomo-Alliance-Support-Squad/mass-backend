@@ -1,5 +1,6 @@
 import React from "react";
 import BaseCard, {BaseCardProps, BaseCardState} from "../../../shared/components/baseCard/baseCard";
+import DisplayedLanguage from "../../../models/language";
 import {Game} from "../../../models/game";
 import {linkToString} from "../../../models/url";
 import GameWindow from "./../gameWindow";
@@ -9,11 +10,14 @@ import '../gameSection.css'
 import './gameCard.css'
 
 export interface GameCardProps extends BaseCardProps<Game> {
+    language: DisplayedLanguage;
 }
 
 export interface GameCardState extends BaseCardState {
     touched: boolean;
     renderGame: boolean;
+    currentLanguage: DisplayedLanguage;
+    globalLanguage: DisplayedLanguage;
 }
 
 export default class GameCard extends BaseCard<Game, GameCardProps, GameCardState> {

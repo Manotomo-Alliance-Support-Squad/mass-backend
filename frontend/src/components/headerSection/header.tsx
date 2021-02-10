@@ -50,25 +50,18 @@ export default class HeaderSection extends Component<HeaderProps, HeaderState>
     renderDefaultSection(): JSX.Element
     {
         return (
-            <>
-                <header className="App-header">
-                    <div className="community-message-card">
-                        <h1 className="community-message-header">For Everyone At Hololive</h1>
-                        <div className="community-message-body">
-                            <p>We have collected Valentine messages from your fans across the world. Thanks for all the entertainment all of you have provided, in the past, and yet to come.</p>
-                            <p>Happy Valentines day &lt;3</p>
-                        </div>
+            <header className="App-header">
+                <div className="community-message-card">
+                    <h1 className="community-message-header">For Everyone At Hololive</h1>
+                    <div className="community-message-body">
+                        <p>We have collected Valentine messages from your fans across the world. Thanks for all the entertainment all of you have provided, in the past, and yet to come.</p>
+                        <p>Happy Valentines day &lt;3</p>
                     </div>
-                    <div style={{height: 50}}/>
-                    <AltNav />
-                    <div style={{height: 50}}/>
-                </header>
-                <div className="separator">
-                    <AnchorLink offset='120' href='#video-anchor'>
-                        <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
-                    </AnchorLink>
                 </div>
-            </>
+                <div style={{height: 50}}/>
+                <AltNav />
+                <div style={{height: 50}}/>
+            </header>
        )
     }
 

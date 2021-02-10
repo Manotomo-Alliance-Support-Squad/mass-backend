@@ -1,5 +1,7 @@
 import React from 'react';
+import BaseCard, {BaseCardProps, BaseCardState} from "../../../shared/components/baseCard/baseCard";
 import classNames from 'classnames';
+import DisplayedLanguage from "../../../models/language";
 import handleViewport from 'react-in-viewport';
 import { Artwork } from '../../../models/artwork';
 import './artworkCard.css';
@@ -11,22 +13,20 @@ enum ImageLoadingState {
     Loaded,
 }
 
-interface ArtworkCardProps {
-    artwork: Artwork,
-    inViewport: boolean,
+interface ArtworkCardProps extends BaseCardProps<Artwork> {
 }
 
-interface ArtworkCardState {
+interface ArtworkCardState extends BaseCardState {
     loadingState: ImageLoadingState,
 }
 
-class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
+export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, ArtworkCardState> {
     private readonly artwork: Artwork;
     private imageElement: HTMLImageElement;
 
     constructor(props: ArtworkCardProps) {
         super(props);
-        this.artwork = props.artwork;
+        this.artwork = props.object;
         this.imageElement = document.createElement("img");
 
         this.imageLoaded = this.imageLoaded.bind(this);
@@ -34,6 +34,7 @@ class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
 
     state: ArtworkCardState = {
         loadingState: ImageLoadingState.NotLoaded,
+        inViewport: false // From BaseCardState
     }
 
     private imageLoaded() {
@@ -45,7 +46,7 @@ class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
     }
 
     private setImage() {
-        if (this.props.inViewport && this.state.loadingState === ImageLoadingState.NotLoaded) {
+        if (this.state.inViewport && this.state.loadingState === ImageLoadingState.NotLoaded) {
             this.imageElement.src = linkToString(this.artwork.artworkLink);
             this.imageElement.addEventListener("load", this.imageLoaded);
 
@@ -56,6 +57,8 @@ class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
     }
 
     componentDidMount() {
+        // TODO: Is this the right place to set the state?
+        this.setState({inViewport: true});
         this.setImage();
     }
 
@@ -66,6 +69,7 @@ class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
     render() {
         const hasLoaded = this.state.loadingState === ImageLoadingState.Loaded;
         const artworkLink = linkToString(this.artwork.artworkLink);
+        const artistLink = linkToString(this.artwork.artistLink);
 
         return (
             <div className="artwork-card">
@@ -81,11 +85,9 @@ class ArtworkCard extends React.Component<ArtworkCardProps, ArtworkCardState> {
                 </div>
                 <div className="artwork-card-footer">
                     <div className="title">{this.artwork.title}</div>
-                    <div className="artist"><a href={linkToString(this.artwork.artistLink)}>{this.artwork.username}</a></div>
+                    <div className="artist"><a href={artistLink}>{this.artwork.username}</a></div>
                 </div>
             </div>
         )
     }
 }
-
-export default handleViewport(ArtworkCard, { rootMargin: "0px 0px 250px 0px" }, { disconnectOnLeave: true });
