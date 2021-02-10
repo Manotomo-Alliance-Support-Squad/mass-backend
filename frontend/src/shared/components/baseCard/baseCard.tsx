@@ -3,12 +3,14 @@ import CSS from "csstype";
 import './baseCard.css';
 import VisibilitySensor from "react-visibility-sensor";
 
-import CardStyle2 from "../../../assets/cards/card2.svg";
+import CardStyle1 from "../../../assets/cards/valentine_card1.svg";
+import CardStyle2 from "../../../assets/cards/valentine_card2.svg";
 
 
 // TODO(#32): Change this to a class prop so inheriting classes can override it
 const CardStyleArr: Array<Array<string>> = [
-    ["", "#f12169bf"],
+    [CardStyle1, "#f12169bf"],
+    [CardStyle2, "#f12169bf"],
 ]
 // TODO(#32): Remove when CardStyleArr is a prop, and exporting this value is no longer necessary
 export const CardStyleLength: number =
