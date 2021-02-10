@@ -59,14 +59,23 @@
     width: var(--card-text-width);
 }
 
-.message-card-footer {
+.message-card-footer-container {
+    position: relative;
+    width: 100%;
     margin-top: 10px;
+    float: right;
+}
+
+.message-card-footer-text {
     float: right;
     text-align: right;
 }
 
+
 .message-card-translate {
     /*the translate button properties*/
+    position: absolute;
+    bottom: 0;
     float: left;
     width: 40px;
     height: 40px;

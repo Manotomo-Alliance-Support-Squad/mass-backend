@@ -44,12 +44,14 @@ class Games(db.Model):
     gitLink = db.Column(db.String(2048), nullable=True)
     title = db.Column(db.String(64), nullable=False)
     description = db.Column(db.String(256), nullable=True)
+    thumbnail = db.Column(db.String(2048), nullable=True)
 
-    def __init__(self, gameLink, gitLink, title, description):
+    def __init__(self, gameLink, gitLink, title, description, thumbnail):
         self.gameLink = gameLink
         self.gitLink = gitLink
         self.title = title
         self.description = description
+        self.thumbnail = thumbnail
 
 
 class GameSchema(ma.Schema):
@@ -58,6 +60,7 @@ class GameSchema(ma.Schema):
     gitLink = fields.String(required=False)
     title = fields.String(required=True)
     description = fields.String(required=False)
+    thumbnail = fields.String(required=False)
 
 
 class Message(db.Model):
@@ -65,13 +68,14 @@ class Message(db.Model):
     messageID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     orig_msg = db.Column(db.String(2048), nullable=False)
     tl_msg = db.Column(db.String(2048), nullable=True)
-    country = db.Column(db.String(2), nullable=True)
+    # Longest is Iofi's name with her katakana
+    recipient = db.Column(db.String(35), nullable=True)
     username = db.Column(db.String(64), nullable=True)
 
-    def __init__(self, orig_msg, tl_msg, country, username):
+    def __init__(self, orig_msg, tl_msg, recipient, username):
         self.orig_msg = orig_msg
         self.tl_msg = tl_msg
-        self.country = country
+        self.recipient = recipient
         self.username = username
 
 
@@ -79,16 +83,19 @@ class MessageSchema(ma.Schema):
     messageID = fields.Integer()
     orig_msg = fields.String(required=True)
     tl_msg = fields.String(required=False)
-    country = fields.String(required=False)
+    recipient = fields.String(required=False)
     username = fields.String(required=False)
+
 
 class Announcement(db.Model):
     __tablename__ = 'ANNOUNCEMENTS'
-    announcementID = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    announcementID = db.Column(
+        db.Integer, primary_key=True, autoincrement=True)
     message = db.Column(db.String(1024), nullable=False)
 
     def __init__(self, message):
         self.message = message
+
 
 class AnnouncementSchema(ma.Schema):
     announcementID = fields.Integer()
