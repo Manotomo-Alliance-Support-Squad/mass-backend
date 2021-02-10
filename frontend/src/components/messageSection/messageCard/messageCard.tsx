@@ -70,13 +70,15 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
                     }
                     <div className="clear"/>
                 </div>
-                <div className="message-card-footer">
-                    <p>From: {this.username}</p>
-                    <p>To: {this.recipient}</p>
+                <div className="message-card-footer-container">
+                    <div className="message-card-footer-text">
+                        <p>From: {this.username}</p>
+                        <p>To: {this.recipient}</p>
+                    </div>
+                    {this.hasTlMsg &&
+                    <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
+                    }
                 </div>
-                {this.hasTlMsg &&
-                <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
-                }
             </div>
         )
     }
