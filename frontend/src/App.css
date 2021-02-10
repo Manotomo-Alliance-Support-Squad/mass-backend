@@ -11,6 +11,9 @@ body {
     width: 50%;
     text-align: center;
 
+    background-size: 90%;
+    background-image: url(assets/cards/valentine_card2.svg);
+    background-repeat: no-repeat;
     background-color: #f45787;
     color: #ffffff;
     font-size: 25px;
@@ -37,7 +40,7 @@ body {
 }
 
 .community-message-header {
-    padding-top: 14%;
+    padding-top: 22%;
     justify-content: center;
     font-size: 40px;
     text-align: center;
