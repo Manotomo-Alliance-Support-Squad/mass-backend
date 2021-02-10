@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import InfoIcon from '@material-ui/icons/Info';
+import LanguageSwitchButton from '../languageSwitch/languageSwitch';
 
 import './navbar.css';
 
@@ -52,6 +53,7 @@ export default function ButtonAppBar() {
                         );
                     }
                 })}
+                <LanguageSwitchButton/>
             </div>
         </header>
     );
