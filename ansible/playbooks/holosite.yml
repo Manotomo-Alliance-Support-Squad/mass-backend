@@ -15,10 +15,16 @@
         update_cache: yes
         upgrade: yes
 
-    - name: install npm 
+    - name: install nodejs
       become: yes
       apt:
         name: nodejs
+        state: latest
+
+    - name: install npm 
+      become: yes
+      apt:
+        name: npm
         state: latest
 
     - name: install pip
@@ -33,13 +39,13 @@
         name: virtualenv
         state: latest
 
-    - name: install waitress
+    - name: install git
       become: yes
       apt:
-        name: python3-waitress
+        name: git
         state: latest
      
-### [SETTING UP COCOCHAMA SITE]
+### [SETTING UP SITE]
 
     - name: "Create {{ siteuser }} user"
       become: yes
@@ -104,14 +110,14 @@
 
     - name: "check if systemd service exists"
       stat:
-        path: "/etc/systemd/system/manoaloe.service"
+        path: "/etc/systemd/system/valentine.service"
       register: systemd_exists
 
     - name: "upload systemd service file"
       become: yes
       copy:
-        src: "{{ playbook_dir }}/../../systemd/manoaloe.service"
-        dest: "/etc/systemd/system/manoaloe.service"
+        src: "{{ playbook_dir }}/../../systemd/valentine.service"
+        dest: "/etc/systemd/system/valentine.service"
         owner: root
         group: root
         mode: '0644'
@@ -120,7 +126,7 @@
     - name: "enable and start backend systemd service"
       become: yes
       systemd:
-        name: manoaloe.service
+        name: valentine.service
         daemon_reload: yes
         state: started
         enabled: yes
