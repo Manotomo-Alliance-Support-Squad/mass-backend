@@ -79,8 +79,7 @@ class MessageListResource(Resource):
 
         data = message_schema.load(json_data)
 
-        message = Message.query.filter_by(orig_msg=data.get('orig_msg'),
-                                          username=data.get('username')).first()
+        message = Message.query.filter_by(orig_msg=data.get('orig_msg')).first()
 
         if message:
             return {'status': 'fail', 'message': 'Message already exists'}, 400
