@@ -21,7 +21,7 @@ const NavButton = withStyles({
         color: "#ffffff",
         backgroundColor: "#f45787",
         '&:hover': {
-          backgroundColor: "#f45797",
+          backgroundColor: "#d01760",
         },
       },
 })(Button);
