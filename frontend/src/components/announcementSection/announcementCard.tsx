@@ -27,6 +27,6 @@ export default class AnnouncementCard extends BaseCard<Announcement, Announcemen
     }
 
     render() {
-        return this.renderCard(this.renderAnnouncement());
+        return this.renderAnnouncement();
     }
 }
