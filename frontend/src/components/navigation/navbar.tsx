@@ -11,7 +11,7 @@ import './navbar.css';
 export default function ButtonAppBar() {
     return (
         <header className="navbar">
-            <div className="title">Minna Have a Very Holo Valentine &lt;3</div>
+            <div className="title">Have a Very Holo Valentine &lt;3</div>
             <div className="icons">
                 {[
                     {

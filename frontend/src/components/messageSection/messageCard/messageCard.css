@@ -44,6 +44,7 @@
 }
 
 .message-card-text {
+    padding-top: 15px;
     width: 0;
     float: left;
     opacity: 0;

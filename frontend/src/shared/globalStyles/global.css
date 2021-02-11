@@ -39,7 +39,7 @@
 .separator {
     height: 40px;
     width: 100%;
-    background-color: #c00000;
+    background-color: #5a1c0c;
 }
 
 .notice-container {
@@ -53,7 +53,7 @@
     font-size: 20px;
     text-align: center;
     color: #fff;
-    background-color: #724683;
+    background-color: #f45787;
     border-radius: 15px;
     text-decoration: none;
 }

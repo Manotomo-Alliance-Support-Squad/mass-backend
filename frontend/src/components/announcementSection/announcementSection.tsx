@@ -17,7 +17,7 @@ interface AnnouncementSectionState extends BaseSectionState {
 export default class AnnouncementSection extends BaseSection<Announcement> {
 
     renderCard(object: Announcement, cardStyleNum: number, language: DisplayedLanguage, id: number): JSX.Element {
-        return <AnnouncementCard key={object.announcementID} object={object} cardStyleNum={id % CardStyleLength} language={language}/>;
+        return <AnnouncementCard key={object.announcementID} object={object} cardStyleNum={0} language={language}/>;
     }
 
     render(): JSX.Element {

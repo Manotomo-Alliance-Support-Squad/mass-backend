@@ -1,17 +1,16 @@
 import React from "react";
 import CSS from "csstype";
-// Throwing in a fake card style in until we have actual cards
-import CardStyle1 from "../../../assets/cards/card1.svg";
-import CardStyle2 from "../../../assets/cards/card2.svg";
-import CardStyle3 from "../../../assets/cards/card3.svg";
 import './baseCard.css';
 import VisibilitySensor from "react-visibility-sensor";
 
+import CardStyle1 from "../../../assets/cards/valentine_card1.svg";
+import CardStyle2 from "../../../assets/cards/valentine_card2.svg";
+
+
 // TODO(#32): Change this to a class prop so inheriting classes can override it
 const CardStyleArr: Array<Array<string>> = [
-    [CardStyle1, "#724683"],
-    [CardStyle2, "#fd418d"],
-    [CardStyle3, "#6e4080"],
+    [CardStyle1, "#f45787"],
+    [CardStyle2, "#f45787"],
 ]
 // TODO(#32): Remove when CardStyleArr is a prop, and exporting this value is no longer necessary
 export const CardStyleLength: number =
