@@ -65,7 +65,7 @@ body {
 }
 
 .main {
-    /*background-image: url(assets/backgrounds/App-root-bg.svg);*/
+    background-image: url(assets/backgrounds/App-root-bg.svg);
     background-color: #fffde2;
     background-repeat: repeat;
     min-height: 100vh;
