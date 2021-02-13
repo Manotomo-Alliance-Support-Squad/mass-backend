@@ -1,7 +1,7 @@
 # holo-valentine-2021
 Valentine 2021 site from MASS
 
-Thanks for everyone that's send or will be sending messages to us!
+Thanks for everyone that's send or will be sending messages to our friends are Hololive Productions!
 
 # Credits
 
