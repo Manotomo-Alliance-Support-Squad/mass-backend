@@ -125,10 +125,12 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             <div className="notice-content">
                                 <p>These are all the messages we managed to collect! Happy Valentine's Day!</p>
                                 <p>これがすべての取集したメッセージですが！ハッピーバレンタイン！</p>
+                                <p style={{fontSize: 10}}>If you find any problems with the website, or if you would like to report a message, please contact Fishsauce#1324 on discord</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div style={{height: "25px"}}/>
             </section>
         )
     }
