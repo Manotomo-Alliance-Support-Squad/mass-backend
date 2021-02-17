@@ -1,4 +1,5 @@
 import React from 'react';
+import ComboSection from '../../components/comboSection/comboSection';
 import MessageSection from '../../components/messageSection/messageSection';
 import ArchiveSection from '../../components/archiveSection/archiveSection';
 import {Message} from "../../models/message";
@@ -93,6 +94,13 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 </div>
             </div>
         )
+        // return (
+        //     <div>
+        //         <div className="wrapper-overlay">
+        //             {this.state.messageLoaded && this.state.announcementLoaded ? <MessageSection data={this.state.messages}/> : <div/>}
+        //         </div>
+        //     </div>
+        // )
     }
 
     renderGallerySection() {
