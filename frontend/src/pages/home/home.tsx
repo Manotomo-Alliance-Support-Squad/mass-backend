@@ -87,6 +87,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
     }
 
     renderCardSection() {
+        // We do this because state setting is async and trying to create this in getData yields empty arrays
         let comboCardData: (Message|Artwork)[] = this.state.messages;
         comboCardData = comboCardData.concat(this.state.artworks);
         return (
