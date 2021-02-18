@@ -14,24 +14,20 @@ interface ComboSectionState extends BaseSectionState {
 
 }
 
-function isArtwork(content: Message|Artwork): content is Artwork {
-    return true
-}
-
 export default class ComboSection extends BaseSection<Message|Artwork> {
 
     renderCard(object: (Message|Artwork), cardStyleNum: number, language: DisplayedLanguage, id: number): JSX.Element {
-            // TODO: messagecard-center might not used or needed
-        if (isArtwork(object)) {
-            return (
-                <div className="gallery-section">
-                    <ArtworkCard key={object.artworkID} object={object} cardStyleNum={id % CardStyleLength}/>
-                </div>
-            );
-        } else if (!isArtwork(object)) {
+        // TODO: messagecard-center might not used or needed
+        if ("messageID" in object) {
             return (
                 <div className="messagecard-center">
                     <MessageCard key={object.messageID} object={object} cardStyleNum={id % CardStyleLength} language={language}/>
+                </div>
+            );
+        } else if ("artworkID" in object) {
+            return (
+                <div className="gallery-section">
+                    <ArtworkCard key={object.artworkID} object={object} cardStyleNum={id % CardStyleLength}/>
                 </div>
             );
         }
