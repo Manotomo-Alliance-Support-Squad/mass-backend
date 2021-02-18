@@ -86,11 +86,13 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         }
     }
 
-    renderMessageCardSection() {
+    renderCardSection() {
+        let comboCardData: (Message|Artwork)[] = this.state.messages;
+        comboCardData = comboCardData.concat(this.state.artworks);
         return (
             <div>
                 <div className="wrapper-overlay">
-                    {this.state.messageLoaded && this.state.announcementLoaded ? <MessageSection data={this.state.messages}/> : <div/>}
+                    {this.state.messageLoaded && this.state.announcementLoaded ? <ComboSection data={comboCardData}/> : <div/>}
                 </div>
             </div>
         )
@@ -101,16 +103,6 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         //         </div>
         //     </div>
         // )
-    }
-
-    renderGallerySection() {
-        return (
-            <div>
-                <div className="wrapper-overlay">
-                    <GallerySection data={this.state.artworks}/>
-                </div>
-            </div>
-        )
     }
 
     render() {
@@ -127,7 +119,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container"/>
                         </div>
                     </div>
-                    {this.renderMessageCardSection()}
+                    {this.renderCardSection()}
                     <div className="justify-center">
                         <div className="notice-container">
                             <div className="notice-content">
