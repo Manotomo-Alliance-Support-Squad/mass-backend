@@ -7,6 +7,8 @@ import MessageCard from "../messageSection/messageCard/messageCard";
 import BaseSection, {BaseSectionProps, BaseSectionState} from "../../shared/components/baseSection/baseSection";
 import {CardStyleLength} from "../../shared/components/baseCard/baseCard";
 
+import '../gallery/gallerySection.css';
+
 interface ComboSectionProps extends BaseSectionProps<Message|Artwork> {
 }
 
