@@ -7,7 +7,7 @@ import MessageCard from "../messageSection/messageCard/messageCard";
 import BaseSection, {BaseSectionProps, BaseSectionState} from "../../shared/components/baseSection/baseSection";
 import {CardStyleLength} from "../../shared/components/baseCard/baseCard";
 
-import '../gallery/gallerySection.css';
+import './comboSection.css';
 
 interface ComboSectionProps extends BaseSectionProps<Message|Artwork> {
 }
@@ -22,11 +22,13 @@ export default class ComboSection extends BaseSection<Message|Artwork> {
         // TODO: messagecard-center might not used or needed
         if ("messageID" in object) {
             return (
-                <MessageCard key={object.messageID} object={object} cardStyleNum={id % CardStyleLength} language={language}/>
+                <div className="card-section">
+                    <MessageCard key={object.messageID} object={object} cardStyleNum={id % CardStyleLength} language={language}/>
+                </div>
             );
         } else if ("artworkID" in object) {
             return (
-                <div className="gallery-section">
+                <div className="card-section">
                     <ArtworkCard key={object.artworkID} object={object} cardStyleNum={0}/>
                 </div>
             );

@@ -1,0 +1,13 @@
+.card-section {
+    --card-height: 550px;
+    --card-width: var(--card-height);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /*padding: 0.25rem;*/
+    margin: 1em;
+    align-items: flex-start;
+    overflow: auto;
+    height: 100%;
+}

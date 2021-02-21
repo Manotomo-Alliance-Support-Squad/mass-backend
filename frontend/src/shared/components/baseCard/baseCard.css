@@ -2,7 +2,7 @@
     --card-text-width: 420px;
 
     display: block;
-    width: auto;
+    width: 100%;
     min-height: 1px;  /*DO NOT REMOVE THIS LINE. OTHERWISE YOU WILL EXPERIENCE PAIN IN TRYING TO FIX COLUMN STACKING ON CHROME/IOS*/
     overflow: auto;
     border-radius: 15px;
