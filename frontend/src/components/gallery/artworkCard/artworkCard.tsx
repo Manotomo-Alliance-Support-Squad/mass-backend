@@ -40,14 +40,13 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     private imageLoaded() {
         this.setState({
             loadingState: ImageLoadingState.Loaded,
-            inViewport: true,
         });
 
         this.imageElement.removeEventListener("load", this.imageLoaded);
     }
 
     private setImage() {
-        if (this.state.inViewport && this.state.loadingState === ImageLoadingState.NotLoaded) {
+        if (this.state.loadingState === ImageLoadingState.NotLoaded) {
             this.imageElement.src = linkToString(this.artwork.artworkLink);
             this.imageElement.addEventListener("load", this.imageLoaded);
 
@@ -59,7 +58,6 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
     componentDidMount() {
         // TODO: Is this the right place to set the state?
-        // this.setState({inViewport: true});
         this.setImage();
     }
 
@@ -86,6 +84,6 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     }
 
     render() {
-        return this.renderArtwork();
+        return this.renderCard(this.renderArtwork());
     }
 }
