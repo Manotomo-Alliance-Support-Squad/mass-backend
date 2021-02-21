@@ -40,6 +40,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     private imageLoaded() {
         this.setState({
             loadingState: ImageLoadingState.Loaded,
+            inViewport: true,
         });
 
         this.imageElement.removeEventListener("load", this.imageLoaded);
@@ -58,7 +59,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
     componentDidMount() {
         // TODO: Is this the right place to set the state?
-        this.setState({inViewport: true});
+        // this.setState({inViewport: true});
         this.setImage();
     }
 
@@ -74,14 +75,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
         return (
             <div className="artwork-card">
                 <div className="artwork-card-img">
-                    <div className={classNames("placeholder", {
-                        "loaded": hasLoaded,
-                    })}></div>
-                    <div className={classNames("image", {
-                        "loaded": hasLoaded,
-                    })}>
-                        <img src={hasLoaded ? artworkLink : ""} alt={this.artwork.title} />
-                    </div>
+                    <img src={artworkLink} alt={this.artwork.title} />
                 </div>
                 <div className="artwork-card-footer">
                     <div className="title">{this.artwork.title}</div>
