@@ -86,20 +86,36 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         }
     }
 
-    renderCardSection() {
-        // We do this because state setting is async and trying to create this in getData yields empty arrays
-        let comboCardData: (Message|Artwork)[] = this.state.messages;
-        comboCardData = comboCardData.concat(this.state.artworks);
+    renderCardSection(data: (Message|Artwork)[]) {
         return (
             <div>
                 <div className="wrapper-overlay">
-                    {this.state.messageLoaded && this.state.announcementLoaded ? <ComboSection data={comboCardData}/> : <div/>}
+                    {this.state.messageLoaded && this.state.announcementLoaded ? <ComboSection data={data}/> : <div/>}
                 </div>
             </div>
         )
     }
 
+    compileCardData() {
+        // We do this because state setting is async and trying to create this in getData yields empty arrays
+        let comboCardData: (Message|Artwork)[] = [];
+        // TODO: This can should be more generalized, but generally there will be fewer art than messages
+        const art_cards_length = this.state.artworks.length;
+        const message_cards_length = this.state.messages.length;
+        const index_increment_spacing = Math.floor(message_cards_length/art_cards_length);
+
+        for (let msg_index = 0, art_index = 0; msg_index < message_cards_length; msg_index++) {
+            comboCardData.push(this.state.messages[msg_index]);
+            if (art_index < art_cards_length && msg_index % index_increment_spacing === 0) {
+                comboCardData.push(this.state.artworks[art_index]);
+                art_index++;
+            }
+        }
+        return comboCardData
+    }
+
     render() {
+        const comboCardData = this.compileCardData()
         return (
             <section id='anchor'>
                 <div className="home-root">
@@ -113,7 +129,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container"/>
                         </div>
                     </div>
-                    {this.renderCardSection()}
+                    {this.renderCardSection(comboCardData)}
                     <div className="justify-center">
                         <div className="notice-container">
                             <div className="notice-content">

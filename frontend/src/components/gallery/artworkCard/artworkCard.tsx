@@ -66,7 +66,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
         this.setImage();
     }
 
-    render() {
+    renderArtwork() {
         const hasLoaded = this.state.loadingState === ImageLoadingState.Loaded;
         const artworkLink = linkToString(this.artwork.artworkLink);
         const artistLink = linkToString(this.artwork.artistLink);
@@ -89,5 +89,9 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
                 </div>
             </div>
         )
+    }
+
+    render() {
+        return this.renderArtwork();
     }
 }

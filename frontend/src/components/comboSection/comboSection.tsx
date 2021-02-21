@@ -22,14 +22,12 @@ export default class ComboSection extends BaseSection<Message|Artwork> {
         // TODO: messagecard-center might not used or needed
         if ("messageID" in object) {
             return (
-                <div className="messagecard-center">
-                    <MessageCard key={object.messageID} object={object} cardStyleNum={id % CardStyleLength} language={language}/>
-                </div>
+                <MessageCard key={object.messageID} object={object} cardStyleNum={id % CardStyleLength} language={language}/>
             );
         } else if ("artworkID" in object) {
             return (
                 <div className="gallery-section">
-                    <ArtworkCard key={object.artworkID} object={object} cardStyleNum={id % CardStyleLength}/>
+                    <ArtworkCard key={object.artworkID} object={object} cardStyleNum={0}/>
                 </div>
             );
         }

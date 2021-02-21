@@ -1,16 +1,20 @@
 .artwork-card {
     width: 100%;
+    min-height: 100px;
+    min-width: 330px;
     overflow: auto;
+    border-radius: 15px;
     box-sizing: border-box;
 
-    border-radius: 15px;
+    margin-bottom: 1rem;
     padding: 10px;
 
-    background-color: #724683;
+    background-color: #f45787;
     color: white;
 }
 
 .artwork-card-img {
+    margin: 2vw;
     height: var(--card-height);
     position: relative;
 }
