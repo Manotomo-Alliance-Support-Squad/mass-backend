@@ -20,8 +20,4 @@
     .base-section {
         column-count: 4;
     }
-    .base-card {
-        /*For Iofi's name smashing into transleet botan*/
-        font-size: smaller;
-    }
 }
