@@ -71,7 +71,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     renderArtwork() {
         const hasLoaded = this.state.loadingState === ImageLoadingState.Loaded;
         const artworkLink = linkToString(this.artwork.artworkLink);
-        const artistLink = linkToString(this.artwork.artistLink);
+        const artistLink = this.artwork.artistLink ? linkToString(this.artwork.artistLink) : "#no_artist_link";
 
         return (
             <div className="artwork-card">

@@ -103,6 +103,10 @@ a:link {
     color: #5a1c0c;
 }
 
+a:visited {
+    color: #5a1c0c;
+}
+
 
 @media (max-width: 500px) {
     .artwork-card-img > .effects {
