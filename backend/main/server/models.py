@@ -21,12 +21,14 @@ class Gallery(db.Model):
     artistLink = db.Column(db.String(2048), nullable=True)
     username = db.Column(db.String(64), nullable=True)
     title = db.Column(db.String(64), nullable=True)
+    recipient = db.Column(db.String(35), nullable=False)
 
     def __init__(self, artworkLink, username, title, artistLink):
         self.artworkLink = artworkLink
         self.artistLink = artistLink
         self.username = username
         self.title = title
+        self.recipient
 
 
 class GallerySchema(ma.Schema):
@@ -35,6 +37,7 @@ class GallerySchema(ma.Schema):
     artistLink = fields.String(required=False)
     username = fields.String(required=True)
     title = fields.String(required=False)
+    recipient = fields.String(required=True)
 
 
 class Games(db.Model):
@@ -69,7 +72,7 @@ class Message(db.Model):
     orig_msg = db.Column(db.String(2048), nullable=False)
     tl_msg = db.Column(db.String(2048), nullable=True)
     # Longest is Iofi's name with her katakana
-    recipient = db.Column(db.String(35), nullable=True)
+    recipient = db.Column(db.String(35), nullable=False)
     username = db.Column(db.String(64), nullable=True)
 
     def __init__(self, orig_msg, tl_msg, recipient, username):
@@ -83,7 +86,7 @@ class MessageSchema(ma.Schema):
     messageID = fields.Integer()
     orig_msg = fields.String(required=True)
     tl_msg = fields.String(required=False)
-    recipient = fields.String(required=False)
+    recipient = fields.String(required=True)
     username = fields.String(required=False)
 
 

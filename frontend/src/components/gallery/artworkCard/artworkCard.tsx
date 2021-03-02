@@ -22,11 +22,15 @@ interface ArtworkCardState extends BaseCardState {
 
 export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, ArtworkCardState> {
     private readonly artwork: Artwork;
+    private readonly username: string;
+    private readonly recipient: string;
     private imageElement: HTMLImageElement;
 
     constructor(props: ArtworkCardProps) {
         super(props);
         this.artwork = props.object;
+        this.username = this.artwork.username ? props.object.username : "Anonymous";
+        this.recipient = props.object.recipient;
         this.imageElement = document.createElement("img");
 
         this.imageLoaded = this.imageLoaded.bind(this);
@@ -46,7 +50,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     }
 
     private setImage() {
-        if (this.state.inViewport && this.state.loadingState === ImageLoadingState.NotLoaded) {
+        if (this.state.loadingState === ImageLoadingState.NotLoaded) {
             this.imageElement.src = linkToString(this.artwork.artworkLink);
             this.imageElement.addEventListener("load", this.imageLoaded);
 
@@ -57,8 +61,6 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     }
 
     componentDidMount() {
-        // TODO: Is this the right place to set the state?
-        this.setState({inViewport: true});
         this.setImage();
     }
 
@@ -66,28 +68,30 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
         this.setImage();
     }
 
-    render() {
+    renderArtwork() {
         const hasLoaded = this.state.loadingState === ImageLoadingState.Loaded;
         const artworkLink = linkToString(this.artwork.artworkLink);
-        const artistLink = linkToString(this.artwork.artistLink);
+        const artistLink = this.artwork.artistLink ? linkToString(this.artwork.artistLink) : "#no_artist_link";
 
         return (
             <div className="artwork-card">
                 <div className="artwork-card-img">
-                    <div className={classNames("placeholder", {
-                        "loaded": hasLoaded,
-                    })}></div>
-                    <div className={classNames("image", {
-                        "loaded": hasLoaded,
-                    })}>
-                        <img src={hasLoaded ? artworkLink : ""} alt={this.artwork.title} />
-                    </div>
+                    <img src={artworkLink} alt={this.artwork.title} />
                 </div>
                 <div className="artwork-card-footer">
                     <div className="title">{this.artwork.title}</div>
-                    <div className="artist"><a href={artistLink}>{this.artwork.username}</a></div>
+                    <p>
+                        <div className="artist">
+                            From: <a href={artistLink}>{this.username}</a>
+                        </div>
+                    </p>
+                    <p>To: {this.recipient}</p>
                 </div>
             </div>
         )
+    }
+
+    render() {
+        return this.renderCard(this.renderArtwork());
     }
 }
