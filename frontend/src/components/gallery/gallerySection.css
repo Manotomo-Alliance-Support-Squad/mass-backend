@@ -1,0 +1,18 @@
+.gallery-section {
+    --card-height: 550px;
+    --card-width: var(--card-height);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 1em;
+    align-items: flex-start;
+    overflow: auto;
+    height: 100%;
+}
+
+@media (max-width: 650px) {
+    .gallery-section {
+        --card-width: 100%;
+    }
+}

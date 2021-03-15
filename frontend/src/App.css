@@ -1,0 +1,97 @@
+body {
+    background-color: #282c34;
+}
+
+.community-message-card {
+    top:50px;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px;
+    margin-top: 50px;
+    width: 50%;
+    text-align: center;
+
+    background-size: 90%;
+    background-image: url(assets/cards/valentine_card2.svg);
+    background-repeat: no-repeat;
+    background-color: #f45787;
+    color: #ffffff;
+    font-size: 25px;
+}
+
+@media (max-height: 800px) {
+    /*Handle mobile layouts since everything is freaking tiny*/
+    .community-message-card {
+        margin-top: 12vh;
+    }
+}
+
+@media (max-width: 900px) {
+    .community-message-card {
+        width: 90%;
+    }
+}
+
+@media (min-width: 900px) {
+    .community-message-card {
+        position: relative;
+        width: 60%;
+    }
+}
+
+.community-message-header {
+    padding-top: 22%;
+    justify-content: center;
+    font-size: 40px;
+    text-align: center;
+}
+
+.community-message-body {
+    padding: 20px;
+}
+
+.anchor-link {
+  position: absolute;
+  /*make smaller than separator*/
+  padding-top: 1px;
+  height: 35px;
+  width: 35px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color:white;
+
+  transition: all 0.25s ease;
+}
+
+.main {
+    background-image: url(assets/backgrounds/App-root-bg.svg);
+    background-color: #fffde2;
+    background-repeat: repeat;
+    min-height: 100vh;
+    background-size: 100%;
+}
+
+.App-logo {
+    height: 20vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

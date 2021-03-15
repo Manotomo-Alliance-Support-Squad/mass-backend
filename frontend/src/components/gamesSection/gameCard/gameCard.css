@@ -1,0 +1,40 @@
+.game-text {
+    font-size: 24px;
+}
+
+.game-description {
+    max-width: 45vw;
+    min-width: 300px;
+    margin: 0 auto;
+    font-size: 20px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.game-url {
+    width: 400px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+.game-thumbnail-container {
+    border-radius: 10px;
+}
+
+.game-thumbnail {
+    width: 100%;
+    height: auto;
+}
+
+.game-thumbnail-placeholder {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.game-play-button {
+    font-size: 50vh;
+    color: white;
+}

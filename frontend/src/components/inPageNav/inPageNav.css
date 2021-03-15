@@ -1,0 +1,76 @@
+/*TODO: need other container rule for screen sizes < 950 in width*/
+
+/*Removes border outline when carousel is clicked*/
+*:focus {
+  outline: none !important;
+}
+
+.in-page-nav-container {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@media (max-width: 1200px) {
+    .in-page-nav-container {
+        width: 50%;
+    }
+}
+
+@media (max-width: 850px) {
+    .in-page-nav-container {
+        width: 100%;
+    }
+}
+
+
+.carousel-indicators {
+    position: absolute;
+    top: 550px;
+    width: 100%;
+    height: 40px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.slider {
+    min-height: 550px;
+    min-width: 100%;
+
+    justify-content: space-between;
+    float: none;
+    z-index:0;
+}
+
+.in-page-nav-button {
+    max-height: 300px;
+    max-width: 250px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+/*FIXME: Hardcoded in for HoloCN nav buttons*/
+.in-page-nav-button img {
+    width: 300px;
+}
+
+
+.buttonBack {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.buttonNext {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.carousel-text {
+    padding: 2rem;
+    margin-top: 5rem;
+}
