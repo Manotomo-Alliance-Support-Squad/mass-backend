@@ -21,14 +21,12 @@ class Gallery(db.Model):
     artistLink = db.Column(db.String(2048), nullable=True)
     username = db.Column(db.String(64), nullable=True)
     title = db.Column(db.String(64), nullable=True)
-    recipient = db.Column(db.String(35), nullable=False)
 
     def __init__(self, artworkLink, username, title, artistLink):
         self.artworkLink = artworkLink
         self.artistLink = artistLink
         self.username = username
         self.title = title
-        self.recipient
 
 
 class GallerySchema(ma.Schema):
@@ -37,7 +35,6 @@ class GallerySchema(ma.Schema):
     artistLink = fields.String(required=False)
     username = fields.String(required=True)
     title = fields.String(required=False)
-    recipient = fields.String(required=True)
 
 
 class Games(db.Model):
