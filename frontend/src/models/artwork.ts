@@ -6,7 +6,6 @@ export interface Artwork {
     artistLink: ExternalLink;
     username: string;
     title: string;
-    recipient: string;
 }
 
 export interface ArtworkJson {
@@ -15,29 +14,26 @@ export interface ArtworkJson {
     artistLink: string;
     username: string;
     title: string;
-    recipient: string;
 }
 
 export function artworkFromJson(json: ArtworkJson): Artwork {
-    const { artworkID, artworkLink, artistLink, username, title, recipient } = json;
+    const { artworkID, artworkLink, artistLink, username, title } = json;
     return {
         artworkID,
         artworkLink: stringToLink(artworkLink),
         artistLink: stringToLink(artistLink),
         username,
         title,
-        recipient,
     }
 }
 
 export function artworkToJson(artwork: Artwork): ArtworkJson {
-    const { artworkID, artworkLink, artistLink, username, title, recipient } = artwork;
+    const { artworkID, artworkLink, artistLink, username, title } = artwork;
     return {
         artworkID,
         artworkLink: linkToString(artworkLink),
         artistLink: linkToString(artistLink),
         username,
         title,
-        recipient,
     }
 }

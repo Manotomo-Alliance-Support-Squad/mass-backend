@@ -63,12 +63,12 @@
 .message-card-footer-container {
     position: relative;
     width: 100%;
+    height: 40px;
     margin-top: 10px;
     float: right;
 }
 
 .message-card-footer-text {
-    float: right;
     text-align: right;
 }
 

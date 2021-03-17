@@ -1,5 +1,6 @@
 from flask import request
 from flask_jwt import jwt_required
+
 from flask_restful import Resource
 
 from main.server import app, cache, db
@@ -35,8 +36,7 @@ class MessageListRangeResource(Resource):
         if int(lower) > int(upper):
             return {'status': 'fail',
                     'messages': 'Upper range cannot be less than lower range: ' + str(lower) + '>' + str(upper)}, 400
-        messages = Message.query.filter(Message.messageID >= int(
-            lower)).filter(Message.messageID <= int(upper))
+        messages = Message.query.filter(Message.messageID >= int(lower)).filter(Message.messageID <= int(upper))
 
         if not messages:
             return {'status': 'fail',
@@ -44,10 +44,8 @@ class MessageListRangeResource(Resource):
 
         messages = messages_schema.dump(messages)
 
-        # the last item in the range
-        if not Message.query.filter_by(messageID=upper).first():
-            # Partial Content Served
-            return {'status': 'success', 'messages': messages}, 206
+        if not Message.query.filter_by(messageID=upper).first():  # the last item in the range
+            return {'status': 'success', 'messages': messages}, 206  # Partial Content Served
         return {'status': 'success', 'messages': messages}, 200
 
 
@@ -59,8 +57,7 @@ class MessageListResource(Resource):
         messages = messages_schema.dump(messages)
 
         if not messages:
-            # Partial Content Served
-            return {'status': 'success', 'messages': messages}, 206
+            return {'status': 'success', 'messages': messages}, 206  # Partial Content Served
 
         return {'status': 'success', 'messages': messages}, 200
 
@@ -86,7 +83,7 @@ class MessageListResource(Resource):
 
         message = Message(orig_msg=data.get('orig_msg'),
                           tl_msg=data.get('tl_msg'),
-                          recipient=data.get('recipient'),
+                          country=data.get('country'),
                           username=data.get('username'))
 
         db.session.add(message)

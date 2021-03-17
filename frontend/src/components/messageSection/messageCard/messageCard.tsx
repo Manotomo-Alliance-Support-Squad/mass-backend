@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from 'classnames';
+import {Country} from "../../../models/country";
 import {Message} from "../../../models/message";
 import DisplayedLanguage from "../../../models/language";
 import {ReactComponent as TranslateBotan} from "../../../assets/icons/translateIcon.svg";
@@ -16,17 +17,32 @@ interface MessageCardState extends BaseCardState{
     globalLanguage: DisplayedLanguage;
 }
 
+function countryCodeToFlag(code: Country): string {
+    // Offset between Latin uppercase A-Z and Countryal Indicator Symbols A-Z
+    const RI_OFFSET = 0x1F1A5;
+
+    if (code.length !== 2) return "";
+
+    let first = code.charCodeAt(0);
+    if (first < 0x41 && first > 0x5A) return "";
+    first += RI_OFFSET;
+
+    let second = code.charCodeAt(1);
+    if (second < 0x41 && second > 0x5A) return "";
+    second += RI_OFFSET;
+
+    return String.fromCodePoint(first, second);
+}
+
 export default class MessageCard extends BaseCard<Message, MessageCardProps, MessageCardState> {
     private readonly message: Message;
-    private readonly username: string;
-    private readonly recipient: string;
+    private readonly flag: string;
     private readonly hasTlMsg: boolean;
 
     constructor(props: MessageCardProps) {
         super(props);
         this.message = props.object;
-        this.username = this.message.username ? props.object.username : "Anonymous";
-        this.recipient = props.object.recipient;
+        this.flag = countryCodeToFlag(props.object.country);
         this.hasTlMsg = this.message.tl_msg != null && this.message.tl_msg !== "";
 
         this.toggleCurrentLanguage = this.toggleCurrentLanguage.bind(this);
@@ -81,8 +97,8 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
                 </div>
                 <div className="message-card-footer-container">
                     <div className="message-card-footer-text">
-                        <p>From: {this.username}</p>
-                        <p>To: {this.recipient}</p>
+                        {this.message.username}
+                        <Twemoji text={this.flag} />
                     </div>
                     {this.hasTlMsg &&
                     <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
