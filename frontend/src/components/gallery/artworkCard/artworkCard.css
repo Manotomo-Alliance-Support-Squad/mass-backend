@@ -113,3 +113,7 @@ a:visited {
         filter: none;
     }
 }
+
+.card-header {
+    height: 120px;
+}

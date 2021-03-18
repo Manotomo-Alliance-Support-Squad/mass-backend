@@ -36,12 +36,33 @@
     margin: 0 auto;
 
     font-size: 24px;
-    padding-top: 25%;
 }
 
 .message-card-text-container > .clear {
     clear: both;
 }
+
+.fullwidth .message-card-text-container {
+    width: 100%
+}
+
+
+@media (min-width: 900px) {
+    .fullwidth .message-card-text > div {
+        width: 60vw;
+        padding: 0;
+        /*width: 100%;*/
+    }
+}
+@media (max-width: 900px) {
+    .fullwidth .message-card-text > div {
+        width: 90vw;
+        padding: 0;
+        /*width: 100%;*/
+    }
+}
+
+
 
 .message-card-text {
     padding-top: 15px;
@@ -77,6 +98,7 @@
     /*the translate button properties*/
     position: absolute;
     bottom: 0;
+    left: 0;
     float: left;
     width: 40px;
     height: 40px;
@@ -95,4 +117,8 @@
         display: flex;
         justify-content: center;
     }
+}
+
+.card-header {
+    height: 100px;
 }

@@ -6,9 +6,9 @@
     min-height: 1px;  /*DO NOT REMOVE THIS LINE. OTHERWISE YOU WILL EXPERIENCE PAIN IN TRYING TO FIX COLUMN STACKING ON CHROME/IOS*/
     overflow: auto;
     border-radius: 15px;
+    padding: 15px;
 
     margin-bottom: 1rem;
-    padding: 10px;
 
     background-repeat: no-repeat;
     background-size: 100%;

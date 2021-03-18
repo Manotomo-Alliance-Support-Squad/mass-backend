@@ -78,35 +78,67 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
     }
 
     renderMessage() {
+        var message: string;
+        message = this.message.orig_msg;
+        if (this.hasTlMsg) {
+            message = (this.state.currentLanguage === DisplayedLanguage.Original) ? this.message.orig_msg : this.message.tl_msg;
+        }
         return (
-            <div>
-                <div className="message-card-text-container">
-                    <div className={classNames("message-card-text", {
-                        "active-message": this.state.currentLanguage === DisplayedLanguage.Original,
-                    })}>
-                        <div>{this.message.orig_msg}</div>
+                <div>
+                    <div className="card-header"/>
+                    <div className="message-card-text-container">
+                        <div>
+                            <div>
+                                {message}
+                            </div>
+                        </div>
+                        <div className="clear"/>
                     </div>
-                    {this.hasTlMsg &&
-                    <div className={classNames("message-card-text", {
-                        "active-message": this.state.currentLanguage === DisplayedLanguage.Japanese,
-                    })}>
-                        <div>{this.message.tl_msg}</div>
+                    <div className="message-card-footer-container">
+                        <div className="message-card-footer-text">
+                            {this.message.username}
+                            <Twemoji text={this.flag} />
+                        </div>
+                        {this.hasTlMsg &&
+                        <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
+                        }
                     </div>
-                    }
-                    <div className="clear"/>
                 </div>
-                <div className="message-card-footer-container">
-                    <div className="message-card-footer-text">
-                        {this.message.username}
-                        <Twemoji text={this.flag} />
-                    </div>
-                    {this.hasTlMsg &&
-                    <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
-                    }
-                </div>
-            </div>
-        )
+            )
     }
+
+
+//    renderMessage() {
+//        return (
+//            <div>
+//                <div className="card-header"/>
+//                <div className="message-card-text-container">
+//                    <div className={classNames("message-card-text", {
+//                        "active-message": this.state.currentLanguage === DisplayedLanguage.Original,
+//                    })}>
+//                        <div>{this.message.orig_msg}</div>
+//                    </div>
+//                    {this.hasTlMsg &&
+//                    <div className={classNames("message-card-text", {
+//                        "active-message": this.state.currentLanguage === DisplayedLanguage.Japanese,
+//                    })}>
+//                        <div>{this.message.tl_msg}</div>
+//                    </div>
+//                    }
+//                    <div className="clear"/>
+//                </div>
+//                <div className="message-card-footer-container">
+//                    <div className="message-card-footer-text">
+//                        {this.message.username}
+//                        <Twemoji text={this.flag} />
+//                    </div>
+//                    {this.hasTlMsg &&
+//                    <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
+//                    }
+//                </div>
+//            </div>
+//        )
+//    }
 
     render() {
         return this.renderCard(this.renderMessage());
