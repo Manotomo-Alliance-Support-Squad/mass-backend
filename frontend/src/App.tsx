@@ -8,10 +8,9 @@ import SessionService from "./services/session.service";
 import {LanguageContext, LanguageContextValue} from "./components/languageSwitch/languageContext";
 import DisplayedLanguage from "./models/language";
 
-import HeaderSection from "./components/headerSection/header"
+import HeaderSection from "./components/headerSection/header";
 
 const HomePage = lazy(() => import('./pages/home/home'));
-const GamePage = lazy(() => import('./pages/game/game'));
 
 interface AppProps {
 }
@@ -49,7 +48,6 @@ export default class App extends React.Component<AppProps, LanguageContextValue>
                             </Route>
 
                             <Route path='/home' component={HomePage}/>
-                            <Route path='/game' component={GamePage}/>
                         </Switch>
                     </Suspense>
                 </main>

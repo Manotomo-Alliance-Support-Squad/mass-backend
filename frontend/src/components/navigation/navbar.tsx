@@ -21,12 +21,6 @@ export default function ButtonAppBar() {
                         iconFunc: () => <HomeIcon/>
                     },
                     {
-                        externalLink: false,
-                        link: '/game',
-                        altText: "Games",
-                        iconFunc: () => <SportsEsportsIcon/>
-                    },
-                    {
                         externalLink: true,
                         link: 'https://github.com/Manotomo-Alliance-Support-Squad/holo-valentine-2021',
                         altText: "github",

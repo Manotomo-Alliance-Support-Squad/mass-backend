@@ -7,7 +7,6 @@ import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCir
 
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
-import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 
 import './header.css';
 
@@ -26,12 +25,6 @@ const AltNav = () => {
 };
 
 const homeNav = [
-    {
-        link: "/game",
-        buttonContent: "Games",
-        page: "",
-        startIcon: <SportsEsportsIcon />
-    },
     {
         link: 'https://github.com/Manotomo-Alliance-Support-Squad/holo-valentine-2021',
         buttonContent: "Credits",
