@@ -81,7 +81,7 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         var message: string;
         message = this.message.orig_msg;
         if (this.hasTlMsg) {
-            message = (this.state.currentLanguage === DisplayedLanguage.Original) ? this.message.orig_msg : this.message.tl_msg;
+            message = (this.state.currentLanguage === DisplayedLanguage.Japanese) ? this.message.tl_msg : this.message.orig_msg;
         }
         return (
                 <div>
