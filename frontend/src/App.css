@@ -7,8 +7,10 @@ body {
     padding: 15px;
     border-radius: 15px;
     margin-top: 50px;
+    margin-bottom: 50px;
     text-align: center;
 
+    background-color: #f45787;
     color: #ffffff;
     font-size: 25px;
 }

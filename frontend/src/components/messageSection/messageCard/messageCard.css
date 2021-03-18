@@ -43,22 +43,22 @@
 }
 
 .fullwidth .message-card-text-container {
-    width: 100%
+    width: 100%;
 }
 
 
 @media (min-width: 900px) {
     .fullwidth .message-card-text > div {
-        width: 60vw;
+        /*width: 60vw;*/
         padding: 0;
-        /*width: 100%;*/
+        width: 100%;
     }
 }
 @media (max-width: 900px) {
     .fullwidth .message-card-text > div {
-        width: 90vw;
+        /*width: 90vw;*/
         padding: 0;
-        /*width: 100%;*/
+        width: 100%;
     }
 }
 
