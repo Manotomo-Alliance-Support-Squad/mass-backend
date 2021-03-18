@@ -1,6 +1,5 @@
 import {Message, messageFromJson} from "../models/message";
-import {CountResponse, GalleryResponse, GamesResponse, MessageResponse, ArchiveResponse, AnnouncementResponse} from "../models/response";
-import {Game, gameFromJson} from "../models/game";
+import {CountResponse, GalleryResponse, MessageResponse, ArchiveResponse, AnnouncementResponse} from "../models/response";
 import {Artwork, artworkFromJson} from "../models/artwork";
 import {Archive, archiveFromJson} from "../models/archive";
 import {Announcement, announcementFromJson} from "../models/announcement"
@@ -66,23 +65,6 @@ export default class ManoAloeService {
 
     public getMessageCount(): Promise<number> {
         return this.getCount('messages');
-    }
-
-    public getAllGames(): Promise<Game[]> {
-        return fetch(this.apiURL + 'games')
-            .then((res: { json: () => any; }) => {
-                return res.json();
-            })
-            .then((apiResponse: GamesResponse) => {
-                return apiResponse.games.map(gameFromJson);
-            })
-            .catch((error: Error) => {
-                throw error;
-            })
-    }
-
-    public getGamesCount(): Promise<number> {
-        return this.getCount('games');
     }
 
     public getGallery(): Promise<Artwork[]> {
