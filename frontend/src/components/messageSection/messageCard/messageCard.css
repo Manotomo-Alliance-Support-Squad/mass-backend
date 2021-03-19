@@ -1,6 +1,4 @@
 .message-card {
-    --card-text-width: 400px;
-
     display: block;
     position: relative;
     width: auto;
@@ -24,18 +22,14 @@
     transition: all 0.4s ease;
 }
 
-@media (max-width: 500px) {
-	.message-card {
-		--card-text-width: 300px;
-	}
-}
-
 .message-card-text-container {
-    width: var(--card-text-width);
     max-width: 100%;
     margin: 0 auto;
 
     font-size: 24px;
+}
+
+.message-card-text {
 }
 
 .message-card-text-container > .clear {
@@ -44,41 +38,6 @@
 
 .fullwidth .message-card-text-container {
     width: 100%;
-}
-
-
-@media (min-width: 900px) {
-    .fullwidth .message-card-text > div {
-        /*width: 60vw;*/
-        padding: 0;
-        width: 100%;
-    }
-}
-@media (max-width: 900px) {
-    .fullwidth .message-card-text > div {
-        /*width: 90vw;*/
-        padding: 0;
-        width: 100%;
-    }
-}
-
-
-
-.message-card-text {
-    padding-top: 15px;
-    width: 0;
-    float: left;
-    opacity: 0;
-
-    transition: all 0.25s ease;
-}
-
-.message-card-text.active-message {
-    opacity: 1;
-}
-
-.message-card-text > div {
-    width: var(--card-text-width);
 }
 
 .message-card-footer-container {
@@ -104,14 +63,6 @@
     height: 40px;
 }
 
-@media (max-width: 420px) {
-    .message-card {
-        --card-text-width: 100%;
-    }
-    .message-card-text > div {
-        max-width: 70vw;
-    }
-}
 @media (max-width: 1000px) {
     .messagecard-center {
         display: flex;

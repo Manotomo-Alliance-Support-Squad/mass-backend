@@ -85,14 +85,10 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         }
         return (
                 <div>
-                    <div className="card-header"/>
                     <div className="message-card-text-container">
-                        <div>
-                            <div>
-                                {message}
-                            </div>
-                        </div>
-                        <div className="clear"/>
+                        <p className="message-card-text">
+                            {message}
+                        </p>
                     </div>
                     <div className="message-card-footer-container">
                         <div className="message-card-footer-text">
