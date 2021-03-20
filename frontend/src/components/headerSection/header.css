@@ -1,4 +1,4 @@
-.App-header {
+.app-header {
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -19,6 +19,20 @@
     overflow: hidden;
 }
 
+.header-top {
+    color: red;
+    position: absolute;
+    top:4vw;
+    text-align: center;
+}
+
+.header-bottom {
+    color: red;
+    position: absolute;
+    bottom:8vw;
+    text-align: center;
+}
+
 @media (max-width: 700px) {
     #manotomo1 {
         bottom: 50px;
@@ -37,6 +51,12 @@
     .community-message-card {
         margin-top: 0px !important;
     }
+    .header-top {
+        top:15vw;
+    }
+    .header-bottom {
+        bottom:15vw;
+    }
 }
 
 @media (max-width: 500px) {
@@ -46,6 +66,12 @@
     }
     #manotomo2 {
         width: 0px;
+    }
+    .header-top {
+        top:19vw;
+    }
+    .header-bottom {
+        bottom:19vw;
     }
 }
 

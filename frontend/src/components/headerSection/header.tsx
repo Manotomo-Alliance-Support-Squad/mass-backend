@@ -31,7 +31,13 @@ export default class HeaderSection extends Component<HeaderProps, HeaderState>
     renderDefaultSection(): JSX.Element
     {
         return (
-            <header className="App-header">
+            <header className="app-header">
+                <div className="justify-center header-top">
+                    <h2>We all miss your smiling presence and your voice that warms our hearts</h2>
+                </div>
+                <div className="justify-center header-bottom">
+                    <h2>Cant' wait to have you back, we all love you so much, Akai Haato/Haachama</h2>
+                </div>
             </header>
        )
     }
