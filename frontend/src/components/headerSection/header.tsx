@@ -20,22 +20,6 @@ interface HeaderState {
 interface HeaderProps {
 }
 
-const AltNav = () => {
-    const location = useLocation();
-    if (location.pathname == "/home") {
-        return <InPageNav navButtons={homeNav}/>;
-    }
-    return <span />
-};
-
-const homeNav = [
-    {
-        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holo-valentine-2021',
-        buttonContent: "Credits",
-        page: "",
-        startIcon: <InfoIcon />
-    },
-]
 
 export default class HeaderSection extends Component<HeaderProps, HeaderState>
 {
