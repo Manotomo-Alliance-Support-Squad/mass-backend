@@ -4,13 +4,13 @@ import './baseCard.css';
 import VisibilitySensor from "react-visibility-sensor";
 
 import CardStyle1 from "../../../assets/cards/rara_header_haachama.png";
-import CardStyle2 from "../../../assets/cards/valentine_card2.svg";
 
 
 // TODO(#32): Change this to a class prop so inheriting classes can override it
+// FIXME: There needs to be more than 1 item in this array to avoid a compilation error. Current hack is to define 2 of the same cards.
 const CardStyleArr: Array<Array<string>> = [
-    [CardStyle1, "#f45787"],
-    [CardStyle2, "#f45787"],
+    [CardStyle1, "#fff0e3"],
+    [CardStyle1, "#fff0e3"],
 ]
 // TODO(#32): Remove when CardStyleArr is a prop, and exporting this value is no longer necessary
 export const CardStyleLength: number =
