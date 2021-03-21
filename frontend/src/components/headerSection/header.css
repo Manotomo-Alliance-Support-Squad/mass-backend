@@ -1,5 +1,5 @@
 .app-header {
-    min-height: 80vh;
+    min-height: 820px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,14 +8,15 @@
     background-image: url(../../assets/backgrounds/header_bg.png);
     background-color: #fffde2;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
     /*60% because of navbar offset*/
-    background-position: 50% 60%;
+    background-position: 0% 0%;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
 
     padding-top: 64px;
 }
+
 
 .header-top {
     width: 100%;
@@ -37,7 +38,10 @@
     background-color: #fff0e37d;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
+    .app-header {
+        background-size: auto 100%;
+    }
     .header-top {
         font-size: 40px;
     }
@@ -48,14 +52,12 @@
 
 @media (max-width: 800px) {
     .app-header {
-        background-size: 100%;
         background-attachment: scroll;
-
     }
 
     .header-top {
         font-size: 25px;
-        margin-top: 7vh;
+        margin-top: 40px;
     }
     .header-bottom {
         font-size: 25px;
@@ -66,13 +68,9 @@
 
     .header-top {
         font-size: 20px;
-        background-color: transparent;
-        margin-top: 5vh;
     }
     .header-bottom {
         font-size: 20px;
-        background-color: transparent;
-        margin-bottom: 5vh;
     }
 }
 
