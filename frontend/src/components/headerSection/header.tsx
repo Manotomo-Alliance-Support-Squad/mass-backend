@@ -9,7 +9,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 
 import MessageCard from '../messageSection/messageCard/messageCard';
-//import DisplayedLanguage from '../../models/lanugage';
 import { LanguageContext, LanguageContextValue } from '../languageSwitch/languageContext';
 
 import './header.css';
@@ -32,11 +31,11 @@ export default class HeaderSection extends Component<HeaderProps, HeaderState>
     {
         return (
             <header className="app-header">
-                <div className="justify-center header-top">
-                    <h2>We all miss your smiling presence and your voice that warms our hearts</h2>
+                <div className="header-top">
+                    <p>We all miss your smiling presence and your voice that warm our hearts</p>
                 </div>
-                <div className="justify-center header-bottom">
-                    <h2>Cant' wait to have you back, we all love you so much, Akai Haato/Haachama</h2>
+                <div className="header-bottom">
+                    <p>Cant' wait to have you back, we all love you so much, Akai Haato/Haachama</p>
                 </div>
             </header>
        )

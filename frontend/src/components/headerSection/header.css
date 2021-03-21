@@ -1,17 +1,20 @@
 .app-header {
-    min-height: 90vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: calc(10px + 2vmin);
     background-image: url(../../assets/backgrounds/header_bg.png);
     background-color: #fffde2;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
+    /*60% because of navbar offset*/
+    background-position: 50% 60%;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
+
+    padding-top: 64px;
 }
 
 .slide-content {
@@ -20,58 +23,72 @@
 }
 
 .header-top {
-    color: red;
-    position: absolute;
-    top:4vw;
+    width: 100%;
+
+    color: #e62b48;
     text-align: center;
+    font-size: 50px;
+
+    background-color: #fff0e37d;
 }
 
 .header-bottom {
-    color: red;
-    position: absolute;
-    bottom:8vw;
+    width: 100%;
+
     text-align: center;
+    color: #e62b48;
+    font-size: 50px;
+
+    background-color: #fff0e37d;
 }
 
-@media (max-width: 700px) {
-    #manotomo1 {
-        bottom: 50px;
+@media (max-width: 1500px) {
+    .header-top {
+        font-size: 40px;
     }
-    #manotomo2 {
-        opacity: 0;
+    .header-bottom {
+        font-size: 40px;
     }
-    .birthday-card {
-        position: relative;
-        left: 0px;
-        max-width: 100%;
-    }
-    .App-header {
+}
+
+@media (max-width: 800px) {
+    .app-header {
+        background-size: 100%;
+        background-attachment: scroll;
+
     }
     /*Handle mobile layouts since everything is freaking tiny*/
     .community-message-card {
         margin-top: 0px !important;
     }
+
     .header-top {
-        top:15vw;
+        font-size: 25px;
+        margin-top: 7vh;
     }
     .header-bottom {
-        bottom:15vw;
+        font-size: 25px;
     }
 }
 
 @media (max-width: 500px) {
-    #manotomo1 {
-        opacity: 0;
-        width: 0px;
-    }
-    #manotomo2 {
-        width: 0px;
-    }
+
     .header-top {
-        top:19vw;
+        font-size: 20px;
+        background-color: transparent;
+        margin-top: 5vh;
     }
     .header-bottom {
-        bottom:19vw;
+        font-size: 20px;
+        background-color: transparent;
+        margin-bottom: 5vh;
+    }
+}
+
+/*Align with navbar height*/
+@media (max-width: 310px) {
+    .app-header {
+        justify-content: space-between;
     }
 }
 
