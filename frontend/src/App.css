@@ -6,14 +6,10 @@ body {
     top:50px;
     padding: 15px;
     border-radius: 15px;
-    margin: 15px;
     margin-top: 50px;
-    width: 50%;
+    margin-bottom: 50px;
     text-align: center;
 
-    background-size: 90%;
-    background-image: url(assets/cards/valentine_card2.svg);
-    background-repeat: no-repeat;
     background-color: #f45787;
     color: #ffffff;
     font-size: 25px;
@@ -26,16 +22,16 @@ body {
     }
 }
 
-@media (max-width: 900px) {
-    .community-message-card {
-        width: 90%;
-    }
-}
-
 @media (min-width: 900px) {
     .community-message-card {
         position: relative;
-        width: 60%;
+        width: 60vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .community-message-card {
+        width: 90vw;
     }
 }
 

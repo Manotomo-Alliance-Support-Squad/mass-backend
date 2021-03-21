@@ -50,6 +50,7 @@ export default class BaseCard<T, P extends BaseCardProps<T>, S extends BaseCardS
         return(
             <VisibilitySensor onChange={this.toggleVisibility.bind(this)} partialVisibility>
                 <div className="base-card" style={rootStyles}>
+                    <div className="card-header"/>
                     {content}
                 </div>
             </VisibilitySensor>

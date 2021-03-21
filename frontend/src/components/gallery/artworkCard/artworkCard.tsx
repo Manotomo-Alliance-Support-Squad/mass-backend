@@ -73,7 +73,6 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
         return (
             <div className="artwork-card">
-                <div style={{height: 100}} />
                 <img className="artwork-card-img" src={artworkLink} alt={this.artwork.title} />
                 <div className="artwork-card-footer">
                     <div className="title">{this.artwork.title}</div>
