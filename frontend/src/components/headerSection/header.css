@@ -17,11 +17,6 @@
     padding-top: 64px;
 }
 
-.slide-content {
-    font-size: 7vw;
-    overflow: hidden;
-}
-
 .header-top {
     width: 100%;
 
@@ -56,10 +51,6 @@
         background-size: 100%;
         background-attachment: scroll;
 
-    }
-    /*Handle mobile layouts since everything is freaking tiny*/
-    .community-message-card {
-        margin-top: 0px !important;
     }
 
     .header-top {
