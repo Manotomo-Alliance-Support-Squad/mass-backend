@@ -166,7 +166,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                                 const {language} = value;
                                 return (
                                     <div>
-                                        <div className="justify-align-center notice-container">
+                                        <div className="justify-align-center notice-container" style={{"whiteSpace": "pre-line"}}>
                                             <MessageCard key={1} object={{ messageID: 0,
                                                 orig_msg: "はあと様へ\n\n\
                                                 私は今回の企画の主催者、シエウエイユエンと申します。\n\
