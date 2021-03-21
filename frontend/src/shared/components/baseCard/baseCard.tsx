@@ -3,7 +3,7 @@ import CSS from "csstype";
 import './baseCard.css';
 import VisibilitySensor from "react-visibility-sensor";
 
-import CardStyle1 from "../../../assets/cards/valentine_card1.svg";
+import CardStyle1 from "../../../assets/cards/rara_header_haachama.png";
 import CardStyle2 from "../../../assets/cards/valentine_card2.svg";
 
 
