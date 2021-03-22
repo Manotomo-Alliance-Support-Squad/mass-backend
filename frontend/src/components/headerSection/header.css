@@ -1,50 +1,96 @@
-.App-header {
+.app-header {
     min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: calc(10px + 2vmin);
+    background-image: url(../../assets/backgrounds/header_bg.png);
     background-color: #fffde2;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
+    /*60% because of navbar offset*/
+    background-position: 0 0;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
+
+    padding-top: 64px;
 }
 
-.slide-content {
-    font-size: 7vw;
-    overflow: hidden;
+
+.header-top {
+    width: 100%;
+
+    color: #e62b48;
+    text-align: center;
+    font-size: 50px;
+
+    background-color: #fff0e37d;
 }
 
-@media (max-width: 700px) {
-    #manotomo1 {
-        bottom: 50px;
+.header-bottom {
+    width: 100%;
+
+    text-align: center;
+    color: #e62b48;
+    font-size: 50px;
+
+    background-color: #fff0e37d;
+}
+
+@media (max-width: 1400px) {
+    .app-header {
+        background-size: auto 100%;
     }
-    #manotomo2 {
-        opacity: 0;
+    .header-top {
+        font-size: 40px;
     }
-    .birthday-card {
-        position: relative;
-        left: 0px;
-        max-width: 100%;
+    .header-bottom {
+        font-size: 40px;
     }
-    .App-header {
+}
+
+@media (max-width: 800px) {
+    .app-header {
+        min-height: 70vh;
     }
-    /*Handle mobile layouts since everything is freaking tiny*/
-    .community-message-card {
-        margin-top: 0px !important;
+    .header-top {
+        font-size: 25px;
+    }
+    .header-bottom {
+        font-size: 25px;
+    }
+}
+
+/*Point where Navbar overflows the icons down the column*/
+@media (max-width: 720px) {
+    .header-top {
+        margin-top: 32px;
     }
 }
 
 @media (max-width: 500px) {
-    #manotomo1 {
-        opacity: 0;
-        width: 0px;
+    .header-top {
+        margin-top: 0;  /*font size undos the need for pushing down header*/
+        font-size: 20px;
     }
-    #manotomo2 {
-        width: 0px;
+    .header-bottom {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 420px /*naisu*/) {
+    .app-header {
+        background-size: 100%;
+        background-position: 0 60%;
+        background-attachment: scroll;
+    }
+}
+
+/*Align with navbar height*/
+@media (max-width: 310px) {
+    .app-header {
+        justify-content: space-between;
     }
 }
 

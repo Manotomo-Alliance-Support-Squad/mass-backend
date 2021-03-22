@@ -87,7 +87,7 @@
 
 .artwork-card-footer {
     margin: 20px 20px 0;
-    color: white;
+    color: #f05872;
 }
 
 .artwork-card-footer > .title {
@@ -99,11 +99,11 @@
 }
 
 a:link {
-    color: #5a1c0c;
+    color: #076dc1;
 }
 
 a:visited {
-    color: #5a1c0c;
+    color: #076dc1;
 }
 
 

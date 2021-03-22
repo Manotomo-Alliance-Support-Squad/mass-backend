@@ -25,10 +25,16 @@
 }
 
 .justify-align-center {
-    max-width: 100vw;
+    max-width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 1000px) {
+    .justify-align-center {
+        max-width: 90%;
+    }
 }
 
 .justify-center {
@@ -39,13 +45,18 @@
 .separator {
     height: 40px;
     width: 100%;
-    background-color: #5a1c0c;
+    background-color: #076dc1;
 }
 
 .notice-container {
-    max-width: 800px;
-    width: 50vw;
+    width: 100%;
     min-width: 420px;
+}
+
+@media (max-width: 900px) {
+    .notice-container {
+        max-width: 90%;
+    }
 }
 
 .notice-content {
@@ -53,8 +64,8 @@
     padding: 2rem;
     font-size: 20px;
     text-align: center;
-    color: #fff;
-    background-color: #f45787;
+    color: #f05872;
+    background-color: #fff0e3;
     border-radius: 15px;
     text-decoration: none;
 }
