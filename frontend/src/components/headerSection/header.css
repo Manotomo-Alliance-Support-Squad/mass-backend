@@ -1,5 +1,5 @@
 .app-header {
-    min-height: 820px;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,9 +8,9 @@
     background-image: url(../../assets/backgrounds/header_bg.png);
     background-color: #fffde2;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
     /*60% because of navbar offset*/
-    background-position: 0% 0%;
+    background-position: 0 0;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
 
@@ -38,7 +38,7 @@
     background-color: #fff0e37d;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
     .app-header {
         background-size: auto 100%;
     }
@@ -52,25 +52,38 @@
 
 @media (max-width: 800px) {
     .app-header {
-        background-attachment: scroll;
+        min-height: 70vh;
     }
-
     .header-top {
         font-size: 25px;
-        margin-top: 40px;
     }
     .header-bottom {
         font-size: 25px;
     }
 }
 
-@media (max-width: 500px) {
-
+/*Point where Navbar overflows the icons down the column*/
+@media (max-width: 720px) {
     .header-top {
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 500px) {
+    .header-top {
+        margin-top: 0;  /*font size undos the need for pushing down header*/
         font-size: 20px;
     }
     .header-bottom {
         font-size: 20px;
+    }
+}
+
+@media (max-width: 420px /*naisu*/) {
+    .app-header {
+        background-size: 100%;
+        background-position: 0 60%;
+        background-attachment: scroll;
     }
 }
 
