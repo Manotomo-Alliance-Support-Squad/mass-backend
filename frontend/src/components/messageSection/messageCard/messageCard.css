@@ -34,6 +34,10 @@
     height: var(--card-text-height);
 }
 
+.message-card-text-container p {
+    margin: 0;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -49,6 +53,7 @@
     margin-left: auto;
     width: var(--card-text-width);
     display: block;
+    z-index: -1;
 }
 
 .message-card-text-container > .clear {

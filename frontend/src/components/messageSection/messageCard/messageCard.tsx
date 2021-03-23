@@ -63,10 +63,13 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
                 ? DisplayedLanguage.Japanese
                 : DisplayedLanguage.Original
         }));
+        console.log("transleet botan");
     }
 
     componentDidMount() {
-        this.setState({height: (this.targetref.current.clientHeight+100)+"px"});
+        var newheight: number;
+        newheight = ( this.targetref.current.clientHeight > this.messageref.current.clientHeight ) ? this.targetref.current.clientHeight:this.messageref.current.clientHeight;
+        this.setState({height: newheight});
     }
     
     componentWillMount() {
@@ -87,16 +90,13 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
     
     renderMessage() {
         var message: string|null;
-        var longest: string|null;
-        message = this.message.orig_msg;
         if (this.message.tl_msg)
             message = (this.state.currentLanguage === DisplayedLanguage.Japanese) ? this.message.tl_msg : this.message.orig_msg;
-        longest = (this.message.orig_msg.length > this.message.tl_msg.length) ? this.message.orig_msg : this.message.tl_msg;
         return (
                 <div>
-                    <div className="message-card-text-container" style={{height: this.state.height}}>
+                    <div className="message-card-text-container" style={{height: this.state.height+"px"}}>
                         <p className="hidden" ref={this.targetref} >
-                            {longest}
+                            {this.message.tl_msg}
                         </p>
                         <p className="message-card-text" ref={this.messageref}>
                             {message}
