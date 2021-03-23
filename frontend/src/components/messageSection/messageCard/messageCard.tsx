@@ -69,9 +69,14 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
     }
 
     componentDidMount() {
-        // FIXME: Remove ignore
-        // @ts-ignore: Object is possibly 'null'
-        var newheight = ( this.targetref.current.clientHeight > this.messageref.current.clientHeight ) ? this.targetref.current.clientHeight: this.messageref.current.clientHeight;
+        var newheight: number;
+        var messageHeight = this!.messageref!.current!.clientHeight;
+        if (this.targetref === null) {
+            newheight = messageHeight;
+        } else {
+            var targetHeight = this!.targetref!.current!.clientHeight;
+            newheight = (targetHeight > messageHeight) ? targetHeight : messageHeight
+        }
         this.setState({height: newheight});
     }
 
