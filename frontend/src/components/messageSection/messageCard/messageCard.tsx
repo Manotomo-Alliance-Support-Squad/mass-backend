@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import classNames from 'classnames';
 import {Country} from "../../../models/country";
 import {Message} from "../../../models/message";
@@ -15,6 +15,7 @@ interface MessageCardProps extends BaseCardProps<Message>{
 interface MessageCardState extends BaseCardState{
     currentLanguage: DisplayedLanguage;
     globalLanguage: DisplayedLanguage;
+    height: number;
 }
 
 function countryCodeToFlag(code: Country): string {
@@ -46,11 +47,14 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         this.hasTlMsg = this.message.tl_msg != null && this.message.tl_msg !== "";
 
         this.toggleCurrentLanguage = this.toggleCurrentLanguage.bind(this);
+        this.targetref = React.createRef();
+        this.messageref = React.createRef();
     }
 
     state = {
         currentLanguage: this.props.language,
-        globalLanguage: this.props.language
+        globalLanguage: this.props.language,
+        height: 0
     } as MessageCardState
 
     private toggleCurrentLanguage(): void {
@@ -61,6 +65,10 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         }));
     }
 
+    componentDidMount() {
+        this.setState({height: (this.targetref.current.clientHeight+100)+"px"});
+    }
+    
     componentWillMount() {
         this.setState({
             currentLanguage: this.hasTlMsg ?  this.props.language : DisplayedLanguage.Original,
@@ -76,17 +84,22 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
             });
         }
     }
-
+    
     renderMessage() {
         var message: string|null;
+        var longest: string|null;
         message = this.message.orig_msg;
-        if (this.hasTlMsg) {
+        if (this.message.tl_msg) {
             message = (this.state.currentLanguage === DisplayedLanguage.Japanese) ? this.message.tl_msg : this.message.orig_msg;
+            longest = (this.message.orig_msg.length > this.message.tl_msg.length) ? this.message.orig_msg : this.message.tl_msg;
         }
         return (
                 <div>
-                    <div className="message-card-text-container">
-                        <p className="message-card-text">
+                    <div className="message-card-text-container" style={{height: this.state.height}}>
+                        <p className="hidden" ref={this.targetref} >
+                            {longest}
+                        </p>
+                        <p className="message-card-text" ref={this.messageref}>
                             {message}
                         </p>
                     </div>
