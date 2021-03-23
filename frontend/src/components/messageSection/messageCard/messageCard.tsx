@@ -89,10 +89,9 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         var message: string|null;
         var longest: string|null;
         message = this.message.orig_msg;
-        if (this.message.tl_msg) {
+        if (this.message.tl_msg)
             message = (this.state.currentLanguage === DisplayedLanguage.Japanese) ? this.message.tl_msg : this.message.orig_msg;
-            longest = (this.message.orig_msg.length > this.message.tl_msg.length) ? this.message.orig_msg : this.message.tl_msg;
-        }
+        longest = (this.message.orig_msg.length > this.message.tl_msg.length) ? this.message.orig_msg : this.message.tl_msg;
         return (
                 <div>
                     <div className="message-card-text-container" style={{height: this.state.height}}>

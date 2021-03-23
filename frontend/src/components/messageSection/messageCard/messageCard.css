@@ -34,6 +34,10 @@
     height: var(--card-text-height);
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .message-card-text {
     /*height: var(--card-height);*/
 }
