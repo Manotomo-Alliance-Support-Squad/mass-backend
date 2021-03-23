@@ -24,12 +24,36 @@
 
 .message-card-text-container {
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0 0;
 
     font-size: 24px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    margin-right: auto;
+    margin-left: auto;
+    height: var(--card-text-height);
+}
+
+.message-card-text-container p {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .message-card-text {
+    /*height: var(--card-height);*/
+}
+
+.hidden {
+    visibility: hidden;
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    width: var(--card-text-width);
+    display: block;
+    z-index: -1;
 }
 
 .message-card-text-container > .clear {
@@ -72,4 +96,8 @@
 
 .card-header {
     height: 100px;
+}
+
+.notice-container .base-card div .message-card-text-container {
+    height: 100% !important;
 }

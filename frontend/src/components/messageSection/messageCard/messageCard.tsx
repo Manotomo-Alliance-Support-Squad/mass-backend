@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import classNames from 'classnames';
 import {Country} from "../../../models/country";
 import {Message} from "../../../models/message";
@@ -15,6 +15,7 @@ interface MessageCardProps extends BaseCardProps<Message>{
 interface MessageCardState extends BaseCardState{
     currentLanguage: DisplayedLanguage;
     globalLanguage: DisplayedLanguage;
+    height: number;
 }
 
 function countryCodeToFlag(code: Country): string {
@@ -38,6 +39,8 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
     private readonly message: Message;
     private readonly flag: string;
     private readonly hasTlMsg: boolean;
+    private targetref: React.RefObject<HTMLInputElement>;
+    private messageref: React.RefObject<HTMLInputElement>;
 
     constructor(props: MessageCardProps) {
         super(props);
@@ -46,11 +49,14 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         this.hasTlMsg = this.message.tl_msg != null && this.message.tl_msg !== "";
 
         this.toggleCurrentLanguage = this.toggleCurrentLanguage.bind(this);
+        this.targetref = React.createRef();
+        this.messageref = React.createRef();
     }
 
     state = {
         currentLanguage: this.props.language,
-        globalLanguage: this.props.language
+        globalLanguage: this.props.language,
+        height: 0
     } as MessageCardState
 
     private toggleCurrentLanguage(): void {
@@ -59,6 +65,19 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
                 ? DisplayedLanguage.Japanese
                 : DisplayedLanguage.Original
         }));
+        console.log("transleet botan");
+    }
+
+    componentDidMount() {
+        var newheight: number;
+        var messageHeight = this!.messageref!.current!.clientHeight;
+        if (this.targetref === null) {
+            newheight = messageHeight;
+        } else {
+            var targetHeight = this!.targetref!.current!.clientHeight;
+            newheight = (targetHeight > messageHeight) ? targetHeight : messageHeight
+        }
+        this.setState({height: newheight});
     }
 
     componentWillMount() {
@@ -77,30 +96,38 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         }
     }
 
-    renderMessage() {
+    getMessage() {
         var message: string|null;
-        message = this.message.orig_msg;
-        if (this.hasTlMsg) {
-            message = (this.state.currentLanguage === DisplayedLanguage.Japanese) ? this.message.tl_msg : this.message.orig_msg;
+        message = this.message.orig_msg
+        if (this.message.tl_msg) {
+            message = (this.state.currentLanguage === DisplayedLanguage.Japanese) ? this.message.tl_msg : this.message.orig_msg
         }
+        return message
+    }
+
+    renderMessage() {
+        var message = this.getMessage();
         return (
-                <div>
-                    <div className="message-card-text-container">
-                        <p className="message-card-text">
-                            {message}
-                        </p>
-                    </div>
-                    <div className="message-card-footer-container">
-                        <div className="message-card-footer-text">
-                            {this.message.username}
-                            <Twemoji text={this.flag} />
-                        </div>
-                        {this.hasTlMsg &&
-                        <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
-                        }
-                    </div>
+            <div>
+                <div className="message-card-text-container" style={{height: this.state.height+"px"}}>
+                    <p className="hidden" ref={this.targetref} >
+                        {this.message.tl_msg}
+                    </p>
+                    <p className="message-card-text" ref={this.messageref}>
+                        {message}
+                    </p>
                 </div>
-            )
+                <div className="message-card-footer-container">
+                    <div className="message-card-footer-text">
+                        {this.message.username}
+                        <Twemoji text={this.flag} />
+                    </div>
+                    {this.hasTlMsg &&
+                    <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
+                    }
+                </div>
+            </div>
+        )
     }
 
     render() {

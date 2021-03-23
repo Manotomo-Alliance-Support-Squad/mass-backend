@@ -33,3 +33,9 @@
     }
 }
 
+@media (max-width: 400px) {
+    .base-card {
+        --card-text-width: 300px;
+    }
+}
+
