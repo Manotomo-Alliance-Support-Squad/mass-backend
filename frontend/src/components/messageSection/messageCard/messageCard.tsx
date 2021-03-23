@@ -5,7 +5,6 @@ import {Message} from "../../../models/message";
 import DisplayedLanguage from "../../../models/language";
 import {ReactComponent as TranslateBotan} from "../../../assets/icons/translateIcon.svg";
 import "./messageCard.css";
-import { Twemoji } from 'react-emoji-render';
 import BaseCard, {BaseCardProps, BaseCardState} from "../../../shared/components/baseCard/baseCard";
 
 interface MessageCardProps extends BaseCardProps<Message>{
@@ -37,7 +36,7 @@ function countryCodeToFlag(code: Country): string {
 
 export default class MessageCard extends BaseCard<Message, MessageCardProps, MessageCardState> {
     private readonly message: Message;
-    private readonly flag: string;
+    private readonly country: string;
     private readonly hasTlMsg: boolean;
     private targetref: React.RefObject<HTMLInputElement>;
     private messageref: React.RefObject<HTMLInputElement>;
@@ -45,7 +44,7 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
     constructor(props: MessageCardProps) {
         super(props);
         this.message = props.object;
-        this.flag = countryCodeToFlag(props.object.country);
+        this.country = props.object.country;
         this.hasTlMsg = this.message.tl_msg != null && this.message.tl_msg !== "";
 
         this.toggleCurrentLanguage = this.toggleCurrentLanguage.bind(this);
@@ -65,7 +64,6 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
                 ? DisplayedLanguage.Japanese
                 : DisplayedLanguage.Original
         }));
-        console.log("transleet botan");
     }
 
     componentDidMount() {
@@ -119,8 +117,7 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
                 </div>
                 <div className="message-card-footer-container">
                     <div className="message-card-footer-text">
-                        {this.message.username}
-                        <Twemoji text={this.flag} />
+                        {this.message.username + ((this.country !== "")?" (" + this.country + ")":"")}
                     </div>
                     {this.hasTlMsg &&
                     <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
