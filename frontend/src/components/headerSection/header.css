@@ -25,7 +25,7 @@
     text-align: center;
     font-size: 50px;
 
-    background-color: #fff0e37d;
+    background-color: #ffffffed;
 }
 
 .header-bottom {
@@ -35,7 +35,7 @@
     color: #e62b48;
     font-size: 50px;
 
-    background-color: #fff0e37d;
+    background-color: #ffffffed;
 }
 
 @media (max-width: 1400px) {
@@ -50,24 +50,27 @@
     }
 }
 
-@media (max-width: 800px) {
-    .app-header {
-        min-height: 70vh;
-    }
+@media (max-width: 1200px) {
     .header-top {
-        font-size: 25px;
+        font-size: 30px;
     }
     .header-bottom {
-        font-size: 25px;
+        font-size: 30px;
     }
 }
 
-/*Point where Navbar overflows the icons down the column*/
-@media (max-width: 720px) {
+
+@media (max-width: 800px) {
     .header-top {
+        /*Point where Navbar overflows the icons down the column*/
         margin-top: 32px;
+        font-size: 20px;
+    }
+    .header-bottom {
+        font-size: 20px;
     }
 }
+
 
 @media (max-width: 500px) {
     .header-top {
@@ -81,16 +84,10 @@
 
 @media (max-width: 420px /*naisu*/) {
     .app-header {
+        min-height: 50vh;
         background-size: 100%;
         background-position: 0 60%;
         background-attachment: scroll;
-    }
-}
-
-/*Align with navbar height*/
-@media (max-width: 310px) {
-    .app-header {
-        justify-content: space-between;
     }
 }
 
