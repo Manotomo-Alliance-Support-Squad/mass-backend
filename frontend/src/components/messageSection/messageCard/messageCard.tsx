@@ -38,6 +38,7 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
     private readonly message: Message;
     private readonly country: string;
     private readonly hasTlMsg: boolean;
+    private readonly footertext: string;
     private targetref: React.RefObject<HTMLInputElement>;
     private messageref: React.RefObject<HTMLInputElement>;
 
@@ -50,6 +51,7 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         this.toggleCurrentLanguage = this.toggleCurrentLanguage.bind(this);
         this.targetref = React.createRef();
         this.messageref = React.createRef();
+        this.footertext = this.message.username + ((this.country !== "")? " "+this.country:"");
     }
 
     state = {
@@ -117,7 +119,7 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
                 </div>
                 <div className="message-card-footer-container">
                     <div className="message-card-footer-text">
-                        {this.message.username + ((this.country !== "")?" (" + this.country + ")":"")}
+                        {this.footertext}
                     </div>
                     {this.hasTlMsg &&
                     <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} />
