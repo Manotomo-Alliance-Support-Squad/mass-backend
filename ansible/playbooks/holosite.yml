@@ -21,12 +21,6 @@
         name: nodejs
         state: latest
 
-    - name: install npm 
-      become: yes
-      apt:
-        name: npm
-        state: latest
-
     - name: install pip
       become: yes
       apt:
