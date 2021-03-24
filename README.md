@@ -45,7 +45,7 @@ Blinkey Ren
 ## Additional Project Contributors
 [niconikneecaps](https://twitter.com/niconikneecaps)
 
-[ryuran](https://twitter.com/ryuraan)(Header)
+[ryuran](https://twitter.com/ryuraan) (Site Header Background)
 
 # Join the MASS Discord
 
