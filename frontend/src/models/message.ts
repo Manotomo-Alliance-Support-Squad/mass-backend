@@ -4,7 +4,7 @@ export interface Message {
     messageID: number;
     orig_msg: string;
     tl_msg: string | null;
-    country: Country;
+    country: string;
     username: string;
 }
 
@@ -22,7 +22,7 @@ export function messageFromJson(json: MessageJson): Message {
         messageID,
         orig_msg,
         tl_msg,
-        country: toCountry(country),
+        country,
         username,
     }
 }

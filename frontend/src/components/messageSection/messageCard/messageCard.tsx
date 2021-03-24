@@ -36,7 +36,6 @@ function countryCodeToFlag(code: Country): string {
 
 export default class MessageCard extends BaseCard<Message, MessageCardProps, MessageCardState> {
     private readonly message: Message;
-    private readonly country: string;
     private readonly hasTlMsg: boolean;
     private readonly footertext: string;
     private targetref: React.RefObject<HTMLInputElement>;
@@ -45,13 +44,12 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
     constructor(props: MessageCardProps) {
         super(props);
         this.message = props.object;
-        this.country = props.object.country;
         this.hasTlMsg = this.message.tl_msg != null && this.message.tl_msg !== "";
 
         this.toggleCurrentLanguage = this.toggleCurrentLanguage.bind(this);
         this.targetref = React.createRef();
         this.messageref = React.createRef();
-        this.footertext = this.message.username + ((this.country !== "")? " "+this.country:"");
+        this.footertext = this.message.username?this.message.username:"" + this.message.country !== ""?" "+this.message.country:"";
     }
 
     state = {
