@@ -50,24 +50,27 @@
     }
 }
 
-@media (max-width: 800px) {
-    .app-header {
-        min-height: 70vh;
-    }
+@media (max-width: 1200px) {
     .header-top {
-        font-size: 25px;
+        font-size: 30px;
     }
     .header-bottom {
-        font-size: 25px;
+        font-size: 30px;
     }
 }
 
-/*Point where Navbar overflows the icons down the column*/
-@media (max-width: 720px) {
+
+@media (max-width: 800px) {
     .header-top {
+        /*Point where Navbar overflows the icons down the column*/
         margin-top: 32px;
+        font-size: 20px;
+    }
+    .header-bottom {
+        font-size: 20px;
     }
 }
+
 
 @media (max-width: 500px) {
     .header-top {
