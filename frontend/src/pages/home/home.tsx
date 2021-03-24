@@ -49,7 +49,7 @@ const AltNav = () => {
 
 const creditsNav = [
     {
-        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holo-valentine-2021',
+        link: 'https://github.com/Manotomo-Alliance-Support-Squad/WWS',
         buttonContent: "Credits",
         page: "",
         startIcon: <InfoIcon />
@@ -189,8 +189,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     <div className="justify-center">
                         <div className="notice-container">
                             <div className="notice-content">
-                                <p>These are all the messages we managed to collect! Happy Valentine's Day!</p>
-                                <p>これがすべての取集したメッセージですが！ハッピーバレンタイン！</p>
+                                <p>These are all the messages we managed to collect!</p>
                                 <p style={{fontSize: 12}}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com</p>
                             </div>
                         </div>

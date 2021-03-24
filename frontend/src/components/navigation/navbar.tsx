@@ -11,18 +11,12 @@ import './navbar.css';
 export default function ButtonAppBar() {
     return (
         <header className="navbar">
-            <div className="title">Have a Very Holo Valentine &lt;3</div>
+            <div className="title">You’re not alone on your  journey, Haato</div>
             <div className="icons">
                 {[
                     {
-                        externalLink: false,
-                        link: '/home',
-                        altText: "Home",
-                        iconFunc: () => <HomeIcon/>
-                    },
-                    {
                         externalLink: true,
-                        link: 'https://github.com/Manotomo-Alliance-Support-Squad/holo-valentine-2021',
+                        link: 'https://github.com/Manotomo-Alliance-Support-Squad/WWS',
                         altText: "github",
                         iconFunc: () => <InfoIcon/>
                     },
