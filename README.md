@@ -1,23 +1,32 @@
-# holo-valentine-2021
-Valentine 2021 site from MASS
+# World Wide Support for SAIKYO Idol
 
-Thanks for everyone that's send or will be sending messages to our friends are Hololive Productions!
+Haachama/Haato went on a self discovery journey and we are writing her messages of support! Thanks for looking at the credits and visiting the site!
 
 # Credits
 
-## Website Contributions
+## WWS Team
+WWS_Haato
+
+羽の觴
+
+Zhadar
+
+## Mass Website Contributions
 Fishsauce (Frontend, Backend, Devops)
 
 Zapple (Frontend, Backend)
 
-NoeL (Frontend)
+## MASS Art Contributors
+[Rogue](https://twitter.com/roguedono)
 
-...and the rest of the MASS Website Team who helped develop this framework!
+RaRa
 
 ## MASS Contributors
-The Chainwalker
-
 Schrodinger
+
+Guy
+
+The Chainwalker
 
 RazorNaitor
 
@@ -27,4 +36,23 @@ Hiroki
 
 Kazento
 
-...and any MASS team members who might've been indirectly involved!
+Necrosis
+
+ChivChav
+
+Blinkey Ren
+
+## Additional Project Contributors
+[niconikneecaps](https://twitter.com/niconikneecaps)
+
+[ryuran](https://twitter.com/ryuraan))(Header)
+
+# Join the MASS Discord
+
+https://discord.gg/yTY9rdp
+
+# Contact Us
+
+Did we forget to credit you? Found a bug on the website? Contact us at manotomo[at]googlegroups.com
+
+
