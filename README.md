@@ -11,7 +11,7 @@ WWS_Haato
 
 Zhadar
 
-## Mass Website Contributions
+## MASS Website Contributors
 Fishsauce (Frontend, Backend, Devops)
 
 Zapple (Frontend, Backend)
@@ -45,7 +45,7 @@ Blinkey Ren
 ## Additional Project Contributors
 [niconikneecaps](https://twitter.com/niconikneecaps)
 
-[ryuran](https://twitter.com/ryuraan))(Header)
+[ryuran](https://twitter.com/ryuraan)(Header)
 
 # Join the MASS Discord
 
