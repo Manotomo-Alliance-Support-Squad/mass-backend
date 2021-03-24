@@ -5,7 +5,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    font-size: calc(10px + 2vmin);
     background-image: url(../../assets/backgrounds/header_bg.png);
     background-color: #fffde2;
     background-repeat: no-repeat;
@@ -14,6 +13,8 @@
     background-position: 0 0;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
+    font-family: sans-serif;
+    font-size: 30px;
 
     padding-top: 64px;
 }
@@ -24,9 +25,8 @@
 
     color: #e62b48;
     text-align: center;
-    font-size: 50px;
 
-    background-color: #fff0e37d;
+    background-color: #ffffffed;
 }
 
 .header-bottom {
@@ -34,9 +34,8 @@
 
     text-align: center;
     color: #e62b48;
-    font-size: 50px;
 
-    background-color: #fff0e37d;
+    background-color: #ffffffed;
 }
 
 @media (max-width: 1400px) {
