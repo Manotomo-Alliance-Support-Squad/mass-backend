@@ -4,7 +4,7 @@ Haachama/Haato went on a self discovery journey and we are writing her messages 
 
 # Credits
 
-## WWS Team
+## WWS Team and Project Founders
 WWS_Haato
 
 羽の觴
@@ -15,21 +15,32 @@ Zhadar
 
 Veradia (Vera Chama)
 
-## MASS Website Contributors
+## Website Contributors
 Fishsauce (Frontend, Backend, Devops)
 
 Zapple (Frontend, Backend)
 
-## MASS Art Contributors
-[Rogue](https://twitter.com/roguedono)
+## Art and Design Contributors
+[Rogue](https://twitter.com/roguedono) (MASS Art Lead)
 
-RaRa
+[RaRa](https://twitter.com/) (Message Cards)
 
 Peanuts
 
 Dragvik
 
-## MASS Contributors
+[ryuran](https://twitter.com/ryuraan) (Site Header Background)
+
+[niconikneecaps](https://twitter.com/niconikneecaps)
+
+[sol](https://twitter.com/popotocurry)
+
+[viktor](https://twitter.com/Tennen_Vik)
+
+Guy (Color Palettes)
+
+
+## MASS Mods, Coordinators, and Other Awesome Peoples in the Shadows
 Schrodinger
 
 Guy
@@ -49,15 +60,6 @@ Necrosis
 ChivChav
 
 Blinky Ren
-
-## Additional Project Contributors
-[niconikneecaps](https://twitter.com/niconikneecaps)
-
-[ryuran](https://twitter.com/ryuraan) (Site Header Background)
-
-sol
-
-viktor
 
 # Join the MASS Discord
 
