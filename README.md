@@ -11,6 +11,10 @@ WWS_Haato
 
 Zhadar
 
+## Haato Server
+
+Veradia (Vera Chama)
+
 ## MASS Website Contributors
 Fishsauce (Frontend, Backend, Devops)
 
@@ -20,6 +24,10 @@ Zapple (Frontend, Backend)
 [Rogue](https://twitter.com/roguedono)
 
 RaRa
+
+Peanuts
+
+Dragvik
 
 ## MASS Contributors
 Schrodinger
@@ -40,12 +48,16 @@ Necrosis
 
 ChivChav
 
-Blinkey Ren
+Blinky Ren
 
 ## Additional Project Contributors
 [niconikneecaps](https://twitter.com/niconikneecaps)
 
 [ryuran](https://twitter.com/ryuraan) (Site Header Background)
+
+sol
+
+viktor
 
 # Join the MASS Discord
 
