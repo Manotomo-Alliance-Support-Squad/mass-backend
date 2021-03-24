@@ -190,6 +190,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                         <div className="notice-container">
                             <div className="notice-content">
                                 <p>These are all the messages we managed to collect!</p>
+                                <p>Welcome back, Haato. おかえり、はあと。</p>
                                 <p style={{fontSize: 12}}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com</p>
                             </div>
                         </div>
