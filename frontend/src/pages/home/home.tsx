@@ -85,9 +85,6 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
             this.setState({messageLoaded: false});
             this.manoAloeService.getAllMessages()
                 .then((messages: Message[]) => {
-                    for (let message of messages) {
-                        message.country = toCountry(message.country as string);
-                    }
                     SessionService.saveMessages(messages);
                     this.setState({messages, messageLoaded: true});
                 })
@@ -181,7 +178,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                                             きっと、Vtuberになる事も同じだと思います。\n\n\
                                             この企画を参加する人たちはみんな、はあと様の努力に感動されて、応援しに来たのだ。頑張り屋さんのはあと様は、紛れもなくワールドワイドな最強アイドルです！\n\n\
                                             この企画にはまだ第二段階があるので、是非お楽しみにしてください！はあと様、愛しています！",
-                                            country: "TW", username: "Hsieh", }} cardStyleNum={1} language={language} />
+                                            country: "(East Asia)", username: "Hsieh", }} cardStyleNum={1} language={language} />
                                     </div>
                                     );
                                 }
