@@ -84,16 +84,10 @@
 
 @media (max-width: 420px /*naisu*/) {
     .app-header {
+        min-height: 50vh;
         background-size: 100%;
         background-position: 0 60%;
         background-attachment: scroll;
-    }
-}
-
-/*Align with navbar height*/
-@media (max-width: 310px) {
-    .app-header {
-        justify-content: space-between;
     }
 }
 
