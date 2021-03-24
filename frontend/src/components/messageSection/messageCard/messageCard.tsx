@@ -49,7 +49,7 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
         this.toggleCurrentLanguage = this.toggleCurrentLanguage.bind(this);
         this.targetref = React.createRef();
         this.messageref = React.createRef();
-        this.footertext = this.message.username?this.message.username:"" + this.message.country !== ""?" "+this.message.country:"";
+        this.footertext = (this.message.username?this.message.username:"") + (this.message.country !== ""?" "+this.message.country:"");
     }
 
     state = {
