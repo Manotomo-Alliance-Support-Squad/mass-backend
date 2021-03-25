@@ -32,7 +32,7 @@ Zapple (Frontend, Backend)
 
 [Peanuts](https://twitter.com/PistachiosChips)
 
-Dragvik
+[Dragvik](https://www.pixiv.net/en/users/30880894)
 
 [ryuran](https://twitter.com/ryuraan) (Site Header Background)
 
