@@ -4,16 +4,23 @@ Haachama/Haato went on a self discovery journey and we are writing her messages 
 
 # Credits
 
-## WWS Team and Project Founders
-WWS_Haato
+### WWS Project Managers and Team
+W.Y. Hsieh
 
-羽の觴
+Sakazuki 羽の觴
 
-Zhadar
+[Zhadi](https://twitter.com/HaatonZhadi)
 
-## Haato Server
+## Special Thanks
 
+### Haato Server
 Veradia (Vera Chama)
+
+### Holonews
+HoloNews ([u/Sh1fty1060](https://www.reddit.com/user/Sh1fty1060/) and Marupeto)
+
+### WeekInHololive
+https://twitter.com/WeekInHoloLive
 
 ## Website Contributors
 Fishsauce (Frontend, Backend, Devops)
@@ -25,7 +32,7 @@ Zapple (Frontend, Backend)
 
 [RaRa](https://twitter.com/) (Message Cards)
 
-Peanuts
+[Peanuts](https://twitter.com/PistachiosChips)
 
 Dragvik
 
@@ -42,8 +49,6 @@ Guy (Color Palettes)
 
 ## MASS Mods, Coordinators, and Other Awesome Peoples in the Shadows
 Schrodinger
-
-Guy
 
 The Chainwalker
 
