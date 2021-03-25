@@ -32,7 +32,7 @@ Zapple (Frontend, Backend)
 
 [Peanuts](https://twitter.com/PistachiosChips)
 
-[Dragvik](https://www.pixiv.net/en/users/30880894)
+[Dragvik](https://twitter.com/Tennen_Vik)
 
 [ryuran](https://twitter.com/ryuraan) (Site Header Background)
 
@@ -40,9 +40,7 @@ Zapple (Frontend, Backend)
 
 [sol](https://twitter.com/popotocurry)
 
-[viktor](https://twitter.com/Tennen_Vik)
-
-Guy (Color Palettes)
+Guy (Find them at the [MASS discord](https://discord.gg/yTY9rdp))
 
 
 ## MASS Mods, Coordinators, and Other Awesome Peoples in the Shadows
