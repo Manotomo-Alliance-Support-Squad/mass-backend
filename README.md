@@ -1,25 +1,23 @@
 # World Wide Support for SAIKYO Idol
 
-Haachama/Haato went on a self discovery journey and we are writing her messages of support! Thanks for looking at the credits and visiting the site!
+Haachama/Haato went on a self discovery journey and we are writing her messages of support! Thanks for visiting the site and looking at the credits!
 
 # Credits
 
-### WWS Project Managers and Team
+## WWS Project Managers and Team
 W.Y. Hsieh
 
 Sakazuki 羽の觴
 
 [Zhadi](https://twitter.com/HaatonZhadi)
 
-## Special Thanks
-
-### Haato Server
+## Haato Server
 Veradia (Vera Chama)
 
-### Holonews
+## Holonews
 HoloNews ([u/Sh1fty1060](https://www.reddit.com/user/Sh1fty1060/) and Marupeto)
 
-### WeekInHololive
+## WeekInHololive
 https://twitter.com/WeekInHoloLive
 
 ## Website Contributors
