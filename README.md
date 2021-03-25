@@ -12,7 +12,7 @@ Sakazuki 羽の觴
 [Zhadi](https://twitter.com/HaatonZhadi)
 
 ## Haato Server
-Veradia (Vera Chama)
+Veradis (Vera Chama)
 
 ## Holonews
 HoloNews ([u/Sh1fty1060](https://www.reddit.com/user/Sh1fty1060/) and Marupeto)
