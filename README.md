@@ -1,23 +1,52 @@
-# holo-valentine-2021
-Valentine 2021 site from MASS
+# World Wide Support for SAIKYO Idol
 
-Thanks for everyone that's send or will be sending messages to our friends are Hololive Productions!
+Haachama/Haato went on a self discovery journey and we are writing her messages of support! Thanks for visiting the site and looking at the credits!
 
 # Credits
 
-## Website Contributions
+## WWS Project Managers and Team
+W.Y. Hsieh
+
+Sakazuki 羽の觴
+
+[Zhadi](https://twitter.com/HaatonZhadi)
+
+## Haato Server
+Veradia (Vera Chama)
+
+## Holonews
+HoloNews ([u/Sh1fty1060](https://www.reddit.com/user/Sh1fty1060/) and Marupeto)
+
+## WeekInHololive
+https://twitter.com/WeekInHoloLive
+
+## Website Contributors
 Fishsauce (Frontend, Backend, Devops)
 
 Zapple (Frontend, Backend)
 
-NoeL (Frontend)
+## Art and Design Contributors
+[Rogue](https://twitter.com/roguedono) (MASS Art Lead)
 
-...and the rest of the MASS Website Team who helped develop this framework!
+[RaRa](https://twitter.com/) (Message Cards)
 
-## MASS Contributors
-The Chainwalker
+[Peanuts](https://twitter.com/PistachiosChips)
 
+[Dragvik](https://twitter.com/Tennen_Vik)
+
+[ryuran](https://twitter.com/ryuraan) (Site Header Background)
+
+[niconikneecaps](https://twitter.com/niconikneecaps)
+
+[sol](https://twitter.com/popotocurry)
+
+Guy (Find them at the [MASS discord](https://discord.gg/yTY9rdp))
+
+
+## MASS Mods, Coordinators, and Other Awesome Peoples in the Shadows
 Schrodinger
+
+The Chainwalker
 
 RazorNaitor
 
@@ -27,4 +56,18 @@ Hiroki
 
 Kazento
 
-...and any MASS team members who might've been indirectly involved!
+Necrosis
+
+ChivChav
+
+Blinky Ren
+
+# Join the MASS Discord
+
+https://discord.gg/yTY9rdp
+
+# Contact Us
+
+Did we forget to credit you? Found a bug on the website? Contact us at manotomo[at]googlegroups.com
+
+
