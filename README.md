@@ -15,7 +15,7 @@ Sakazuki 羽の觴
 Veradis (Vera Chama)
 
 ## Holonews
-HoloNews ([u/Sh1fty1060](https://www.reddit.com/user/Sh1fty1060/) and Marupeto)
+HoloNews ([u/Sh1fty1060](https://www.reddit.com/user/Sh1fty1060/) and [u/mrmalupet](https://www.reddit.com/user/mrmalupet/)
 
 ## WeekInHololive
 https://twitter.com/WeekInHoloLive
