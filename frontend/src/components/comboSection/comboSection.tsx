@@ -29,7 +29,7 @@ export default class ComboSection extends BaseSection<Message|Artwork> {
         } else if ("artworkID" in object) {
             return (
                 <div className="card-section">
-                    <ArtworkCard key={object.artworkID} object={object} cardStyleNum={0}/>
+                    <ArtworkCard key={object.artworkID} object={object} cardStyleNum={id % CardStyleLength}/>
                 </div>
             );
         }
