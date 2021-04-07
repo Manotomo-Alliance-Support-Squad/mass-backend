@@ -85,6 +85,7 @@ class MessageSchema(ma.Schema):
     country = fields.String(required=False)
     username = fields.String(required=False)
 
+
 class Announcement(db.Model):
     __tablename__ = 'ANNOUNCEMENTS'
     announcementID = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -93,6 +94,30 @@ class Announcement(db.Model):
     def __init__(self, message):
         self.message = message
 
+
 class AnnouncementSchema(ma.Schema):
     announcementID = fields.Integer()
     message = fields.String(required=True)
+
+
+class Video(db.Model):
+    __tablename__ = 'VIDEOS'
+    videoID = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    videoLink = db.Column(db.String(2048), nullable=False)
+    artistLink = db.Column(db.String(2048), nullable=True)
+    username = db.Column(db.String(64), nullable=True)
+    title = db.Column(db.String(64), nullable=True)
+
+    def __init__(self, videoLink, username, title, artistLink):
+        self.videoLink = videoLink
+        self.artistLink = artistLink
+        self.username = username
+        self.title = title
+
+
+class VideoSchema(ma.Schema):
+    videoID = fields.Integer()
+    videoLink = fields.String(required=True)
+    artistLink = fields.String(required=False)
+    username = fields.String(required=True)
+    title = fields.String(required=False)

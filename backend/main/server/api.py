@@ -26,6 +26,10 @@ api.add_resource(GameCount, '/games/count')
 api.add_resource(GalleryListResource, '/gallery')
 api.add_resource(GalleryCount, '/gallery/count')
 
+# Videos
+api.add_resource(GalleryListResource, '/video')
+api.add_resource(GalleryListResource, '/video/count')
+
 # Announcements
 api.add_resource(AnnouncementListResource, '/announcements')
 api.add_resource(AnnouncementCount, '/announcements/count')
