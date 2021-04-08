@@ -3,6 +3,8 @@ import {CountResponse, GalleryResponse, MessageResponse, ArchiveResponse, Announ
 import {Artwork, artworkFromJson} from "../models/artwork";
 import {Archive, archiveFromJson} from "../models/archive";
 import {Announcement, announcementFromJson} from "../models/announcement"
+import {Video, videoFromJson} from "../models/video";
+
 
 export default class ManoAloeService {
     private readonly apiURL: string;
@@ -83,7 +85,26 @@ export default class ManoAloeService {
     public getGalleryCount(): Promise<number> {
         return this.getCount('gallery');
     }
-    
+
+
+    public getVideo(): Promise<Video[]> {
+        return fetch(this.apiURL + 'video')
+            .then((res: { json: () => any; }) => {
+                return res.json();
+            })
+            .then((apiResponse: VideoResponse) => {
+                return apiResponse.video.map(videoFromJson);
+            })
+            .catch((error: Error) => {
+                throw error;
+            })
+    }
+
+    public getVideoCount(): Promise<number> {
+        return this.getCount('video');
+    }
+
+
     public getArchive(who: string, archiveID: number): Promise<Archive> {
         return fetch(this.apiURL + 'archives/' + who + '/' + archiveID)
             .then((res: { json: () => any; }) => {
