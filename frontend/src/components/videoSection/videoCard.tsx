@@ -1,10 +1,10 @@
 import React from 'react';
-import BaseCard, {BaseCardProps, BaseCardState} from "../../../shared/components/baseCard/baseCard";
+import BaseCard, {BaseCardProps, BaseCardState} from "../../shared/components/baseCard/baseCard";
 import classNames from 'classnames';
 import handleViewport from 'react-in-viewport';
-import { Artwork } from '../../../models/artwork';
-import './artworkCard.css';
-import { linkToString } from '../../../models/url';
+import { Video } from '../../models/video';
+import './videoCard.css';
+import { linkToString } from '../../models/url';
 
 enum ImageLoadingState {
     NotLoaded,
@@ -12,28 +12,28 @@ enum ImageLoadingState {
     Loaded,
 }
 
-interface ArtworkCardProps extends BaseCardProps<Artwork> {
+interface VideoCardProps extends BaseCardProps<Video> {
 }
 
-interface ArtworkCardState extends BaseCardState {
+interface VideoCardState extends BaseCardState {
     loadingState: ImageLoadingState,
 }
 
-export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, ArtworkCardState> {
-    private readonly artwork: Artwork;
+export default class VideoCard extends BaseCard<Video, VideoCardProps, VideoCardState> {
+    private readonly video: Video;
     private readonly username: string;
     private imageElement: HTMLImageElement;
 
-    constructor(props: ArtworkCardProps) {
+    constructor(props: VideoCardProps) {
         super(props);
-        this.artwork = props.object;
-        this.username = this.artwork.username ? props.object.username : "Anonymous";
+        this.video = props.object;
+        this.username = this.video.username ? props.object.username : "Anonymous";
         this.imageElement = document.createElement("img");
 
         this.imageLoaded = this.imageLoaded.bind(this);
     }
 
-    state: ArtworkCardState = {
+    state: VideoCardState = {
         loadingState: ImageLoadingState.NotLoaded,
         inViewport: false // From BaseCardState
     }
@@ -48,7 +48,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
     private setImage() {
         if (this.state.loadingState === ImageLoadingState.NotLoaded) {
-            this.imageElement.src = linkToString(this.artwork.artworkLink);
+            this.imageElement.src = linkToString(this.video.videoLink);
             this.imageElement.addEventListener("load", this.imageLoaded);
 
             this.setState({
@@ -65,16 +65,16 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
         this.setImage();
     }
 
-    renderArtwork() {
+    renderVideo() {
         const hasLoaded = this.state.loadingState === ImageLoadingState.Loaded;
-        const artworkLink = linkToString(this.artwork.artworkLink);
-        const artistLink = this.artwork.artistLink ? linkToString(this.artwork.artistLink) : "#no_artist_link";
+        const videoLink = linkToString(this.video.videoLink);
+        const artistLink = this.video.artistLink ? linkToString(this.video.artistLink) : "#no_artist_link";
 
         return (
-            <div className="artwork-card">
-                <img className="artwork-card-img" src={artworkLink} alt={this.artwork.title} />
-                <div className="artwork-card-footer">
-                    <div className="title">{this.artwork.title}</div>
+            <div className="video-card">
+                <img className="video-card-img" src={videoLink} alt={this.video.title} />
+                <div className="video-card-footer">
+                    <div className="title">{this.video.title}</div>
                     <p>
                         <div className="artist">
                             Artist: <a href={artistLink}>{this.username}</a>
@@ -86,6 +86,6 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
     }
 
     render() {
-        return this.renderCard(this.renderArtwork());
+        return this.renderCard(this.renderVideo());
     }
 }

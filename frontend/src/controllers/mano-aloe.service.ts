@@ -1,5 +1,5 @@
 import {Message, messageFromJson} from "../models/message";
-import {CountResponse, GalleryResponse, MessageResponse, ArchiveResponse, AnnouncementResponse} from "../models/response";
+import {CountResponse, GalleryResponse, MessageResponse, ArchiveResponse, AnnouncementResponse, VideoResponse} from "../models/response";
 import {Artwork, artworkFromJson} from "../models/artwork";
 import {Archive, archiveFromJson} from "../models/archive";
 import {Announcement, announcementFromJson} from "../models/announcement"

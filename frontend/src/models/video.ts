@@ -27,7 +27,7 @@ export function videoFromJson(json: VideoJson): Video {
     }
 }
 
-export function videoToJson(video: Artwork): ArtworkJson {
+export function videoToJson(video: Video): VideoJson {
     const { videoID, videoLink, artistLink, username, title } = video;
     return {
         videoID,
