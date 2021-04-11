@@ -17,7 +17,7 @@ export interface GalleryResponse extends BaseResponse {
 }
 
 export interface VideoResponse extends BaseResponse {
-    video: VideoJson[];
+    videos: VideoJson[];
 }
 
 export interface ArchiveResponse extends BaseResponse {

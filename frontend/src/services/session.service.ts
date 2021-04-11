@@ -68,11 +68,12 @@ export default class SessionService {
 
     public static saveVideo(cinema: Video[]): void {
         let json = cinema.map(videoToJson);
-        SessionService.saveInCache<VideoJson[]>('cinema', json);
+        SessionService.saveInCache<VideoJson[]>('videos', json);
     }
 
     public static getVideo(): Video[] | null {
-        let videos = SessionService.getFromCache<VideoJson[]>('cinema');
+        let videos = SessionService.getFromCache<VideoJson[]>('videos');
+        console.log(videos)
         return videos?.map(videoFromJson) ?? null;
     }
 

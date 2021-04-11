@@ -72,7 +72,11 @@ export default class VideoCard extends BaseCard<Video, VideoCardProps, VideoCard
 
         return (
             <div className="video-card">
-                <img className="video-card-img" src={videoLink} alt={this.video.title} />
+                <iframe title={this.video.title} className="video-tag"
+                        src={videoLink} frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen/>
+
                 <div className="video-card-footer">
                     <div className="title">{this.video.title}</div>
                     <p>

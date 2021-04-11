@@ -2,7 +2,7 @@ import {Message, messageFromJson} from "../models/message";
 import {CountResponse, GalleryResponse, MessageResponse, ArchiveResponse, AnnouncementResponse, VideoResponse} from "../models/response";
 import {Artwork, artworkFromJson} from "../models/artwork";
 import {Archive, archiveFromJson} from "../models/archive";
-import {Announcement, announcementFromJson} from "../models/announcement"
+import {Announcement, announcementFromJson} from "../models/announcement";
 import {Video, videoFromJson} from "../models/video";
 
 
@@ -88,12 +88,12 @@ export default class ManoAloeService {
 
 
     public getVideo(): Promise<Video[]> {
-        return fetch(this.apiURL + 'video')
+        return fetch(this.apiURL + 'videos')
             .then((res: { json: () => any; }) => {
                 return res.json();
             })
             .then((apiResponse: VideoResponse) => {
-                return apiResponse.video.map(videoFromJson);
+                return apiResponse.videos.map(videoFromJson);
             })
             .catch((error: Error) => {
                 throw error;
@@ -101,7 +101,7 @@ export default class ManoAloeService {
     }
 
     public getVideoCount(): Promise<number> {
-        return this.getCount('video');
+        return this.getCount('videos');
     }
 
 

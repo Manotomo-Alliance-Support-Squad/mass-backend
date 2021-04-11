@@ -10,6 +10,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import {Announcement} from "../../models/announcement"
 import {Artwork} from "../../models/artwork"
+import {Video} from "../../models/video"
 import './home.css';
 import '../../shared/globalStyles/global.css'
 import AnnouncementSection from "../../components/announcementSection/announcementSection"
@@ -37,6 +38,7 @@ export interface HomePageState {
     messages: Message[];
     announcements: Announcement[];
     artworks: Artwork[];
+    videos: Video[];
 }
 
 const AltNav = () => {
@@ -71,6 +73,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         messages: [],
         announcements: [],
         artworks: [],
+        videos: [],
     }
 
     componentDidMount() {
@@ -112,9 +115,22 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     console.error(error);
                 })
         }
+        const cachedVideos: Video[] | null = SessionService.getVideo();
+        if (cachedVideos && cachedVideos.length) {
+            this.setState({videos: cachedVideos});
+        } else {
+            this.manoAloeService.getVideo()
+                .then((videos: Video[]) => {
+                    SessionService.saveVideo(videos);
+                    this.setState({videos});
+                })
+                .catch((error: Error) => {
+                    console.error(error);
+                })
+        }
     }
 
-    renderCardSection(data: (Message|Artwork)[]) {
+    renderCardSection(data: (Message|Artwork|Video)[]) {
         return (
             <div>
                 <div className="wrapper-overlay">
@@ -126,7 +142,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
 
     compileCardData() {
         // We do this because state setting is async and trying to create this in getData yields empty arrays
-        let comboCardData: (Message|Artwork)[] = [];
+        let comboCardData: (Message|Artwork|Video)[] = [];
         // TODO: This can should be more generalized, but generally there will be fewer art than messages
         const art_cards_length = this.state.artworks.length;
         const message_cards_length = this.state.messages.length;
@@ -138,6 +154,10 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 comboCardData.push(this.state.artworks[art_index]);
                 art_index++;
             }
+        }
+        for (var video of this.state.videos) {
+            comboCardData.push(video)
+            console.log(video)
         }
         return comboCardData
     }
