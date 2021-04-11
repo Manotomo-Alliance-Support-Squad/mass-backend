@@ -174,10 +174,18 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
                         </AnchorLink>
                     </div>
-                    <div id="message-anchor" className="justify-center padding-top">
+                    <div className="main-video-container">
+                        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/i3EBEbdSyTE" title="YouTube video player" frameBorder="0"></iframe>
+                    </div>
+                    <div id="message-anchor" className="justify-center">
                         <div className="justify-align-center">
                             <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container"/>
                         </div>
+                    </div>
+                    <div className="separator">
+                        <AnchorLink offset='120' href='#message-anchor'>
+                            <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
+                        </AnchorLink>
                     </div>
                     <div className="justify-center padding-top">
                         <LanguageContext.Consumer>
