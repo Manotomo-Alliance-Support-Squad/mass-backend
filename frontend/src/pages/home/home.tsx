@@ -146,18 +146,20 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         // TODO: This can should be more generalized, but generally there will be fewer art than messages
         const art_cards_length = this.state.artworks.length;
         const message_cards_length = this.state.messages.length;
+        const video_cards_length = this.state.videos.length;
         const index_increment_spacing = Math.floor(message_cards_length/art_cards_length);
 
-        for (let msg_index = 0, art_index = 0; msg_index < message_cards_length; msg_index++) {
+        for (let msg_index = 0, art_index = 0, video_index = 0; msg_index < message_cards_length; msg_index++) {
             comboCardData.push(this.state.messages[msg_index]);
             if (art_index < art_cards_length && msg_index % index_increment_spacing === 0) {
                 comboCardData.push(this.state.artworks[art_index]);
                 art_index++;
+                // Hack this in...
+                if (video_index < video_cards_length) {
+                    comboCardData.push(this.state.videos[video_index]);
+                    video_index++;
+                }
             }
-        }
-        for (var video of this.state.videos) {
-            comboCardData.push(video)
-            console.log(video)
         }
         return comboCardData
     }
