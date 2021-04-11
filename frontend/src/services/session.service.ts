@@ -1,6 +1,7 @@
 import {Message, MessageJson, messageFromJson, messageToJson} from "../models/message";
 import {Artwork, ArtworkJson, artworkFromJson, artworkToJson} from "../models/artwork";
 import {Archive, ArchiveJson, archiveFromJson, archiveToJson} from "../models/archive";
+import {Video, VideoJson, videoFromJson, videoToJson} from "../models/video";
 import DisplayedLanguage from "../models/language";
 
 export default class SessionService {
@@ -62,6 +63,17 @@ export default class SessionService {
     public static getGallery(): Artwork[] | null {
         let artworks = SessionService.getFromCache<ArtworkJson[]>('gallery');
         return artworks?.map(artworkFromJson) ?? null;
+    }
+
+
+    public static saveVideo(videos: Video[]): void {
+        let json = videos.map(videoToJson);
+        SessionService.saveInCache<VideoJson[]>('videos', json);
+    }
+
+    public static getVideo(): Video[] | null {
+        let videos = SessionService.getFromCache<VideoJson[]>('videos');
+        return videos?.map(videoFromJson) ?? null;
     }
 
     public static saveLanguage(language: DisplayedLanguage): void {

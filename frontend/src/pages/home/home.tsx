@@ -10,6 +10,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import {Announcement} from "../../models/announcement"
 import {Artwork} from "../../models/artwork"
+import {Video} from "../../models/video"
 import './home.css';
 import '../../shared/globalStyles/global.css'
 import AnnouncementSection from "../../components/announcementSection/announcementSection"
@@ -37,6 +38,7 @@ export interface HomePageState {
     messages: Message[];
     announcements: Announcement[];
     artworks: Artwork[];
+    videos: Video[];
 }
 
 const AltNav = () => {
@@ -71,6 +73,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         messages: [],
         announcements: [],
         artworks: [],
+        videos: [],
     }
 
     componentDidMount() {
@@ -112,9 +115,22 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     console.error(error);
                 })
         }
+        const cachedVideos: Video[] | null = SessionService.getVideo();
+        if (cachedVideos && cachedVideos.length) {
+            this.setState({videos: cachedVideos});
+        } else {
+            this.manoAloeService.getVideo()
+                .then((videos: Video[]) => {
+                    SessionService.saveVideo(videos);
+                    this.setState({videos});
+                })
+                .catch((error: Error) => {
+                    console.error(error);
+                })
+        }
     }
 
-    renderCardSection(data: (Message|Artwork)[]) {
+    renderCardSection(data: (Message|Artwork|Video)[]) {
         return (
             <div>
                 <div className="wrapper-overlay">
@@ -126,17 +142,23 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
 
     compileCardData() {
         // We do this because state setting is async and trying to create this in getData yields empty arrays
-        let comboCardData: (Message|Artwork)[] = [];
+        let comboCardData: (Message|Artwork|Video)[] = [];
         // TODO: This can should be more generalized, but generally there will be fewer art than messages
         const art_cards_length = this.state.artworks.length;
         const message_cards_length = this.state.messages.length;
+        const video_cards_length = this.state.videos.length;
         const index_increment_spacing = Math.floor(message_cards_length/art_cards_length);
 
-        for (let msg_index = 0, art_index = 0; msg_index < message_cards_length; msg_index++) {
+        for (let msg_index = 0, art_index = 0, video_index = 0; msg_index < message_cards_length; msg_index++) {
             comboCardData.push(this.state.messages[msg_index]);
             if (art_index < art_cards_length && msg_index % index_increment_spacing === 0) {
                 comboCardData.push(this.state.artworks[art_index]);
                 art_index++;
+                // Hack this in...
+                if (video_index < video_cards_length) {
+                    comboCardData.push(this.state.videos[video_index]);
+                    video_index++;
+                }
             }
         }
         return comboCardData
@@ -152,10 +174,18 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
                         </AnchorLink>
                     </div>
-                    <div id="message-anchor" className="justify-center padding-top">
+                    <div className="main-video-container">
+                        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/i3EBEbdSyTE" title="YouTube video player" frameBorder="0"></iframe>
+                    </div>
+                    <div id="message-anchor" className="justify-center">
                         <div className="justify-align-center">
                             <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container"/>
                         </div>
+                    </div>
+                    <div className="separator">
+                        <AnchorLink offset='120' href='#message-anchor'>
+                            <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
+                        </AnchorLink>
                     </div>
                     <div className="justify-center padding-top">
                         <LanguageContext.Consumer>

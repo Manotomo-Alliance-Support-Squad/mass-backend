@@ -1,0 +1,61 @@
+.video-card {
+    min-height: 100px;
+    overflow: auto;
+    border-radius: 5px;
+
+    padding: 1em;
+
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.video-container {
+    width: 100%;
+    padding-top: 56.25%;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-card-footer {
+    margin: 20px 20px 0;
+    color: #f05872;
+}
+
+.video-card-footer > .title {
+    font-size: 1.75rem;
+}
+
+.video-card-footer > .artist {
+    margin-top: 10px;
+}
+
+a:link {
+    color: #076dc1;
+}
+
+a:visited {
+    color: #076dc1;
+}
+
+
+@media (max-width: 500px) {
+    .video-card-img > .effects {
+        display: none;
+        filter: none;
+    }
+}
+
+.card-header {
+    height: 120px;
+}
