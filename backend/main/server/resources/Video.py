@@ -5,7 +5,7 @@ from main.server.models import Video, VideoSchema
 from flask_jwt import jwt_required
 
 video_schema = VideoSchema()
-cinema = VideoSchema(many=True)
+videos_schema = VideoSchema(many=True)
 
 
 @app.after_request
@@ -28,19 +28,20 @@ class VideoCount(Resource):
 class VideoListResource(Resource):
     @cache.cached(timeout=100)
     def get(self):
-        """Gets all Artwork on the server"""
+        """Gets all Video on the server"""
+
         all_videos = Video.query.all()
-        cinema = all_videos.dump(all_videos)
+        all_videos = videos_schema.dump(all_videos)
 
-        if not cinema:
+        if not all_videos:
             return {'status': 'success',
-                    'cinema': cinema}, 206  # Partial Content Served, the other status code never loads
+                    'videos': all_videos}, 206  # Partial Content Served, the other status code never loads
 
-        return {'status': 'success', 'cinema': cinema}, 200
+        return {'status': 'success', 'videos': all_videos}, 200
 
     @jwt_required()
     def post(self):
-        """Add Artwork"""
+        """Add Video"""
         json_data = request.get_json(force=True)
 
         if not json_data:
@@ -57,7 +58,7 @@ class VideoListResource(Resource):
             videoLink=data.get('videoLink')).first()
 
         if message:
-            return {'status': 'fail', 'message': 'Artwork already exists'}, 400
+            return {'status': 'fail', 'message': 'Video already exists'}, 400
 
         message = Video(videoLink=data.get('videoLink'),
                         artistLink=data.get('artistLink'),
@@ -67,4 +68,4 @@ class VideoListResource(Resource):
         db.session.add(message)
         db.session.commit()
 
-        return {'status': 'success', 'message': 'Artwork entry successfully created'}, 201
+        return {'status': 'success', 'message': 'Video entry successfully created'}, 201
