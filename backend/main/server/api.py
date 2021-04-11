@@ -28,8 +28,8 @@ api.add_resource(GalleryListResource, '/gallery')
 api.add_resource(GalleryCount, '/gallery/count')
 
 # Videos
-api.add_resource(VideoListResource, '/video')
-api.add_resource(VideoCount, '/video/count')
+api.add_resource(VideoListResource, '/videos')
+api.add_resource(VideoCount, '/videos/count')
 
 # Announcements
 api.add_resource(AnnouncementListResource, '/announcements')
