@@ -1,4 +1,5 @@
 import React from 'react';
+import seedrandom from 'seedrandom';
 import ComboSection from '../../components/comboSection/comboSection';
 import {Message} from "../../models/message";
 import ManoAloeService from "../../controllers/mano-aloe.service";
@@ -6,7 +7,7 @@ import SessionService from "../../services/session.service";
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import {Announcement} from "../../models/announcement"
-import {Artwork} from "../../models/artwork"
+import {Artwork, MultiArtwork} from "../../models/artwork"
 import {Video} from "../../models/video"
 import './home.css';
 import '../../shared/globalStyles/global.css'
@@ -34,6 +35,7 @@ export interface HomePageState {
     messages: Message[];
     announcements: Announcement[];
     artworks: Artwork[];
+    multiArtworks: MultiArtwork[];
     videos: Video[];
 }
 
@@ -70,6 +72,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         announcements: [],
         artworks: [],
         videos: [],
+        multiArtworks: [],
     }
 
     componentDidMount() {
@@ -98,6 +101,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
             .catch((error: Error) => {
                 console.error(error);
             });
+
         const cachedArtworks: Artwork[] | null = SessionService.getGallery();
         if (cachedArtworks && cachedArtworks.length) {
             this.setState({artloading: false, artworks: cachedArtworks});
@@ -111,6 +115,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     console.error(error);
                 })
         }
+
         const cachedVideos: Video[] | null = SessionService.getVideo();
         if (cachedVideos && cachedVideos.length) {
             this.setState({videos: cachedVideos});
@@ -124,9 +129,24 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     console.error(error);
                 })
         }
+
+        // Gallery with multiple images
+        const cachedMultiGallery: MultiArtwork[] | null = SessionService.getMultiGallery();
+        if (cachedMultiGallery && cachedMultiGallery.length) {
+            this.setState({multiArtworks: cachedMultiGallery});
+        } else {
+            this.manoAloeService.getMultiGallery()
+                .then((multiArtworks: MultiArtwork[]) => {
+                    SessionService.saveMultiGallery(multiArtworks);
+                    this.setState({multiArtworks});
+                })
+                .catch((error: Error) => {
+                    console.error(error);
+                })
+        }
     }
 
-    renderCardSection(data: (Message|Artwork|Video)[]) {
+    renderCardSection(data: (Message|Artwork|Video|MultiArtwork)[]) {
         return (
             <div>
                 <div className="wrapper-overlay">
@@ -136,27 +156,55 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         )
     }
 
-    compileCardData() {
-        // We do this because state setting is async and trying to create this in getData yields empty arrays
-        let comboCardData: (Message|Artwork|Video)[] = [];
-        // TODO: This can should be more generalized, but generally there will be fewer art than messages
-        const art_cards_length = this.state.artworks.length;
-        const message_cards_length = this.state.messages.length;
-        const video_cards_length = this.state.videos.length;
-        const index_increment_spacing = Math.floor(message_cards_length/art_cards_length);
+    randomizeArrayWithSeed(unshuffled_arr: any[], seed: string) {
+        let rng = seedrandom(seed);
+        // Schwartzian transform
+        return unshuffled_arr
+            .map((a) => ({sort: rng(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map((a) => a.value);
+    }
 
-        for (let msg_index = 0, art_index = 0, video_index = 0; msg_index < message_cards_length; msg_index++) {
-            comboCardData.push(this.state.messages[msg_index]);
-            if (art_index < art_cards_length && msg_index % index_increment_spacing === 0) {
-                comboCardData.push(this.state.artworks[art_index]);
-                art_index++;
-                // Hack this in...
-                if (video_index < video_cards_length) {
-                    comboCardData.push(this.state.videos[video_index]);
-                    video_index++;
-                }
+    // We do this because state setting is async and trying to create this in getData yields empty arrays
+    compileCardData() {
+        let comboCardData: (Message|Artwork|Video|MultiArtwork)[] = [];
+        let main_content_array: any[] = [];
+        let sub_content_array: any[] = [];
+        let multimedia_count: number = this.state.artworks.length + this.state.videos.length + this.state.multiArtworks.length
+        let index_increment_spacing: number;
+        
+        // The higher count of the two types of content gets to determine the sprinkling of the type of content
+        if (multimedia_count > this.state.messages.length) {
+            main_content_array = this.randomizeArrayWithSeed(
+                main_content_array.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
+                "manotomo",
+            );
+            // TODO: create a randomly seeded version of the main content array
+            sub_content_array = this.state.messages;
+            
+            index_increment_spacing = Math.floor(multimedia_count / this.state.messages.length);
+        } else {
+            main_content_array = this.state.messages;
+            sub_content_array = this.randomizeArrayWithSeed(
+                sub_content_array.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
+                "manotomo",
+            );
+
+            index_increment_spacing = Math.floor(this.state.messages.length / multimedia_count);
+        }
+
+        // Main content is the type of content we have more of
+        for (
+                let main_content_index = 0, sub_content_index = 0;
+                main_content_index < main_content_array.length;
+                main_content_index++) {
+            comboCardData.push(main_content_array[main_content_index]);
+            if (main_content_index % index_increment_spacing === 0 && sub_content_index < sub_content_array.length) {
+                comboCardData.push(sub_content_array[sub_content_index]);
+                sub_content_index++;
             }
         }
+
         return comboCardData
     }
 
