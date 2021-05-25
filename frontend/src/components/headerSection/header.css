@@ -39,9 +39,6 @@
 }
 
 @media (max-width: 1400px) {
-    .app-header {
-        background-size: auto 100%;
-    }
     .header-top {
         font-size: 40px;
     }
