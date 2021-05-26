@@ -1,3 +1,8 @@
+:root {
+    --header-color: var(--theme-color2);
+    --header-text-wrapper-background-color: var(--theme-color4);
+}
+
 .app-header {
     min-height: 70vh;
     display: flex;
@@ -5,37 +10,31 @@
     align-items: center;
     justify-content: space-between;
     font-size: calc(10px + 2vmin);
-    background-image: url(../../assets/backgrounds/header_bg.png);
-    background-color: #fffde2;
+    background-image: var(--header-background);
+    background-color: var(--header-background-color);
     background-repeat: no-repeat;
     background-size: cover;
     /*60% because of navbar offset*/
     background-position: 0 0;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-
     padding-top: 64px;
 }
 
-
 .header-top {
     width: 100%;
-
-    color: #e62b48;
+    color: var(--header-color);
     text-align: center;
     font-size: 50px;
-
-    background-color: #ffffffed;
+    background-color: var(--header-text-wrapper-background-color);
 }
 
 .header-bottom {
     width: 100%;
-
     text-align: center;
-    color: #e62b48;
+    color: var(--header-color);
     font-size: 50px;
-
-    background-color: #ffffffed;
+    background-color: var(--header-text-wrapper-background-color);
 }
 
 @media (max-width: 1400px) {
@@ -56,7 +55,6 @@
     }
 }
 
-
 @media (max-width: 800px) {
     .header-top {
         /*Point where Navbar overflows the icons down the column*/
@@ -68,10 +66,10 @@
     }
 }
 
-
 @media (max-width: 500px) {
     .header-top {
-        margin-top: 0;  /*font size undos the need for pushing down header*/
+        margin-top: 0;
+        /*font size undos the need for pushing down header*/
         font-size: 20px;
     }
     .header-bottom {
@@ -79,7 +77,10 @@
     }
 }
 
-@media (max-width: 420px /*naisu*/) {
+@media (max-width: 420px
+/*naisu*/
+
+) {
     .app-header {
         min-height: 50vh;
         background-size: 100%;
@@ -89,6 +90,10 @@
 }
 
 @keyframes fadeIn {
-   0% {opacity: 0;}
-   100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

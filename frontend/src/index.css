@@ -6,6 +6,9 @@
 
     --main-background: url(assets/backgrounds/App-root-bg.svg);
     --main-background-color: #fffde2;
+
+    --header-background: url(assets/backgrounds/header_bg.png);
+    --header-background-color: #fffde2;
 }
 
 body {

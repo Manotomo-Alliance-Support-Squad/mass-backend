@@ -5,17 +5,16 @@
 }
 
 .anchor-link {
-  position: absolute;
-  /*make smaller than separator*/
-  padding-top: 1px;
-  height: 35px;
-  width: 35px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  color:white;
-
-  transition: all 0.25s ease;
+    position: absolute;
+    /*make smaller than separator*/
+    padding-top: 1px;
+    height: 35px;
+    width: 35px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: var(--theme-color3);
+    transition: all 0.25s ease;
 }
 
 .padding-top {
@@ -51,7 +50,7 @@
 .separator {
     height: 40px;
     width: 100%;
-    background-color: #076dc1;
+    background-color: var(--main-color);
 }
 
 .notice-container {
@@ -71,7 +70,7 @@
     font-size: 20px;
     text-align: center;
     color: var(--main-text-color);
-    background-color: #fff0e3;
+    background-color: var(--main-text-wrapper-background-color);
     border-radius: 15px;
     text-decoration: none;
 }
@@ -85,7 +84,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 .single-column {

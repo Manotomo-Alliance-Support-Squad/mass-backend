@@ -6,8 +6,8 @@
     margin-bottom: 50px;
     text-align: center;
 
-    background-color: #f45787;
-    color: #ffffff;
+    background-color: var(--main-text-color);
+    color: var(--main-text-wrapper-background-color);
     font-size: 25px;
 }
 
