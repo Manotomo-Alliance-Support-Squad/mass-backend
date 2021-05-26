@@ -1,7 +1,3 @@
-body {
-    background-color: #282c34;
-}
-
 .community-message-card {
     top:50px;
     padding: 15px;
@@ -55,14 +51,14 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  color:white;
+  color:var(--theme-color4);
 
   transition: all 0.25s ease;
 }
 
 .main {
-    background-image: url(assets/backgrounds/App-root-bg.svg);
-    background-color: #fffde2;
+    background-image: var(--main-background);
+    background-color: var(--main-background-color);
     background-repeat: repeat;
     min-height: 100vh;
     background-size: 100%;

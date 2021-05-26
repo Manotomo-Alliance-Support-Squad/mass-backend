@@ -1,6 +1,7 @@
 :root {
-    --main-color: #076dc1;
-    --main-text-color: #f05872;
+    --main-color: var(--theme-color1);
+    --main-text-color: var(--theme-color2);
+    --main-text-wrapper-background-color: var(--theme-color3);
 }
 
 .anchor-link {

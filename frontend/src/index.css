@@ -1,3 +1,13 @@
+:root {
+    --theme-color1: #076dc1;
+    --theme-color2: #f05872;
+    --theme-color3: #fff0e3;
+    --theme-color4: #ffffff;
+
+    --main-background: url(assets/backgrounds/App-root-bg.svg);
+    --main-background-color: #fffde2;
+}
+
 body {
     margin: 0;
     font-family: 'Lato', 'Sawarabi Gothic', 'Cairo', 'Prompt', 'Noto Sans', sans-serif;
