@@ -1,4 +1,3 @@
-import React from 'react';
 import AnnouncementCard from "./announcementCard";
 import {Announcement} from "../../models/announcement";
 import BaseSection, {BaseSectionProps, BaseSectionState} from "../../shared/components/baseSection/baseSection";

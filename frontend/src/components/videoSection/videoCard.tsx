@@ -1,7 +1,4 @@
-import React from 'react';
 import BaseCard, {BaseCardProps, BaseCardState} from "../../shared/components/baseCard/baseCard";
-import classNames from 'classnames';
-import handleViewport from 'react-in-viewport';
 import { Video } from '../../models/video';
 import './videoCard.css';
 import { linkToString } from '../../models/url';

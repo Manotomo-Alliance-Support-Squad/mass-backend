@@ -1,9 +1,6 @@
 import React from 'react';
 import ComboSection from '../../components/comboSection/comboSection';
-import MessageSection from '../../components/messageSection/messageSection';
-import ArchiveSection from '../../components/archiveSection/archiveSection';
 import {Message} from "../../models/message";
-import {toCountry} from "../../models/country";
 import ManoAloeService from "../../controllers/mano-aloe.service";
 import SessionService from "../../services/session.service";
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -14,7 +11,6 @@ import {Video} from "../../models/video"
 import './home.css';
 import '../../shared/globalStyles/global.css'
 import AnnouncementSection from "../../components/announcementSection/announcementSection"
-import GallerySection from "../../components/gallery/gallerySection"
 
 // Hack for community card before messages
 import { LanguageContext, LanguageContextValue } from '../../components/languageSwitch/languageContext';

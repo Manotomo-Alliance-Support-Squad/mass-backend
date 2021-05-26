@@ -1,9 +1,7 @@
+import {Component} from 'react'
 import { Button } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import React, {Component} from 'react'
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 
 import './inPageNav.css';
 import '../../shared/globalStyles/global.css';

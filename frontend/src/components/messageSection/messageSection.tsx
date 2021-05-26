@@ -1,4 +1,3 @@
-import React from 'react';
 import MessageCard from "./messageCard/messageCard";
 import {Message} from "../../models/message";
 import BaseSection, {BaseSectionProps, BaseSectionState} from "../../shared/components/baseSection/baseSection";

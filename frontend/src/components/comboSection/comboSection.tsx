@@ -1,4 +1,3 @@
-import React from 'react';
 import {Artwork} from '../../models/artwork';
 import {Message} from "../../models/message";
 import {Video} from "../../models/video";

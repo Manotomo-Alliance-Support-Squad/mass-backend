@@ -1,4 +1,3 @@
-import React from 'react';
 import {Artwork} from '../../models/artwork';
 import ArtworkCard from './artworkCard/artworkCard';
 import DisplayedLanguage from "../../models/language";

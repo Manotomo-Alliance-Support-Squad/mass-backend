@@ -1,16 +1,5 @@
-import React, { Component } from 'react';
-import { useLocation } from 'react-router-dom';
-import InPageNav from '../inPageNav/inPageNav';
+import { Component } from 'react';
 import '../../shared/globalStyles/global.css';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
-
-import HomeIcon from '@material-ui/icons/Home';
-import InfoIcon from '@material-ui/icons/Info';
-
-import MessageCard from '../messageSection/messageCard/messageCard';
-import { LanguageContext, LanguageContextValue } from '../languageSwitch/languageContext';
-
 import './header.css';
 
 interface HeaderState {

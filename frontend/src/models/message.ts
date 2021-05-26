@@ -1,5 +1,3 @@
-import {Country, toCountry} from "./country";
-
 export interface Message {
     messageID: number;
     orig_msg: string;

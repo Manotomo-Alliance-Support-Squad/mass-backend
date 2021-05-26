@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import classNames from 'classnames';
+import React from "react";
 import {Country} from "../../../models/country";
 import {Message} from "../../../models/message";
 import DisplayedLanguage from "../../../models/language";

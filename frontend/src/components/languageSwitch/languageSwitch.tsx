@@ -1,4 +1,3 @@
-import React from 'react';
 import {LanguageContext, LanguageContextValue} from "./languageContext";
 import DisplayedLanguage from '../../models/language';
 
