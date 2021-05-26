@@ -54,7 +54,7 @@ export default class ArtPage extends React.Component<ArtPageProps, ArtPageState>
     renderGallerySection() {
         if (!this.state.artworks.length) {
             const emptyAnnouncemment: Announcement = { announcementID: 0, message: "Nothing here! Check back later!" };
-            return <AnnouncementCard object={emptyAnnouncemment} cardStyleNum={0} language={DisplayedLanguage.Original} />;
+            return <AnnouncementCard object={emptyAnnouncemment} cardStyleIndex={0} language={DisplayedLanguage.Original} />;
         }
         else return (
             <GallerySection data={this.state.artworks}/>
