@@ -1,3 +1,8 @@
+:root {
+    --main-color: #076dc1;
+    --main-text-color: #f05872;
+}
+
 .anchor-link {
   position: absolute;
   /*make smaller than separator*/
@@ -64,7 +69,7 @@
     padding: 2rem;
     font-size: 20px;
     text-align: center;
-    color: #f05872;
+    color: var(--main-text-color);
     background-color: #fff0e3;
     border-radius: 15px;
     text-decoration: none;
