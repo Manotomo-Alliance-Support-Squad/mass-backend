@@ -1,7 +1,4 @@
-import React from 'react';
 import BaseCard, {BaseCardProps, BaseCardState} from "../../shared/components/baseCard/baseCard";
-import classNames from 'classnames';
-import handleViewport from 'react-in-viewport';
 import { Video } from '../../models/video';
 import './videoCard.css';
 import { linkToString } from '../../models/url';
@@ -35,7 +32,7 @@ export default class VideoCard extends BaseCard<Video, VideoCardProps, VideoCard
 
     state: VideoCardState = {
         loadingState: ImageLoadingState.NotLoaded,
-        inViewport: false // From BaseCardState
+        loaded: false // From BaseCardState
     }
 
     private imageLoaded() {

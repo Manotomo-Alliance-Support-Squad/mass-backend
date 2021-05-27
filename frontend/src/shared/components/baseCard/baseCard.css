@@ -13,7 +13,7 @@
     background-repeat: no-repeat;
     background-size: 100%;
 
-    color: #f05872;
+    color: var(--main-text-color);
 
     list-style-type: none;
     /*object-fit: fill;*/

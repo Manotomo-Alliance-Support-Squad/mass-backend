@@ -1,8 +1,4 @@
-import React from 'react';
 import BaseCard, {BaseCardProps, BaseCardState} from "../../../shared/components/baseCard/baseCard";
-import classNames from 'classnames';
-import DisplayedLanguage from "../../../models/language";
-import handleViewport from 'react-in-viewport';
 import { Artwork } from '../../../models/artwork';
 import './artworkCard.css';
 import { linkToString } from '../../../models/url';
@@ -36,7 +32,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
     state: ArtworkCardState = {
         loadingState: ImageLoadingState.NotLoaded,
-        inViewport: false // From BaseCardState
+        loaded: false // From BaseCardState
     }
 
     private imageLoaded() {

@@ -1,8 +1,5 @@
-import React from 'react'
 import {NavLink} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
-import HomeIcon from '@material-ui/icons/Home';
-import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import InfoIcon from '@material-ui/icons/Info';
 import LanguageSwitchButton from '../languageSwitch/languageSwitch';
 

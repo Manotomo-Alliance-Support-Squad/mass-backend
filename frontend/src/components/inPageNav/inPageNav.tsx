@@ -1,9 +1,7 @@
+import {Component} from 'react'
 import { Button } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import React, {Component} from 'react'
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 
 import './inPageNav.css';
 import '../../shared/globalStyles/global.css';
@@ -19,7 +17,7 @@ interface InPageNavProps{
 const NavButton = withStyles({
       containedPrimary: {
         color: "#ffffff",
-        backgroundColor: "#076dc1",
+        backgroundColor: "var(--main-color)",
         '&:hover': {
           backgroundColor: "#bd2f57",
         },

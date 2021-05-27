@@ -1,47 +1,37 @@
-import React, { Component } from 'react';
-import { useLocation } from 'react-router-dom';
-import InPageNav from '../inPageNav/inPageNav';
+import { Component } from 'react';
 import '../../shared/globalStyles/global.css';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
-
-import HomeIcon from '@material-ui/icons/Home';
-import InfoIcon from '@material-ui/icons/Info';
-
-import MessageCard from '../messageSection/messageCard/messageCard';
-import { LanguageContext, LanguageContextValue } from '../languageSwitch/languageContext';
-
 import './header.css';
 
 interface HeaderState {
 }
 
 interface HeaderProps {
+
+}
+
+const headerMessage = {
+    messageTop: "We all miss your smiling presence and your voice that warm our hearts",
+    messageBottom: "Can't wait to have you back, we all love you so much, Akai Haato/Haachama",
 }
 
 
 export default class HeaderSection extends Component<HeaderProps, HeaderState>
 {
-    constructor(props: HeaderProps)
-    {
+    constructor(props: HeaderProps) {
         super(props);
     }
 
-    renderDefaultSection(): JSX.Element
-    {
+    render() {
+        const { messageTop, messageBottom } = headerMessage;
         return (
             <header className="app-header">
                 <div className="header-top">
-                    <p>We all miss your smiling presence and your voice that warm our hearts</p>
+                    <p>{messageTop}</p>
                 </div>
                 <div className="header-bottom">
-                    <p>Can't wait to have you back, we all love you so much, Akai Haato/Haachama</p>
+                    <p>{messageBottom}</p>
                 </div>
             </header>
-       )
-    }
-
-    render() {
-        return this.renderDefaultSection();
+        )
     }
 }

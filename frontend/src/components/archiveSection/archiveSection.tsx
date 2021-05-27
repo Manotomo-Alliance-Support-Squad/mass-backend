@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ArchiveCard from "./archiveCard";
 import "./archiveSection.css";
 
