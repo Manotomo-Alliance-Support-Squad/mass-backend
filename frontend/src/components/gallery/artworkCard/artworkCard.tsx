@@ -32,7 +32,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
     state: ArtworkCardState = {
         loadingState: ImageLoadingState.NotLoaded,
-        inViewport: false // From BaseCardState
+        loaded: false // From BaseCardState
     }
 
     private imageLoaded() {

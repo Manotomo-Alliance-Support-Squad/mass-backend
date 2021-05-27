@@ -32,7 +32,7 @@ export default class VideoCard extends BaseCard<Video, VideoCardProps, VideoCard
 
     state: VideoCardState = {
         loadingState: ImageLoadingState.NotLoaded,
-        inViewport: false // From BaseCardState
+        loaded: false // From BaseCardState
     }
 
     private imageLoaded() {

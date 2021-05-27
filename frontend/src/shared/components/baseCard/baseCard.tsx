@@ -18,7 +18,7 @@ export interface BaseCardProps<T> {
 }
 
 export interface BaseCardState {
-    inViewport: boolean;
+    loaded: boolean;
 }
 
 export default class BaseCard<T, P extends BaseCardProps<T>, S extends BaseCardState> extends Component<P, S> {
@@ -26,25 +26,28 @@ export default class BaseCard<T, P extends BaseCardProps<T>, S extends BaseCardS
 
     constructor(props: P) {
         super(props);
-        this.cardStyleIndex = this.props.cardStyleIndex >= CardStyles.length ? Math.floor(Math.random() * CardStyles.length) :  this.props.cardStyleIndex;
+        this.cardStyleIndex = this.props.cardStyleIndex >= CardStyles.length ? Math.floor(Math.random() * CardStyles.length) : this.props.cardStyleIndex;
     }
 
     state = {
-        inViewport: false
+        loaded: false
     } as S
 
     private toggleVisibility(inViewport: boolean): void {
-        this.setState({ inViewport });
+        if (inViewport) {
+            this.setState({ loaded: true });
+        }
     }
 
     public renderCard(content: JSX.Element): JSX.Element {
+        const { loaded } = this.state;
         const rootStyles: CSS.Properties = {
             backgroundImage: `url(${CardStyles[this.cardStyleIndex][0]})`,
-            opacity: (this.state.inViewport ? 1 : 0),
+            opacity: (loaded ? 1 : 0),
             backgroundColor: `${CardStyles[this.cardStyleIndex][1]}`,
         };
         return (
-            <VisibilitySensor onChange={this.toggleVisibility.bind(this)} partialVisibility>
+            <VisibilitySensor onChange={this.toggleVisibility.bind(this)} partialVisibility active={!loaded}>
                 <div className="base-card" style={rootStyles}>
                     <div className="card-header" />
                     {content}
