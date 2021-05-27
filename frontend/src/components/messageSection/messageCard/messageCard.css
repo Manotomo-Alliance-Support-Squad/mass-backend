@@ -6,26 +6,20 @@
     min-width: 330px;
     overflow: auto;
     border-radius: 15px;
-
     margin: 0 auto;
     margin-bottom: 1rem;
     padding: 10px;
-
     background-repeat: no-repeat;
     background-size: cover;
-
     color: var(--main-text-color);
-
     list-style-type: none;
     object-fit: fill;
-
     transition: all 0.4s ease;
 }
 
 .message-card-text-container {
     max-width: 100%;
     margin: 0 0;
-
     font-size: 24px;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -34,29 +28,38 @@
     height: var(--card-text-height);
 }
 
-.message-card-text-container p {
-    margin: 0;
-}
-
 ::-webkit-scrollbar {
     display: none;
 }
 
 .message-card-text {
-    /*height: var(--card-height);*/
+    opacity: 1;
+    margin: auto 0;
+    width: 100%;
+    transition: opacity 0.6s ease;
+}
+
+.message-card-text.left {
+    float: left;
+}
+
+.message-card-text.right {
+    float: right;
+}
+
+.message-card-text.left.hidden {
+    margin-left: -110%;
+}
+
+.message-card-text.right.hidden {
+    margin-right: -110%;
 }
 
 .hidden {
-    visibility: hidden;
-    position: absolute;
-    margin-right: auto;
-    margin-left: auto;
-    width: var(--card-text-width);
-    display: block;
-    z-index: -1;
+    opacity: 0;
 }
 
-.message-card-text-container > .clear {
+.message-card-text-container>.clear {
     clear: both;
 }
 
@@ -75,7 +78,6 @@
 .message-card-footer-text {
     text-align: right;
 }
-
 
 .message-card-translate {
     /*the translate button properties*/
