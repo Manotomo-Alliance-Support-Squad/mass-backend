@@ -1,5 +1,4 @@
 from flask import request
-from flask_jwt import jwt_required
 
 from flask_restful import Resource
 
@@ -8,6 +7,17 @@ from main.server.models import Message, MessageSchema
 
 messages_schema = MessageSchema(many=True)
 message_schema = MessageSchema()
+
+def insertMessage(orig_msg, tl_msg, country, username):
+    message = Message.query.filter_by(orig_msg=orig_msg).first()
+    if message:
+        return 1
+    message = Message(orig_msg=orig_msg,
+                      tl_msg=tl_msg,
+                      country=country,
+                      username=username)
+    db.session.add(message)
+    return 0
 
 
 @app.after_request
@@ -61,37 +71,6 @@ class MessageListResource(Resource):
 
         return {'status': 'success', 'messages': messages}, 200
 
-    @jwt_required()
-    def post(self):
-        """Add message"""
-        json_data = request.get_json(force=True)
-
-        if not json_data:
-            return {'status': 'fail', 'message': 'No input data'}, 400
-
-        errors = message_schema.validate(json_data)
-
-        if errors:
-            return {'status': 'fail', 'message': 'Error handling request'}, 422
-
-        data = message_schema.load(json_data)
-
-        message = Message.query.filter_by(orig_msg=data.get('orig_msg')).first()
-
-        if message:
-            return {'status': 'fail', 'message': 'Message already exists'}, 400
-
-        message = Message(orig_msg=data.get('orig_msg'),
-                          tl_msg=data.get('tl_msg'),
-                          country=data.get('country'),
-                          username=data.get('username'))
-
-        db.session.add(message)
-        db.session.commit()
-
-        return {'status': 'success', 'message': 'Message successfully created'}, 201
-
-
 class MessageResource(Resource):
     @cache.cached(timeout=100)
     def get(self, messageID):
@@ -103,16 +82,3 @@ class MessageResource(Resource):
 
         message = messages_schema.dump(message)
         return {'status': 'success', 'messages': message}, 200
-
-    @jwt_required()
-    def delete(self, messageID):
-        """delete a message by ID"""
-
-        message = Message.query.filter_by(messageID=messageID)
-
-        if not message.first():
-            return {'status': 'fail', 'message': 'No message with ID ' + str(messageID) + ' exists'}, 404
-
-        message.delete()
-        db.session.commit()
-        return {'status': 'sucess', 'message': 'Message Deleted'}, 200
