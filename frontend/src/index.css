@@ -9,6 +9,10 @@
 
     --header-background: url(assets/backgrounds/header_bg.png);
     --header-background-color: #fffde2;
+
+    --footer-background: url(assets/backgrounds/footer_bg.png);
+    --footer-background: url(assets/backgrounds/footer_bg.png);
+    --header-background-color: #fffde2;
 }
 
 body {

@@ -9,8 +9,9 @@ import {LanguageContext, LanguageContextValue} from "./components/languageSwitch
 import DisplayedLanguage from "./models/language";
 
 import HeaderSection from "./components/headerSection/header";
+import FooterSection from "./components/footerSection/footer";
 
-const HomePage = lazy(() => import('./pages/home/home'));
+import HomePage from './pages/home/home';
 
 interface AppProps {
 }
@@ -38,19 +39,17 @@ export default class App extends React.Component<AppProps, LanguageContextValue>
     render() {
         return (
             <LanguageContext.Provider value={this.state}>
-                <ButtonAppBar />
                 <HeaderSection />
+                <ButtonAppBar />
                 <main className="main">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <Switch>
-                            <Route exact path='/'>
-                                <Redirect to="/home" />
-                            </Route>
-
-                            <Route path='/home' component={HomePage}/>
-                        </Switch>
-                    </Suspense>
+                    <Switch>
+                        <Route exact path='/'>
+                            <Redirect to="/home" />
+                        </Route>
+                        <Route path='/home' component={HomePage}/>
+                    </Switch>
                 </main>
+                <FooterSection />
             </LanguageContext.Provider>
         );
     }

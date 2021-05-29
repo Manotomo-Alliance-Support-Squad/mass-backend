@@ -4,16 +4,16 @@
 }
 
 .app-header {
-    min-height: 70vh;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(12px + 2vmin);
     background-image: var(--header-background);
     background-color: var(--header-background-color);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
     /*60% because of navbar offset*/
     background-position: 0 0;
     /* Create the parallax scrolling effect */
@@ -21,68 +21,10 @@
     padding-top: 64px;
 }
 
-.header-top {
-    width: 100%;
-    color: var(--header-color);
-    text-align: center;
-    font-size: 50px;
-    background-color: var(--header-text-wrapper-background-color);
-}
-
-.header-bottom {
-    width: 100%;
-    text-align: center;
-    color: var(--header-color);
-    font-size: 50px;
-    background-color: var(--header-text-wrapper-background-color);
-}
-
-@media (max-width: 1400px) {
-    .header-top {
-        font-size: 40px;
-    }
-    .header-bottom {
-        font-size: 40px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .header-top {
-        font-size: 30px;
-    }
-    .header-bottom {
-        font-size: 30px;
-    }
-}
-
-@media (max-width: 800px) {
-    .header-top {
-        /*Point where Navbar overflows the icons down the column*/
-        margin-top: 32px;
-        font-size: 20px;
-    }
-    .header-bottom {
-        font-size: 20px;
-    }
-}
-
 @media (max-width: 500px) {
-    .header-top {
-        margin-top: 0;
-        /*font size undos the need for pushing down header*/
-        font-size: 20px;
-    }
-    .header-bottom {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 420px
-/*naisu*/
-
-) {
+    /*naisu*/
     .app-header {
-        min-height: 50vh;
+        min-height: 2vh;
         background-size: 100%;
         background-position: 0 60%;
         background-attachment: scroll;

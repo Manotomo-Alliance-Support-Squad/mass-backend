@@ -171,7 +171,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                         </AnchorLink>
                     </div>
                     <div id="video-anchor" className="main-video-container">
-                        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/i3EBEbdSyTE" title="YouTube video player" frameBorder="0"></iframe>
+                        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/Snn2gWq-3KY" title="YouTube video player" frameBorder="0"></iframe>
                     </div>
                     <div className="separator">
                         <AnchorLink offset='120' href='#message-anchor'>
@@ -223,8 +223,8 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     </div>
                     <div style={{height: "25px"}}/>
                     <AltNav />
+                    <div style={{height: "25px"}}/>
                 </div>
-                <div style={{height: "25px"}}/>
             </section>
         )
     }
