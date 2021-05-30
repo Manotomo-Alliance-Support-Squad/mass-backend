@@ -4,7 +4,7 @@ import InfoIcon from '@material-ui/icons/Info';
 
 const creditsNav = [                                                                                                         
     {
-        link: 'https://github.com/Manotomo-Alliance-Support-Squad/WWS',                                                      
+        link: 'https://github.com/Manotomo-Alliance-Support-Squad/aqua-sweet-dreams',                                                      
         buttonContent: "Credits",                                                                                            
         page: "",                                                                                                            
         startIcon: <InfoIcon />                                                                                              
