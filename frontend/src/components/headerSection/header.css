@@ -12,8 +12,7 @@
     font-size: calc(12px + 2vmin);
     background-image: var(--header-background);
     background-color: var(--header-background-color);
-    background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-repeat: repeat;
     /*60% because of navbar offset*/
     background-position: 0 0;
     /* Create the parallax scrolling effect */
@@ -25,7 +24,6 @@
     /*naisu*/
     .app-header {
         min-height: 2vh;
-        background-size: 100%;
         background-position: 0 60%;
         background-attachment: scroll;
     }

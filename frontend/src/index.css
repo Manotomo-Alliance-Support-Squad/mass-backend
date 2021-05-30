@@ -1,5 +1,5 @@
 :root {
-    --theme-color1: #076dc1;
+    --theme-color1: #ffffff;
     --theme-color2: #f05872;
     --theme-color3: #fff0e3;
     --theme-color4: #ffffff;
@@ -7,12 +7,11 @@
     --main-background: url(assets/backgrounds/App-root-bg.svg);
     --main-background-color: #fffde2;
 
-    --header-background: url(assets/backgrounds/header_bg.png);
-    --header-background-color: #fffde2;
+    --header-background: url(assets/backgrounds/header_bg_pattern.png);
+    --header-background-color: #ffffff;
 
     --footer-background: url(assets/backgrounds/footer_bg.png);
-    --footer-background: url(assets/backgrounds/footer_bg.png);
-    --header-background-color: #fffde2;
+    --footer-background-color: #ffffff00;
 }
 
 body {
