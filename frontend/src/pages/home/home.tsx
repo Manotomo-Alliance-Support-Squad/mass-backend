@@ -17,12 +17,6 @@ import { LanguageContext, LanguageContextValue } from '../../components/language
 import MessageCard from '../../components/messageSection/messageCard/messageCard';
 import '../../components/headerSection/header.css';
 
-// credits at bottom of the site
-import { useLocation } from 'react-router-dom';
-import InPageNav from '../../components/inPageNav/inPageNav';
-import InfoIcon from '@material-ui/icons/Info';
-
-
 export interface HomePageProps {
 
 }
@@ -36,23 +30,6 @@ export interface HomePageState {
     artworks: Artwork[];
     videos: Video[];
 }
-
-const AltNav = () => {
-    const location = useLocation();
-    if (location.pathname == "/home") {
-        return <InPageNav navButtons={creditsNav}/>;
-    }
-    return <span />
-};
-
-const creditsNav = [
-    {
-        link: 'https://github.com/Manotomo-Alliance-Support-Squad/WWS',
-        buttonContent: "Credits",
-        page: "",
-        startIcon: <InfoIcon />
-    },
-]
 
 export default class HomePage extends React.Component<HomePageProps, HomePageState> {
 
@@ -221,9 +198,6 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             </div>
                         </div>
                     </div>
-                    <div style={{height: "25px"}}/>
-                    <AltNav />
-                    <div style={{height: "25px"}}/>
                 </div>
             </section>
         )

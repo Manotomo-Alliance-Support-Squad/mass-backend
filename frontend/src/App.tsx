@@ -12,6 +12,7 @@ import HeaderSection from "./components/headerSection/header";
 import FooterSection from "./components/footerSection/footer";
 
 import HomePage from './pages/home/home';
+import AltNav from './components/navigation/altnav';
 
 interface AppProps {
 }
@@ -49,6 +50,8 @@ export default class App extends React.Component<AppProps, LanguageContextValue>
                         <Route path='/home' component={HomePage}/>
                     </Switch>
                 </main>
+                <div style={{height: "25px"}}/>
+                <AltNav />
                 <FooterSection />
             </LanguageContext.Provider>
         );
