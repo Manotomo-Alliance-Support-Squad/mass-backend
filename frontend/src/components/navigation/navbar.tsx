@@ -8,7 +8,7 @@ import './navbar.css';
 export default function ButtonAppBar() {
     return (
         <header className="navbar text-center">
-            <div className="title">title placeholder</div>
+            <div className="title">あくたんのへ</div>
         </header>
     );
 }

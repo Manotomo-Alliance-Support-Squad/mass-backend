@@ -4,13 +4,13 @@
     position: relative;
 
     box-sizing: border-box;
-    padding: 0 5vw;
+    padding: 1vh;
 
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
+    
     background-color: var(--main-color);
 
     font-size: 2.125rem;

@@ -2,7 +2,11 @@
     --theme-color1: #ffffff;
     --theme-color2: #f05872;
     --theme-color3: #fff0e3;
-    --theme-color4: #000;
+    --theme-color4: #000000;
+
+    --theme-special-text: #f0f0f0;
+    --theme-special-background: #353772;
+    --theme-special-background-alt: #555792;
 
     --main-background: url(assets/backgrounds/App-root-bg.svg);
     --main-background-color: #fffde2;
