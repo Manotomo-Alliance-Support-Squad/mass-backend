@@ -1,0 +1,65 @@
+.anchor-section {
+    position: fixed;
+    background-color: transparent;
+    z-index: 99;
+    margin: 1em;
+    top: 50%;
+    transition: all 0.4s ease;
+}
+
+.active>.anchor-button {
+    border: 2px solid red;
+    /*TODO: change this*/
+}
+
+.anchor-button:hover p {
+    opacity: 1;
+    margin-top: -5px;
+}
+
+.anchor-button p {
+    opacity: 0;
+    margin: 0;
+    margin-top: -20px;
+    transition: all 0.4s ease;
+}
+
+.anchor-button a {
+    text-decoration: none;
+    color: white;
+}
+
+.multiple {
+    --element-count: 0;
+    opacity: .7;
+    margin-top: calc(-1 * 2.5% * var(--element-count));
+}
+
+.multiple:hover {
+    opacity: 1;
+}
+
+.multiple>div:nth-child(n+2)>.anchor-seperator {
+    height: 20px;
+    border-left: 2px solid white;
+    /*TODO: change this*/
+    margin: 5px 0;
+    margin-left: 50%;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    top: unset;
+    bottom: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
