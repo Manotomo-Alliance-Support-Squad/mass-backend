@@ -21,7 +21,7 @@
 
 @media (max-width: 522px) {
     .navbar > .title {
-        font-size: 16px;
+        font-size: 2rem;
     }
 }
 
