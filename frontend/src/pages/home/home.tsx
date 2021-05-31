@@ -142,11 +142,6 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         return (
             <section id='anchor'>
                 <div className="home-root">
-                    <div className="separator">
-                        <AnchorLink offset='120' href='#video-anchor'>
-                            <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
-                        </AnchorLink>
-                    </div>
                     <div id="video-anchor" className="main-video-container">
                         <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/Snn2gWq-3KY" title="YouTube video player" frameBorder="0"></iframe>
                     </div>

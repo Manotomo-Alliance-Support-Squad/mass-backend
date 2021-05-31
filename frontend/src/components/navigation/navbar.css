@@ -10,8 +10,10 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+
+    box-shadow: 0 0 10px;
     
-    background-color: var(--main-color);
+    background-color: var(--header-background-color);
 
     font-size: 2.125rem;
     color: var(--theme-color4);

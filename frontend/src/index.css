@@ -1,8 +1,12 @@
 :root {
-    --theme-color1: #ffffff;
-    --theme-color2: #f05872;
-    --theme-color3: #fff0e3;
-    --theme-color4: #000000;
+    --theme-color1: #000000; /*root background*/
+    --theme-color2: #f05872; /*used for card text*/
+    --theme-color3: #fff0e3; /*card bg color and anchor link color*/
+    --theme-color4: #000000; /*Anchor link color*/
+
+    --theme-card-text1: #202020;
+    --theme-card-text2: #000000;
+    --theme-card-background: #ffffff;
 
     --theme-special-text: #f0f0f0;
     --theme-special-background: #353772;
@@ -16,6 +20,9 @@
 
     --footer-background: url(assets/backgrounds/footer_bg.png);
     --footer-background-color: #ffffff00;
+
+    --header-background-color: #ffffff;
+    --separator-background-color: #ffffff;
 }
 
 body {
