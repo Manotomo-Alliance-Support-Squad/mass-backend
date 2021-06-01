@@ -9,13 +9,14 @@ games_schema = GameSchema(many=True)
 game_schema = GameSchema()
 
 def insertGame(col, data):
+    gameLink = gitLink = description = title = thumbnail = None
     for i in range(0, len(data)):
-        if col[i] == "gameLink": gameLink = data[i]
+        if col[i] == "gameLink" and data[i]: gameLink = data[i]
         elif col[i] == "gitLink": gitLink = data[i]
         elif col[i] == "description": description = data[i]
-        elif col[i] == "title": title = data[i]
+        elif col[i] == "title" and data[i]: title = data[i]
         elif col[i] == "thumbnail": thumbnail = data[i]
-        else: return 2
+        else: continue
     message = Games.query.filter_by(gameLink=gameLink).first()
     if message:
         return 1

@@ -29,14 +29,13 @@ def main(args):
     for data in csv:
         if data == csv[0]:
             continue
-        #note: duplicated columns aren't handled, and the last column will reflect upon the db
+        # note: duplicated columns aren't handled, and the last column will reflect upon the db
         res = insert(csv[0], data)
         if res == 1:
-            print("duplicate entry, not adding: ")
+            RED="\033[31m"
+            CLR="\033[00m"
+            print(RED + "duplicate entry, skipping: " + CLR)
             print(data)
-        if res == 2:
-            print("column-table mismatch. Failing. (one or more of the columns don't correspond to db entries)")
-            fail=1
     if not args.dry_run and not fail: db.session.commit()
 
 if __name__ == "__main__":

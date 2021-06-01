@@ -7,12 +7,13 @@ video_schema = VideoSchema()
 videos_schema = VideoSchema(many=True)
 
 def insertVideo(data):
+    videoLink = artistLink = username = title = None
     for i in range(0, len(data)):
-        if col[i] == "videoLink": videoLink = data[i]
+        if col[i] == "videoLink" and data[i]: videoLink = data[i]
         elif col[i] == "artistLink": artistLink = data[i]
         elif col[i] == "username": username = data[i]
         elif col[i] == "title": title = data[i]
-        else: return 2
+        else: continue
     message = Video.query.filter_by(
             videoLink=videoLink).first()
     if message:

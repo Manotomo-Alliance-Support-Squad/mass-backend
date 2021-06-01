@@ -7,15 +7,18 @@ artwork_schema = GallerySchema()
 gallery_schema = GallerySchema(many=True)
 
 def insertGallery(col, data):
+    artworkLink = artistLink = title = username = None
     for i in range(0, len(data)):
-        if col[i] == "artworkLink": artworkLink = data[i]
-        elif col[i] == "title": title = data[i]
-        elif col[i] == "username": username = data[i]
-        else: return 2
+        if col[i] == "artworkLink" and data[i]: artworkLink = data[i]
+        elif col[i] == "artistLink" and data[i]: artistLink = data[i]
+        elif col[i] == "title" and data[i]: title = data[i]
+        elif col[i] == "username" and data[i]: username = data[i]
+        else: continue
     message = Message.query.filter_by(artworkLink=artworkLink).first()
     if message:
         return 1
     message = Gallery(artworkLink=artworkLink,
+                          artistLink=artistLink,
                           username=username,
                           title=title)
     db.session.add(message)
