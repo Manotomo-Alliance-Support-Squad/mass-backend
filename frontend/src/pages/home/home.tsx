@@ -180,7 +180,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     </div>
                     <div id="message-anchor" className="justify-center">
                         <div className="justify-align-center">
-                            <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container"/>
+                            <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container wrapper-overlay"/>
                         </div>
                     </div>
                     <div className="justify-center padding-top">
@@ -188,7 +188,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             {(value: LanguageContextValue) => {
                                 const {language} = value;
                                 return (
-                                    <div className="justify-align-center notice-container" style={{"whiteSpace": "pre-line"}}>
+                                    <div className="justify-align-center notice-container wrapper-overlay" style={{"whiteSpace": "pre-line"}}>
                                         <MessageCard key={1} object={{ messageID: 0,
                                             tl_msg: "To Haato-sama,\n\n\
                                             I am the initiator of this project, W.Y. Hsieh.\n\n\
