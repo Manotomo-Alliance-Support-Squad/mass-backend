@@ -14,7 +14,7 @@ def insertGallery(col, data):
         elif col[i] == "title" and data[i]: title = data[i]
         elif col[i] == "username" and data[i]: username = data[i]
         else: continue
-    message = Message.query.filter_by(artworkLink=artworkLink).first()
+    message = Gallery.query.filter_by(artworkLink=artworkLink).first()
     if message:
         return 1
     message = Gallery(artworkLink=artworkLink,

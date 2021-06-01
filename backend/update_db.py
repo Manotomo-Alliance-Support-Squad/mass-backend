@@ -31,10 +31,13 @@ def main(args):
             continue
         # note: duplicated columns aren't handled, and the last column will reflect upon the db
         res = insert(csv[0], data)
+        RED="\033[31m"
+        CLR="\033[00m"
         if res == 1:
-            RED="\033[31m"
-            CLR="\033[00m"
             print(RED + "duplicate entry, skipping: " + CLR)
+            print(data)
+        if res == 2:
+            print(RED + "data was missing or column mismatch" + CLR)
             print(data)
     if not args.dry_run and not fail: db.session.commit()
 

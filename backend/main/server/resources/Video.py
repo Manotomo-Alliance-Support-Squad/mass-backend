@@ -6,7 +6,7 @@ from main.server.models import Video, VideoSchema
 video_schema = VideoSchema()
 videos_schema = VideoSchema(many=True)
 
-def insertVideo(data):
+def insertVideo(col, data):
     videoLink = artistLink = username = title = None
     for i in range(0, len(data)):
         if col[i] == "videoLink" and data[i]: videoLink = data[i]

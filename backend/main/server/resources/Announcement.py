@@ -8,11 +8,12 @@ announcements_schema = AnnouncementSchema(many=True)
 
 def insertAnnouncement(col, data):
     if col[0] != "message": return 2
+    if not data or not data[0]: return 2
     text = data[0]
-    message = Message.query.filter_by(message=text).first()
+    message = Announcement.query.filter_by(message=text).first()
     if message:
         return 1
-    message = Gallery(message=text)
+    message = Announcement(message=text)
     db.session.add(message)
     return 0
 
