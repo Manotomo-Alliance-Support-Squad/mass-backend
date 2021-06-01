@@ -6,11 +6,17 @@ from main.server.models import Video, VideoSchema
 video_schema = VideoSchema()
 videos_schema = VideoSchema(many=True)
 
-def insertVideo(videoLink, artistLink, username, title):
+def insertVideo(data):
+    for i in range(0, len(data)):
+        if col[i] == "videoLink": videoLink = data[i]
+        elif col[i] == "artistLink": artistLink = data[i]
+        elif col[i] == "username": username = data[i]
+        elif col[i] == "title": title = data[i]
+        else: return 2
     message = Video.query.filter_by(
             videoLink=videoLink).first()
     if message:
-        return {'status': 'fail', 'message': 'Video already exists'}, 400
+        return 1
     message = Video(videoLink=videoLink,
                     artistLink=artistLink,
                     username=username,

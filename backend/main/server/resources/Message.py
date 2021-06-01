@@ -8,7 +8,14 @@ from main.server.models import Message, MessageSchema
 messages_schema = MessageSchema(many=True)
 message_schema = MessageSchema()
 
-def insertMessage(orig_msg, tl_msg, country, username):
+def insertMessage(col, data):
+    orig_msg = tl_msg = country = username = ""
+    for i in range(0, len(data)):
+        if col[i] == "orig_msg": orig_msg = data[i]
+        elif col[i] == "tl_msg": tl_msg = data[i]
+        elif col[i] == "country": country = data[i]
+        elif col[i] == "username": username = data[i]
+        else: return 2
     message = Message.query.filter_by(orig_msg=orig_msg).first()
     if message:
         return 1

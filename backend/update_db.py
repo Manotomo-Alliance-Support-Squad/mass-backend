@@ -25,12 +25,19 @@ def main(args):
             }
 
     insert = switch.get(args.table_name)
+    fail=0
     for data in csv:
-            if insert(data[0], data[1], data[2], data[3]) != 0:
-                print("failed entry: ")
-                print(data)
-
-    if not args.dry_run: db.session.commit()
+        if data == csv[0]:
+            continue
+        #note: duplicated columns aren't handled, and the last column will reflect upon the db
+        res = insert(csv[0], data)
+        if res == 1:
+            print("duplicate entry, not adding: ")
+            print(data)
+        if res == 2:
+            print("column-table mismatch. Failing. (one or more of the columns don't correspond to db entries)")
+            fail=1
+    if not args.dry_run and not fail: db.session.commit()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(

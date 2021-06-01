@@ -6,7 +6,12 @@ from main.server.models import Gallery, GallerySchema
 artwork_schema = GallerySchema()
 gallery_schema = GallerySchema(many=True)
 
-def insertGallery(artworkLink, username, title):
+def insertGallery(col, data):
+    for i in range(0, len(data)):
+        if col[i] == "artworkLink": artworkLink = data[i]
+        elif col[i] == "title": title = data[i]
+        elif col[i] == "username": username = data[i]
+        else: return 2
     message = Message.query.filter_by(artworkLink=artworkLink).first()
     if message:
         return 1

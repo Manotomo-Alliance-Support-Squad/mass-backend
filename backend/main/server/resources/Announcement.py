@@ -6,7 +6,9 @@ from main.server.models import Announcement, AnnouncementSchema
 announcement_schema = AnnouncementSchema()
 announcements_schema = AnnouncementSchema(many=True)
 
-def insertAnnouncement(text):
+def insertAnnouncement(col, data):
+    if col[0] != "message": return 2
+    text = data[0]
     message = Message.query.filter_by(message=text).first()
     if message:
         return 1

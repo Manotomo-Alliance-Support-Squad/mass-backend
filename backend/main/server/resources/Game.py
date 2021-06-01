@@ -8,16 +8,23 @@ from main.server.models import Games, GameSchema
 games_schema = GameSchema(many=True)
 game_schema = GameSchema()
 
-def insertGame(gameLink, gitLink, description, title, thumbnail):
-        message = Games.query.filter_by(gameLink=gameLink).first()
-        if message:
-            return {'status': 'fail', 'message': 'Game already exists'}, 400
-        message = Games(gameLink=gameLink,
-                        gitLink=gitLink,
-                        description=description,
-                        title=title,
-                        thumbnail=thumbnail)
-        db.session.add(message)
+def insertGame(col, data):
+    for i in range(0, len(data)):
+        if col[i] == "gameLink": gameLink = data[i]
+        elif col[i] == "gitLink": gitLink = data[i]
+        elif col[i] == "description": description = data[i]
+        elif col[i] == "title": title = data[i]
+        elif col[i] == "thumbnail": thumbnail = data[i]
+        else: return 2
+    message = Games.query.filter_by(gameLink=gameLink).first()
+    if message:
+        return 1
+    message = Games(gameLink=gameLink,
+                    gitLink=gitLink,
+                    description=description,
+                    title=title,
+                    thumbnail=thumbnail)
+    db.session.add(message)
  
 @app.after_request
 def add_header(response):
