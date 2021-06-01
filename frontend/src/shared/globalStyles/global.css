@@ -55,7 +55,7 @@
 
 @media (max-width: 900px) {
     .notice-container {
-        max-width: 90%;
+        max-width: 100%;
     }
 }
 
