@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
 from flask_caching import Cache
 import os
 
@@ -15,8 +14,6 @@ cache.init_app(app)
 db = SQLAlchemy(app)
 
 ma = Marshmallow()
-bcrypt = Bcrypt(app)
-from main.server import jwt
 
 from main.server.api import api_bp
 
