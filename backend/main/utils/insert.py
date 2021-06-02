@@ -15,7 +15,11 @@ def insertAnnouncement(col, data):
     return 0                                                                                                                 
 
 def insertGallery(col, data):                                                                                                
-    artworkLink = artistLink = title = username = None                                                                       
+    artworkLink = None
+    artistLink = None
+    title = None
+    username = None
+
     for i in range(0, len(data)):                                                                                            
         if col[i] == "artworkLink" and data[i]: 
             artworkLink = data[i]                                                        
@@ -38,7 +42,12 @@ def insertGallery(col, data):
     return 0
 
 def insertGame(col, data):
-    gameLink = gitLink = description = title = thumbnail = None
+    gameLink = None
+    gitLink = None
+    description = None
+    title = None
+    thumbnail = None
+
     for i in range(0, len(data)):
         if col[i] == "gameLink" and data[i]: 
             gameLink = data[i]
@@ -63,7 +72,11 @@ def insertGame(col, data):
     db.session.add(message)
 
 def insertMessage(col, data):
-    orig_msg = tl_msg = country = username = None
+    orig_msg = None
+    tl_msg = None
+    country = None
+    username = None
+    
     for i in range(0, len(data)):
         if col[i] == "orig_msg" and data[i]: 
             orig_msg = data[i]
@@ -86,7 +99,11 @@ def insertMessage(col, data):
     return 0
 
 def insertVideo(col, data):
-    videoLink = artistLink = username = title = None
+    videoLink = None
+    artistLink = None
+    username = None
+    title = None
+
     for i in range(0, len(data)):
         if col[i] == "videoLink" and data[i]: 
             videoLink = data[i]
