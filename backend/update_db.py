@@ -3,10 +3,10 @@ import argparse
 
 from main.server import db
 
-from main.server.resources.Message import insertMessage
+from main.server.resources.Announcement import insertAnnouncement
 from main.server.resources.Gallery import insertGallery 
 from main.server.resources.Game import insertGame
-from main.server.resources.Announcement import insertAnnouncement
+from main.server.resources.Message import insertMessage
 from main.server.resources.Video import insertVideo
 
 def parse_csv(csv_path: str):
@@ -34,10 +34,10 @@ def main(args):
         RED="\033[31m"
         CLR="\033[00m"
         if res == 1:
-            print(RED + "duplicate entry, skipping: " + CLR)
+            print(f"{RED}duplicate entry, skipping: {CLR}")
             print(data)
         if res == 2:
-            print(RED + "data was missing or column mismatch" + CLR)
+            print(f"{RED}data was missing or column mismatch{CLR}")
             print(data)
     if not args.dry_run and not fail: db.session.commit()
 
