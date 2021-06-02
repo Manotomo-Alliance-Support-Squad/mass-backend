@@ -51,12 +51,11 @@
 
 .notice-container {
     width: 100%;
-    min-width: 420px;
 }
 
 @media (max-width: 900px) {
     .notice-container {
-        max-width: 90%;
+        max-width: 100%;
     }
 }
 
@@ -97,6 +96,5 @@
     }
     .notice-container {
         max-width: 100vw;
-        min-width: 100vw;
     }
 }
