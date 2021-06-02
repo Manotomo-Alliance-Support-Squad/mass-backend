@@ -6,25 +6,6 @@ from main.server.models import Video, VideoSchema
 video_schema = VideoSchema()
 videos_schema = VideoSchema(many=True)
 
-def insertVideo(col, data):
-    videoLink = artistLink = username = title = None
-    for i in range(0, len(data)):
-        if col[i] == "videoLink" and data[i]: videoLink = data[i]
-        elif col[i] == "artistLink": artistLink = data[i]
-        elif col[i] == "username": username = data[i]
-        elif col[i] == "title": title = data[i]
-        else: continue
-    message = Video.query.filter_by(
-            videoLink=videoLink).first()
-    if message:
-        return 1
-    message = Video(videoLink=videoLink,
-                    artistLink=artistLink,
-                    username=username,
-                    title=title)
-    db.session.add(message)
-        
-
 @app.after_request
 def add_header(response):
     response.headers['Access-Control-Allow-Origin'] = '*'

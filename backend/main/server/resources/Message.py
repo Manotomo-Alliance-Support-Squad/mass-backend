@@ -8,25 +8,6 @@ from main.server.models import Message, MessageSchema
 messages_schema = MessageSchema(many=True)
 message_schema = MessageSchema()
 
-def insertMessage(col, data):
-    orig_msg = tl_msg = country = username = None
-    for i in range(0, len(data)):
-        if col[i] == "orig_msg" and data[i]: orig_msg = data[i]
-        elif col[i] == "tl_msg": tl_msg = data[i]
-        elif col[i] == "country": country = data[i]
-        elif col[i] == "username": username = data[i]
-        else: continue
-    message = Message.query.filter_by(orig_msg=orig_msg).first()
-    if message:
-        return 1
-    message = Message(orig_msg=orig_msg,
-                      tl_msg=tl_msg,
-                      country=country,
-                      username=username)
-    db.session.add(message)
-    return 0
-
-
 @app.after_request
 def add_header(response):
     response.headers['Access-Control-Allow-Origin'] = '*'

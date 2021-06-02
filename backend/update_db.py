@@ -2,12 +2,7 @@ import csv
 import argparse
 
 from main.server import db
-
-from main.server.resources.Announcement import insertAnnouncement
-from main.server.resources.Gallery import insertGallery 
-from main.server.resources.Game import insertGame
-from main.server.resources.Message import insertMessage
-from main.server.resources.Video import insertVideo
+from main.utils.insert import insertMessage, insertGallery, insertGame, insertAnnouncement, insertVideo
 
 def parse_csv(csv_path: str):
     with open(csv_path) as csv_f:
