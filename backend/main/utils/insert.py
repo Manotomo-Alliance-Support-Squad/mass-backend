@@ -7,11 +7,11 @@ def insertAnnouncement(col, data):
     if not data or not data[0]: 
         return 2
     text = data[0]                                                                                                           
-    message = Announcement.query.filter_by(message=text).first()                                                             
-    if message:                                                                                                              
+    res = Announcement.query.filter_by(message=text).first()                                                             
+    if res:                                                                                                              
         return 1                                                                                                             
-    message = Announcement(message=text)                                                                                     
-    db.session.add(message)                                                                                                  
+    res = Announcement(message=text)                                                                                     
+    db.session.add(res)                                                                                                  
     return 0                                                                                                                 
 
 def insertGallery(col, data):                                                                                                
@@ -31,14 +31,14 @@ def insertGallery(col, data):
             username = data[i]                                                            
         else: 
             continue                                                                                                       
-    message = Gallery.query.filter_by(artworkLink=artworkLink).first()                                                       
-    if message:
+    res = Gallery.query.filter_by(artworkLink=artworkLink).first()                                                       
+    if res:
         return 1
-    message = Gallery(artworkLink=artworkLink,
+    res = Gallery(artworkLink=artworkLink,
                         artistLink=artistLink,
                         username=username,
                         title=title)
-    db.session.add(message)
+    db.session.add(res)
     return 0
 
 def insertGame(col, data):
@@ -61,15 +61,15 @@ def insertGame(col, data):
             thumbnail = data[i]
         else: 
             continue
-    message = Games.query.filter_by(gameLink=gameLink).first()
-    if message:
+    res = Games.query.filter_by(gameLink=gameLink).first()
+    if res:
         return 1
-    message = Games(gameLink=gameLink,
+    res = Games(gameLink=gameLink,
                     gitLink=gitLink,
                     description=description,
                     title=title,
                     thumbnail=thumbnail)
-    db.session.add(message)
+    db.session.add(res)
 
 def insertMessage(col, data):
     orig_msg = None
@@ -88,14 +88,14 @@ def insertMessage(col, data):
             username = data[i]
         else: 
             continue
-    message = Message.query.filter_by(orig_msg=orig_msg).first()
-    if message:
+    res = Message.query.filter_by(orig_msg=orig_msg).first()
+    if res:
         return 1
-    message = Message(orig_msg=orig_msg,
+    res = Message(orig_msg=orig_msg,
                       tl_msg=tl_msg,
                       country=country,
                       username=username)
-    db.session.add(message)
+    db.session.add(res)
     return 0
 
 def insertVideo(col, data):
@@ -115,13 +115,13 @@ def insertVideo(col, data):
             title = data[i]
         else: 
             continue
-    message = Video.query.filter_by(
+    res = Video.query.filter_by(
             videoLink=videoLink).first()
-    if message:
+    if res:
         return 1
-    message = Video(videoLink=videoLink,
+    res = Video(videoLink=videoLink,
                     artistLink=artistLink,
                     username=username,
                     title=title)
-    db.session.add(message)
+    db.session.add(res)
  
