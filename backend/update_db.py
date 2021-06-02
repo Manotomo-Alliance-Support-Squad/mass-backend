@@ -32,7 +32,8 @@ def main(args):
         if res == 2:
             print(f"{RED}data was missing or column mismatch{CLR}")
             print(data)
-    if not args.dry_run and not fail: db.session.commit()
+    if not args.dry_run and not fail: 
+        db.session.commit()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(

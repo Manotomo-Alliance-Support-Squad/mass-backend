@@ -40,12 +40,18 @@ def insertGallery(col, data):
 def insertGame(col, data):
     gameLink = gitLink = description = title = thumbnail = None
     for i in range(0, len(data)):
-        if col[i] == "gameLink" and data[i]: gameLink = data[i]
-        elif col[i] == "gitLink": gitLink = data[i]
-        elif col[i] == "description": description = data[i]
-        elif col[i] == "title" and data[i]: title = data[i]
-        elif col[i] == "thumbnail": thumbnail = data[i]
-        else: continue
+        if col[i] == "gameLink" and data[i]: 
+            gameLink = data[i]
+        elif col[i] == "gitLink":
+            gitLink = data[i]
+        elif col[i] == "description": 
+            description = data[i]
+        elif col[i] == "title" and data[i]: 
+            title = data[i]
+        elif col[i] == "thumbnail": 
+            thumbnail = data[i]
+        else: 
+            continue
     message = Games.query.filter_by(gameLink=gameLink).first()
     if message:
         return 1
@@ -59,11 +65,16 @@ def insertGame(col, data):
 def insertMessage(col, data):
     orig_msg = tl_msg = country = username = None
     for i in range(0, len(data)):
-        if col[i] == "orig_msg" and data[i]: orig_msg = data[i]
-        elif col[i] == "tl_msg": tl_msg = data[i]
-        elif col[i] == "country": country = data[i]
-        elif col[i] == "username": username = data[i]
-        else: continue
+        if col[i] == "orig_msg" and data[i]: 
+            orig_msg = data[i]
+        elif col[i] == "tl_msg": 
+            tl_msg = data[i]
+        elif col[i] == "country": 
+            country = data[i]
+        elif col[i] == "username": 
+            username = data[i]
+        else: 
+            continue
     message = Message.query.filter_by(orig_msg=orig_msg).first()
     if message:
         return 1
@@ -77,11 +88,16 @@ def insertMessage(col, data):
 def insertVideo(col, data):
     videoLink = artistLink = username = title = None
     for i in range(0, len(data)):
-        if col[i] == "videoLink" and data[i]: videoLink = data[i]
-        elif col[i] == "artistLink": artistLink = data[i]
-        elif col[i] == "username": username = data[i]
-        elif col[i] == "title": title = data[i]
-        else: continue
+        if col[i] == "videoLink" and data[i]: 
+            videoLink = data[i]
+        elif col[i] == "artistLink": 
+            artistLink = data[i]
+        elif col[i] == "username": 
+            username = data[i]
+        elif col[i] == "title": 
+            title = data[i]
+        else: 
+            continue
     message = Video.query.filter_by(
             videoLink=videoLink).first()
     if message:
