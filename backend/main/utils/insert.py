@@ -1,127 +1,56 @@
 from main.server import db
 from main.server.models import Announcement, Gallery, Games, Message, Video
 
-def insertAnnouncement(col, data):                                                                                           
-    if col[0] != "message": 
-        return 2                                                                                         
-    if not data or not data[0]: 
+def insertAnnouncement(data):                                                                                           
+    if not data.message: 
         return 2
-    text = data[0]                                                                                                           
-    res = Announcement.query.filter_by(message=text).first()                                                             
+    res = Announcement.query.filter_by(message=data.message).first()                                                             
     if res:                                                                                                              
         return 1                                                                                                             
-    res = Announcement(message=text)                                                                                     
+    res = Announcement(message=data.message)
     db.session.add(res)                                                                                                  
     return 0                                                                                                                 
 
-def insertGallery(col, data):                                                                                                
-    artworkLink = None
-    artistLink = None
-    title = None
-    username = None
-
-    for i in range(0, len(data)):                                                                                            
-        if col[i] == "artworkLink" and data[i]: 
-            artworkLink = data[i]                                                        
-        elif col[i] == "artistLink" and data[i]: 
-            artistLink = data[i]                                                        
-        elif col[i] == "title" and data[i]: 
-            title = data[i]                                                                  
-        elif col[i] == "username" and data[i]: 
-            username = data[i]                                                            
-        else: 
-            continue                                                                                                       
-    res = Gallery.query.filter_by(artworkLink=artworkLink).first()                                                       
+def insertGallery(data):                                                                                                
+    res = Gallery.query.filter_by(artworkLink=data.artworkLink).first()                                                       
     if res:
         return 1
-    res = Gallery(artworkLink=artworkLink,
-                        artistLink=artistLink,
-                        username=username,
-                        title=title)
+    res = Gallery(artworkLink=data.artworkLink,
+                        artistLink=data.artistLink,
+                        username=data.username,
+                        title=data.title)
     db.session.add(res)
     return 0
 
-def insertGame(col, data):
-    gameLink = None
-    gitLink = None
-    description = None
-    title = None
-    thumbnail = None
-
-    for i in range(0, len(data)):
-        if col[i] == "gameLink" and data[i]: 
-            gameLink = data[i]
-        elif col[i] == "gitLink":
-            gitLink = data[i]
-        elif col[i] == "description": 
-            description = data[i]
-        elif col[i] == "title" and data[i]: 
-            title = data[i]
-        elif col[i] == "thumbnail": 
-            thumbnail = data[i]
-        else: 
-            continue
-    res = Games.query.filter_by(gameLink=gameLink).first()
+def insertGame(data):
+    res = Games.query.filter_by(gameLink=data.gameLink).first()
     if res:
         return 1
-    res = Games(gameLink=gameLink,
-                    gitLink=gitLink,
-                    description=description,
-                    title=title,
-                    thumbnail=thumbnail)
+    res = Games(gameLink=data.gameLink,
+                    gitLink=data.gitLink,
+                    description=data.description,
+                    title=data.title,
+                    thumbnail=data.thumbnail)
     db.session.add(res)
 
-def insertMessage(col, data):
-    orig_msg = None
-    tl_msg = None
-    country = None
-    username = None
-    
-    for i in range(0, len(data)):
-        if col[i] == "orig_msg" and data[i]: 
-            orig_msg = data[i]
-        elif col[i] == "tl_msg": 
-            tl_msg = data[i]
-        elif col[i] == "country": 
-            country = data[i]
-        elif col[i] == "username": 
-            username = data[i]
-        else: 
-            continue
-    res = Message.query.filter_by(orig_msg=orig_msg).first()
+def insertMessage(data):
+    res = Message.query.filter_by(orig_msg=data.orig_msg).first()
     if res:
         return 1
-    res = Message(orig_msg=orig_msg,
-                      tl_msg=tl_msg,
-                      country=country,
-                      username=username)
+    res = Message(orig_msg=data.orig_msg,
+                      tl_msg=data.tl_msg,
+                      country=data.country,
+                      username=data.username)
     db.session.add(res)
     return 0
 
-def insertVideo(col, data):
-    videoLink = None
-    artistLink = None
-    username = None
-    title = None
-
-    for i in range(0, len(data)):
-        if col[i] == "videoLink" and data[i]: 
-            videoLink = data[i]
-        elif col[i] == "artistLink": 
-            artistLink = data[i]
-        elif col[i] == "username": 
-            username = data[i]
-        elif col[i] == "title": 
-            title = data[i]
-        else: 
-            continue
+def insertVideo(data):
     res = Video.query.filter_by(
-            videoLink=videoLink).first()
+            videoLink=data.videoLink).first()
     if res:
         return 1
-    res = Video(videoLink=videoLink,
-                    artistLink=artistLink,
-                    username=username,
-                    title=title)
+    res = Video(videoLink=data.videoLink,
+                    artistLink=data.artistLink,
+                    username=data.username,
+                    title=data.title)
     db.session.add(res)
- 

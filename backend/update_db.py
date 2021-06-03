@@ -3,6 +3,7 @@ import argparse
 
 from main.server import db
 from main.utils.insert import insertMessage, insertGallery, insertGame, insertAnnouncement, insertVideo
+from main.utils.dto import getDTOFromColData, MessageDTO, GalleryDTO, GameDTO, AnnouncementDTO, VideoDTO
 
 def parse_csv(csv_path: str):
     with open(csv_path) as csv_f:
@@ -11,19 +12,28 @@ def parse_csv(csv_path: str):
 
 def main(args):
     csv = parse_csv(args.csv_path)
+    fail=0
     switch = {
             "MESSAGES": insertMessage,
             "GALLERY": insertGallery,
             "GAMES": insertGame,
             "ANNOUNCEMENTS": insertAnnouncement,
             "VIDEO": insertVideo,
-            }
+    }
 
     insert = switch.get(args.table_name)
-    fail=0
+    switch = {
+        "MESSAGES": MessageDTO,
+        "GALLERY": GalleryDTO,
+        "GAMES": GameDTO,
+        "ANNOUNCEMENTS": AnnouncementDTO,
+        "VIDEO": VideoDTO,
+    }
+    className = switch.get(args.table_name)
     for data in csv[1:]:
         # note: duplicated columns aren't handled, and the last column will reflect upon the db
-        res = insert(csv[0], data)
+        dto = getDTOFromColData(className, csv[0], data)
+        res = insert(dto)
         RED="\033[31m"
         CLR="\033[00m"
         if res == 1:
