@@ -60,7 +60,7 @@ if __name__ == "__main__":
             "--table", "-t", dest="table_name", required=True,
             help="The name of the table to insert into")
     parser.add_argument(
-            "--dry-run", "-d", dest="dry_run", action='store_true', default=False,
+            "--dry-run", "-d", dest="dry_run", action='store_true',
             help="Do not commit the database")
     args = parser.parse_args()
     main(args)
