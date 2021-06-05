@@ -9,6 +9,7 @@ class Arguments:
     dry_run = None
 
 RED="\033[31m"
+GRN="\033[32m"
 YLW="\033[33m"
 CLR="\033[00m"
 
@@ -24,6 +25,7 @@ def main(main_args):
     args.table_name = "ANNOUNCEMENTS"
     assert updatedb_main(args) == Status.OK
     assert updatedb_main(args) == Status.WARN
+    print(f"{GRN}[🗸] Test Pass{CLR}")
 
     # Gallery
     print(f"{YLW}===RUNNING TESTS FOR GALLERY==={CLR}")
@@ -31,6 +33,7 @@ def main(main_args):
     args.table_name = "GALLERY"
     assert updatedb_main(args) == Status.OK
     assert updatedb_main(args) == Status.WARN
+    print(f"{GRN}[🗸] Test Pass{CLR}")
 
     # Games
     print(f"{YLW}===RUNNING TESTS FOR GAMES==={CLR}")
@@ -38,6 +41,7 @@ def main(main_args):
     args.table_name = "GAMES"
     assert updatedb_main(args) == Status.OK
     assert updatedb_main(args) == Status.WARN
+    print(f"{GRN}[🗸] Test Pass{CLR}")
 
     # Messages
     print(f"{YLW}===RUNNING TESTS FOR MESSAGES==={CLR}")
@@ -45,6 +49,7 @@ def main(main_args):
     args.table_name = "MESSAGES"
     assert updatedb_main(args) == Status.OK
     assert updatedb_main(args) == Status.WARN
+    print(f"{GRN}[🗸] Test Pass{CLR}")
 
     # Video
     print(f"{YLW}===RUNNING TESTS FOR VIDEO==={CLR}")
@@ -52,6 +57,7 @@ def main(main_args):
     args.table_name = "VIDEO"
     assert updatedb_main(args) == Status.OK
     assert updatedb_main(args) == Status.WARN
+    print(f"{GRN}[🗸] Test Pass{CLR}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
