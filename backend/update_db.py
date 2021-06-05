@@ -38,10 +38,12 @@ def main(args):
         if res == Status.WARN:
             print(f"{RED}duplicate entry, skipping: {CLR}")
             print(data)
+            stat = res
         if res == Status.FAIL:
             print(f"{RED}data was missing or column mismatch{CLR}")
             print(data)
-            stat = res
+            # fail here because something is terribly wrong with the csv
+            return res
     if not args.dry_run and stat != Status.FAIL: 
         db.session.commit()
     return stat
