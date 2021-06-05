@@ -1,8 +1,11 @@
 from main.server import db
 from main.server.models import Announcement, Gallery, Games, Message, Video
+from main.utils.dto import AnnouncementDTO, GalleryDTO, GameDTO, MessageDTO, VideoDTO
 from main.server.status import Status
 
 def insertAnnouncement(data):
+    if not isinstance(data, AnnouncementDTO):
+        raise TypeError('data must be of type AnnouncementDTO')
     if not data.message: 
         return Status.FAIL
     res = Announcement.query.filter_by(message=data.message).first()                                                             
@@ -13,6 +16,8 @@ def insertAnnouncement(data):
     return Status.OK
 
 def insertGallery(data):                                                                                                
+    if not isinstance(data, GalleryDTO):
+        raise TypeError('data must be of type GalleryDTO')
     if not data.artworkLink:
         return Status.FAIL
     res = Gallery.query.filter_by(artworkLink=data.artworkLink).first()                                                       
@@ -26,6 +31,8 @@ def insertGallery(data):
     return Status.OK
 
 def insertGame(data):
+    if not isinstance(data, GameDTO):
+        raise TypeError('data must be of type GameDTO')
     if not data.gameLink:
         return Status.FAIL
     res = Games.query.filter_by(gameLink=data.gameLink).first()
@@ -39,6 +46,8 @@ def insertGame(data):
     db.session.add(res)
 
 def insertMessage(data):
+    if not isinstance(data, MessageDTO):
+        raise TypeError('data must be of type MessageDTO')
     if not data.orig_msg:
         return Status.FAIL
     res = Message.query.filter_by(orig_msg=data.orig_msg).first()
@@ -52,6 +61,8 @@ def insertMessage(data):
     return Status.OK
 
 def insertVideo(data):
+    if not isinstance(data, VideoDTO):
+        raise TypeError('data must be of type VideoDTO')
     if not data.videoLink:
         return Status.FAIL
     res = Video.query.filter_by(

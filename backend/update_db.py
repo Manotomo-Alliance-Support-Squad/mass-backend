@@ -6,13 +6,6 @@ from main.server.status import Status
 from main.utils.dto import getDTOFromColData, MessageDTO, GalleryDTO, GameDTO, AnnouncementDTO, VideoDTO
 from main.utils.insert import insertAnnouncement, insertGallery, insertGame, insertMessage, insertVideo
 
-def insertTable(dbClass: object, data: object):
-    row = dbClass(data)
-    # querying for entries that are the exact same
-    if dbClass.query.filter(row == row).first():
-        return Status.WARN
-    db.session.add(row)
-
 def parse_csv(csv_path: str):
     with open(csv_path) as csv_f:
         csv_r = csv.reader(csv_f, delimiter=',')
