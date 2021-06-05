@@ -8,6 +8,8 @@ class Gallery(db.Model):
     artistLink = db.Column(db.String(2048), nullable=True)
     username = db.Column(db.String(64), nullable=True)
     title = db.Column(db.String(64), nullable=True)
+    __table_args__ = (db.UniqueConstraint('artworkLink'),
+            )
 
     def __init__(self, artworkLink, username, title, artistLink):
         self.artworkLink = artworkLink
@@ -15,6 +17,11 @@ class Gallery(db.Model):
         self.username = username
         self.title = title
 
+    def __init__(self, data):
+        self.artworkLink = data.artworkLink
+        self.artistLink = data.artistLink
+        self.username = data.username
+        self.title = data.title
 
 class GallerySchema(ma.Schema):
     artworkID = fields.Integer()
@@ -32,6 +39,8 @@ class Games(db.Model):
     title = db.Column(db.String(64), nullable=False)
     description = db.Column(db.String(256), nullable=True)
     thumbnail = db.Column(db.String(2048), nullable=True)
+    __table_args__ = (db.UniqueConstraint('gameLink'),
+            )
 
     def __init__(self, gameLink, gitLink, title, description, thumbnail):
         self.gameLink = gameLink
@@ -40,6 +49,12 @@ class Games(db.Model):
         self.description = description
         self.thumbnail = thumbnail
 
+    def __init__(self, data):
+        self.gameLink = data.gameLink
+        self.gitLink = data.gitLink
+        self.title = data.title
+        self.description = data.description
+        self.thumbnail = data.thumbnail
 
 class GameSchema(ma.Schema):
     gameID = fields.Integer()
@@ -57,6 +72,8 @@ class Message(db.Model):
     tl_msg = db.Column(db.String(2048), nullable=True)
     country = db.Column(db.String(2), nullable=True)
     username = db.Column(db.String(64), nullable=True)
+    __table_args__ = (db.UniqueConstraint('orig_msg'),
+            )
 
     def __init__(self, orig_msg, tl_msg, country, username):
         self.orig_msg = orig_msg
@@ -64,6 +81,11 @@ class Message(db.Model):
         self.country = country
         self.username = username
 
+    def __init__(self, data):
+        self.orig_msg = data.orig_msg
+        self.tl_msg = data.tl_msg
+        self.country = data.country
+        self.username = data.username
 
 class MessageSchema(ma.Schema):
     messageID = fields.Integer()
@@ -77,10 +99,14 @@ class Announcement(db.Model):
     __tablename__ = 'ANNOUNCEMENTS'
     announcementID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     message = db.Column(db.String(1024), nullable=False)
+    __table_args__ = (db.UniqueConstraint('message'),
+            )
 
     def __init__(self, message):
         self.message = message
 
+    def __init__(self, data):
+        self.message = data.message
 
 class AnnouncementSchema(ma.Schema):
     announcementID = fields.Integer()
@@ -94,6 +120,8 @@ class Video(db.Model):
     artistLink = db.Column(db.String(2048), nullable=True)
     username = db.Column(db.String(64), nullable=True)
     title = db.Column(db.String(64), nullable=True)
+    __table_args__ = (db.UniqueConstraint('videoLink'),
+            )
 
     def __init__(self, videoLink, username, title, artistLink):
         self.videoLink = videoLink
@@ -101,6 +129,11 @@ class Video(db.Model):
         self.username = username
         self.title = title
 
+    def __init__(self, data):
+        self.videoLink = data.videoLink
+        self.artistLink = data.artistLink
+        self.username = data.username
+        self.title = data.title
 
 class VideoSchema(ma.Schema):
     videoID = fields.Integer()

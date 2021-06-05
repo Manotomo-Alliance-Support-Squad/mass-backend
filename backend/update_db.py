@@ -1,9 +1,23 @@
 import csv
 import argparse
 
+from enum import Enum
+
 from main.server import db
-from main.utils.insert import insertMessage, insertGallery, insertGame, insertAnnouncement, insertVideo
+from main.server.models import Announcement, Gallery, Games, Message, Video
 from main.utils.dto import getDTOFromColData, MessageDTO, GalleryDTO, GameDTO, AnnouncementDTO, VideoDTO
+
+class Status(Enum):
+    OK = 0
+    WARN = 1
+    FAIL = 2
+
+def insertTable(dbClass: object, data: object):
+    row = dbClass(data)
+    # querying for entries that are the exact same
+    if dbClass.query.filter(row == row).first():
+        return Status.WARN
+    db.session.add(row)
 
 def parse_csv(csv_path: str):
     with open(csv_path) as csv_f:
@@ -12,37 +26,28 @@ def parse_csv(csv_path: str):
 
 def main(args):
     csv = parse_csv(args.csv_path)
-    fail=0
+    fail=Status.OK
     switch = {
-            "MESSAGES": insertMessage,
-            "GALLERY": insertGallery,
-            "GAMES": insertGame,
-            "ANNOUNCEMENTS": insertAnnouncement,
-            "VIDEO": insertVideo,
+            "MESSAGES": [Message, MessageDTO],
+            "GALLERY": [Gallery, GalleryDTO],
+            "GAMES": [Games, GameDTO],
+            "ANNOUNCEMENTS": [Announcement, VideoDTO],
+            "VIDEO": [Video, VideoDTO],
     }
-
-    insert = switch.get(args.table_name)
-    switch = {
-        "MESSAGES": MessageDTO,
-        "GALLERY": GalleryDTO,
-        "GAMES": GameDTO,
-        "ANNOUNCEMENTS": AnnouncementDTO,
-        "VIDEO": VideoDTO,
-    }
-    className = switch.get(args.table_name)
+    className, classNameDTO = switch.get(args.table_name)
     for data in csv[1:]:
         # note: duplicated columns aren't handled, and the last column will reflect upon the db
-        dto = getDTOFromColData(className, csv[0], data)
-        res = insert(dto)
+        dto = getDTOFromColData(classNameDTO, csv[0], data)
+        res = insertTable(className, dto)
         RED="\033[31m"
         CLR="\033[00m"
-        if res == 1:
+        if res == Status.WARN:
             print(f"{RED}duplicate entry, skipping: {CLR}")
             print(data)
-        if res == 2:
+        if res == Status.FAIL:
             print(f"{RED}data was missing or column mismatch{CLR}")
             print(data)
-    if not args.dry_run and not fail: 
+    if not args.dry_run and fail != Status.FAIL: 
         db.session.commit()
 
 if __name__ == "__main__":
