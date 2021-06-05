@@ -1,12 +1,17 @@
+from dataclasses import dataclass
+
+@dataclass
 class AnnouncementDTO:
     message = None
 
+@dataclass
 class GalleryDTO:
     artworkLink = None
     artistLink = None
     title = None
     username = None
 
+@dataclass
 class GameDTO:
     gameLink = None
     gitLink = None
@@ -14,12 +19,14 @@ class GameDTO:
     title = None
     thumbnail = None
 
+@dataclass
 class MessageDTO:
     orig_msg = None
     tl_msg = None
     country = None
     username = None
 
+@dataclass
 class VideoDTO:
     videoLink = None
     artistLink = None
