@@ -17,12 +17,6 @@ class Gallery(db.Model):
         self.username = username
         self.title = title
 
-    def __init__(self, data):
-        self.artworkLink = data.artworkLink
-        self.artistLink = data.artistLink
-        self.username = data.username
-        self.title = data.title
-
 class GallerySchema(ma.Schema):
     artworkID = fields.Integer()
     artworkLink = fields.String(required=True)
@@ -49,13 +43,6 @@ class Games(db.Model):
         self.description = description
         self.thumbnail = thumbnail
 
-    def __init__(self, data):
-        self.gameLink = data.gameLink
-        self.gitLink = data.gitLink
-        self.title = data.title
-        self.description = data.description
-        self.thumbnail = data.thumbnail
-
 class GameSchema(ma.Schema):
     gameID = fields.Integer()
     gameLink = fields.String(required=True)
@@ -63,7 +50,6 @@ class GameSchema(ma.Schema):
     title = fields.String(required=True)
     description = fields.String(required=False)
     thumbnail = fields.String(required=False)
-
 
 class Message(db.Model):
     __tablename__ = 'MESSAGES'
@@ -81,19 +67,12 @@ class Message(db.Model):
         self.country = country
         self.username = username
 
-    def __init__(self, data):
-        self.orig_msg = data.orig_msg
-        self.tl_msg = data.tl_msg
-        self.country = data.country
-        self.username = data.username
-
 class MessageSchema(ma.Schema):
     messageID = fields.Integer()
     orig_msg = fields.String(required=True)
     tl_msg = fields.String(required=False)
     country = fields.String(required=False)
     username = fields.String(required=False)
-
 
 class Announcement(db.Model):
     __tablename__ = 'ANNOUNCEMENTS'
@@ -105,13 +84,9 @@ class Announcement(db.Model):
     def __init__(self, message):
         self.message = message
 
-    def __init__(self, data):
-        self.message = data.message
-
 class AnnouncementSchema(ma.Schema):
     announcementID = fields.Integer()
     message = fields.String(required=True)
-
 
 class Video(db.Model):
     __tablename__ = 'VIDEOS'
@@ -128,12 +103,6 @@ class Video(db.Model):
         self.artistLink = artistLink
         self.username = username
         self.title = title
-
-    def __init__(self, data):
-        self.videoLink = data.videoLink
-        self.artistLink = data.artistLink
-        self.username = data.username
-        self.title = data.title
 
 class VideoSchema(ma.Schema):
     videoID = fields.Integer()

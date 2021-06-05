@@ -1,16 +1,10 @@
 import csv
 import argparse
 
-from enum import Enum
-
 from main.server import db
-from main.server.models import Announcement, Gallery, Games, Message, Video
+from main.server.status import Status
 from main.utils.dto import getDTOFromColData, MessageDTO, GalleryDTO, GameDTO, AnnouncementDTO, VideoDTO
-
-class Status(Enum):
-    OK = 0
-    WARN = 1
-    FAIL = 2
+from main.utils.insert import insertAnnouncement, insertGallery, insertGame, insertMessage, insertVideo
 
 def insertTable(dbClass: object, data: object):
     row = dbClass(data)
@@ -28,17 +22,17 @@ def main(args):
     csv = parse_csv(args.csv_path)
     fail=Status.OK
     switch = {
-            "MESSAGES": [Message, MessageDTO],
-            "GALLERY": [Gallery, GalleryDTO],
-            "GAMES": [Games, GameDTO],
-            "ANNOUNCEMENTS": [Announcement, AnnouncementDTO],
-            "VIDEO": [Video, VideoDTO],
+            "MESSAGES": [insertMessage, MessageDTO],
+            "GALLERY": [insertGallery, GalleryDTO],
+            "GAMES": [insertGame, GameDTO],
+            "ANNOUNCEMENTS": [insertAnnouncement, AnnouncementDTO],
+            "VIDEO": [insertVideo, VideoDTO],
     }
-    className, classNameDTO = switch.get(args.table_name)
+    insert, classNameDTO = switch.get(args.table_name)
     for data in csv[1:]:
         # note: duplicated columns aren't handled, and the last column will reflect upon the db
         dto = getDTOFromColData(classNameDTO, csv[0], data)
-        res = insertTable(className, dto)
+        res = insert(dto)
         RED="\033[31m"
         CLR="\033[00m"
         if res == Status.WARN:
@@ -47,6 +41,7 @@ def main(args):
         if res == Status.FAIL:
             print(f"{RED}data was missing or column mismatch{CLR}")
             print(data)
+            fail = res
     if not args.dry_run and fail != Status.FAIL: 
         db.session.commit()
 
