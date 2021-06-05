@@ -31,7 +31,7 @@ def main(args):
             "MESSAGES": [Message, MessageDTO],
             "GALLERY": [Gallery, GalleryDTO],
             "GAMES": [Games, GameDTO],
-            "ANNOUNCEMENTS": [Announcement, VideoDTO],
+            "ANNOUNCEMENTS": [Announcement, AnnouncementDTO],
             "VIDEO": [Video, VideoDTO],
     }
     className, classNameDTO = switch.get(args.table_name)
