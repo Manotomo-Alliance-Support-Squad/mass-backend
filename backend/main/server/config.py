@@ -21,7 +21,8 @@ class TestingConfig(BaseConfig):
     TESTING = True
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-                              'sqlite:///' + os.path.join(basedir, 'app.testing.db')
+                              'sqlite://'
+    # loads sqlite in memory instead of on the filesystem
 
 
 class ProductionConfig(BaseConfig):

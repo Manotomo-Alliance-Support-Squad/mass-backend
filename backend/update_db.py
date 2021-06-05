@@ -20,7 +20,7 @@ def parse_csv(csv_path: str):
 
 def main(args):
     csv = parse_csv(args.csv_path)
-    fail=Status.OK
+    stat=Status.OK
     switch = {
             "MESSAGES": [insertMessage, MessageDTO],
             "GALLERY": [insertGallery, GalleryDTO],
@@ -41,9 +41,10 @@ def main(args):
         if res == Status.FAIL:
             print(f"{RED}data was missing or column mismatch{CLR}")
             print(data)
-            fail = res
-    if not args.dry_run and fail != Status.FAIL: 
+            stat = res
+    if not args.dry_run and stat != Status.FAIL: 
         db.session.commit()
+    return stat
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
