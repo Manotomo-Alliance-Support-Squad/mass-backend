@@ -1,19 +1,30 @@
 .base-card {
+    width: 100%;   
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--theme-card-header-background);
+}
+
+.card-section {
+    padding: 15px;
+}
+
+.card-content {
     --card-text-width: 420px;
 
     display: block;
     width: 100%;
     min-height: 1px;  /*DO NOT REMOVE THIS LINE. OTHERWISE YOU WILL EXPERIENCE PAIN IN TRYING TO FIX COLUMN STACKING ON CHROME/IOS*/
     overflow: auto;
-    border-radius: 15px;
-    padding: 15px;
-
-    margin-bottom: 1rem;
 
     background-repeat: no-repeat;
     background-size: 100%;
 
     color: var(--main-text-color);
+    background-color: var(--main-background-color);
 
     list-style-type: none;
     /*object-fit: fill;*/
@@ -39,3 +50,13 @@
     }
 }
 
+.card-header {
+    height: 9vh;
+    background-size: 100% 100%;
+    background-position-x: center;
+}
+
+.card-footer {
+    height: 5vh;
+    background-image: url(../../../assets/cards/AKUKIN_Card_footer.png);
+}

@@ -13,7 +13,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    color: var(--theme-card-text1);
+    color: var(--theme-color-white);
     transition: all 0.25s ease;
 }
 
@@ -51,6 +51,7 @@
     height: 40px;
     width: 100%;
     background-color: var(--separator-background-color);
+    background-image: url(../../assets/cards/AKUKIN_Card_footer.png);
 }
 
 .notice-container {

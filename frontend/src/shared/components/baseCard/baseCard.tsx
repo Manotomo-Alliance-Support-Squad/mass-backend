@@ -3,8 +3,8 @@ import CSS from "csstype";
 import './baseCard.css';
 import VisibilitySensor from "react-visibility-sensor";
 
-import CardStyle1 from "../../../assets/cards/rara_header_haachama.png";
-import CardStyle2 from "../../../assets/cards/rara_header2_haachama.png";
+import CardStyle1 from "../../../assets/cards/AKUKIN_Card_Header.png";
+import CardStyle2 from "../../../assets/cards/AKUKIN_Card_Header1.png";
 
 
 export const CardStyles = [
@@ -44,13 +44,16 @@ export default class BaseCard<T, P extends BaseCardProps<T>, S extends BaseCardS
         const rootStyles: CSS.Properties = {
             backgroundImage: `url(${CardStyles[this.cardStyleIndex][0]})`,
             opacity: (loaded ? 1 : 0),
-            backgroundColor: `${CardStyles[this.cardStyleIndex][1]}`,
+            //backgroundColor: `${CardStyles[this.cardStyleIndex][1]}`,
         };
         return (
             <VisibilitySensor onChange={this.toggleVisibility.bind(this)} partialVisibility active={!loaded}>
-                <div className="base-card" style={rootStyles}>
-                    <div className="card-header" />
-                    {content}
+                <div className="base-card">
+                    <div className="card-header" style={rootStyles} />
+                    <div className="card-content">
+                        {content}
+                    </div>
+                    <div className="card-footer" />
                 </div>
             </VisibilitySensor>
         );

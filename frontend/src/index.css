@@ -4,16 +4,20 @@
     --theme-color3: #fff0e3; /*card bg color and anchor link color*/
     --theme-color4: #000000; /*Anchor link color*/
 
+    --theme-color-black: #000;
+    --theme-color-white: #fff;
+
     --theme-card-text1: #202020;
     --theme-card-text2: #000000;
     --theme-card-background: #ffffff;
+    --theme-card-header-background: #5f5097;
 
     --theme-special-text: #f0f0f0;
     --theme-special-background: #353772;
     --theme-special-background-alt: #555792;
 
     --main-background: url(assets/backgrounds/App-root-bg.svg);
-    --main-background-color: #fffde2;
+    --main-background-color: #ffffff;
 
     --header-background: url(assets/backgrounds/header_bg.png);
     --header-background-color: #ffffff;

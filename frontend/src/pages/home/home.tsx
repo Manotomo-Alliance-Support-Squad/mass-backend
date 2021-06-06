@@ -177,7 +177,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     {this.renderCardSection(comboCardData)}
                     <div className="justify-center">
                         <div className="notice-container">
-                            <div className="notice-content">
+                            <div className="notice-content" style={{borderRadius: 0}}>
                                 <p>These are all the messages we managed to collect!</p>
                                 <p>Tweet at #TOBEDECIDED to send us a message!</p>
                                 <p style={{fontSize: 12}}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com</p>
