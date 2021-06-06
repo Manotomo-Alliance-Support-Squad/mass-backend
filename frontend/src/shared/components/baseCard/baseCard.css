@@ -32,7 +32,19 @@
 }
 
 .card-section {
+    --card-height: 550px;
+    --card-width: var(--card-height);
+
     padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    /* overflow is required to keep cards 
+     * from segmenting into different columns 
+     * at certain resolutions */
+    overflow: auto;
+    height: 100%;
 }
 
 .card-content {
