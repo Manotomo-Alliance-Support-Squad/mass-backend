@@ -177,7 +177,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         if (multimediaCount > this.state.messages.length) {
             mainContentArray = this.randomizeArrayWithSeed(
                 mainContentArray.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
-                "manotomo",
+                "manotomo",  // seed to get the same randomization results every time
             );
             // TODO: create a randomly seeded version of the main content array
             subContentArray = this.state.messages;
@@ -187,7 +187,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
             mainContentArray = this.state.messages;
             subContentArray = this.randomizeArrayWithSeed(
                 subContentArray.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
-                "manotomo",
+                "manotomo",  // seed to get the same randomization results every time
             );
             if (multimediaCount === 0) {
                 indexIncrementSpacing = -1;
