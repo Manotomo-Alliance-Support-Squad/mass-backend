@@ -168,48 +168,48 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
     // We do this because state setting is async and trying to create this in getData yields empty arrays
     compileCardData() {
         let comboCardData: (Message|Artwork|Video|MultiArtwork)[] = [];
-        let main_content_array: any[] = [];
-        let sub_content_array: any[] = [];
-        let multimedia_count: number = this.state.artworks.length + this.state.videos.length + this.state.multiArtworks.length;
-        let index_increment_spacing: number;
+        let mainContentArray: any[] = [];
+        let subContentArray: any[] = [];
+        let multimediaCount: number = this.state.artworks.length + this.state.videos.length + this.state.multiArtworks.length;
+        let indexIncrementSpacing: number;
         
         // The higher count of the two types of content gets to determine the sprinkling of the type of content
-        if (multimedia_count > this.state.messages.length) {
-            main_content_array = this.randomizeArrayWithSeed(
-                main_content_array.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
+        if (multimediaCount > this.state.messages.length) {
+            mainContentArray = this.randomizeArrayWithSeed(
+                mainContentArray.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
                 "manotomo",
             );
             // TODO: create a randomly seeded version of the main content array
-            sub_content_array = this.state.messages;
+            subContentArray = this.state.messages;
             
-            index_increment_spacing = Math.floor(multimedia_count / this.state.messages.length);
+            indexIncrementSpacing = Math.floor(multimediaCount / this.state.messages.length);
         } else {
-            main_content_array = this.state.messages;
-            sub_content_array = this.randomizeArrayWithSeed(
-                sub_content_array.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
+            mainContentArray = this.state.messages;
+            subContentArray = this.randomizeArrayWithSeed(
+                subContentArray.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
                 "manotomo",
             );
-            if (multimedia_count === 0) {
-                index_increment_spacing = -1;
+            if (multimediaCount === 0) {
+                indexIncrementSpacing = -1;
 
             } else {
-                index_increment_spacing = Math.floor(this.state.messages.length / multimedia_count);
+                indexIncrementSpacing = Math.floor(this.state.messages.length / multimediaCount);
             }
         }
 
         // Main content is the type of content we have more of
         for (
-                let main_content_index = 0, sub_content_index = 0;
-                main_content_index < main_content_array.length;
-                main_content_index++) {
-            comboCardData.push(main_content_array[main_content_index]);
+                let mainContentIndex = 0, subContentIndex = 0;
+                mainContentIndex < mainContentArray.length;
+                mainContentIndex++) {
+            comboCardData.push(mainContentArray[mainContentIndex]);
 
-            if index_increment_spacing === -1 {
+            if indexIncrementSpacing === -1 {
                 continue;
             }
-            else if (main_content_index % index_increment_spacing === 0 && sub_content_index < sub_content_array.length) {
-                comboCardData.push(sub_content_array[sub_content_index]);
-                sub_content_index++;
+            else if (mainContentIndex % indexIncrementSpacing === 0 && subContentIndex < subContentArray.length) {
+                comboCardData.push(subContentArray[subContentIndex]);
+                subContentIndex++;
             }
         }
 
