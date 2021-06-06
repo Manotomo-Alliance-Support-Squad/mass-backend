@@ -170,7 +170,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         let comboCardData: (Message|Artwork|Video|MultiArtwork)[] = [];
         let main_content_array: any[] = [];
         let sub_content_array: any[] = [];
-        let multimedia_count: number = this.state.artworks.length + this.state.videos.length + this.state.multiArtworks.length
+        let multimedia_count: number = this.state.artworks.length + this.state.videos.length + this.state.multiArtworks.length;
         let index_increment_spacing: number;
         
         // The higher count of the two types of content gets to determine the sprinkling of the type of content
@@ -189,8 +189,12 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 sub_content_array.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
                 "manotomo",
             );
+            if (multimedia_count === 0) {
+                index_increment_spacing = -1;
 
-            index_increment_spacing = Math.floor(this.state.messages.length / multimedia_count);
+            } else {
+                index_increment_spacing = Math.floor(this.state.messages.length / multimedia_count);
+            }
         }
 
         // Main content is the type of content we have more of
@@ -199,7 +203,11 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 main_content_index < main_content_array.length;
                 main_content_index++) {
             comboCardData.push(main_content_array[main_content_index]);
-            if (main_content_index % index_increment_spacing === 0 && sub_content_index < sub_content_array.length) {
+
+            if index_increment_spacing === -1 {
+                continue;
+            }
+            else if (main_content_index % index_increment_spacing === 0 && sub_content_index < sub_content_array.length) {
                 comboCardData.push(sub_content_array[sub_content_index]);
                 sub_content_index++;
             }
