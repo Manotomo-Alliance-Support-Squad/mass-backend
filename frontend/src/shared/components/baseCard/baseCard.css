@@ -85,4 +85,5 @@
 .card-footer {
     height: var(--footer-text-height);
     background-image: url(../../../assets/cards/AKUKIN_Card_footer.png);
+    background-size: 100% 100%;
 }
