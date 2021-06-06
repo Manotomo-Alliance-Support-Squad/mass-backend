@@ -9,9 +9,26 @@
     background-repeat: no-repeat;
     background-size: 100%;
     border-radius: 15px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: var(--theme-card-header-background);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-header-decal {
+    width: 175px;
+    height: 75px;
+    position: relative;
+    top: -80px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card-header-decal-wrapper {
+    align-content: center;
+    display: flex;
+    height: 0px;
+    justify-content: center;
 }
 
 .card-section {
@@ -60,6 +77,9 @@
     height: 9vh;
     background-size: 100% 100%;
     background-position-x: center;
+    background-repeat: round;
+    background-size: auto 100%;
+    background-image: url(../../../assets/cards/AKUKIN_Card_Header_Base.png);
 }
 
 .card-footer {
