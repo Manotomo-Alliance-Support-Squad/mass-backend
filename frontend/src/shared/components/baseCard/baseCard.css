@@ -1,3 +1,8 @@
+:root {
+    --footer-text-height: 25px;
+    --footer-height: 40px;
+}
+
 .base-card {
     width: 100%;   
 
@@ -6,6 +11,7 @@
     border-radius: 15px;
     overflow: hidden;
     background-color: var(--theme-card-header-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-section {
@@ -57,6 +63,6 @@
 }
 
 .card-footer {
-    height: 5vh;
+    height: var(--footer-text-height);
     background-image: url(../../../assets/cards/AKUKIN_Card_footer.png);
 }

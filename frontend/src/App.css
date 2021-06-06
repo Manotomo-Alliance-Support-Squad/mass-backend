@@ -1,6 +1,6 @@
 :root {
     background-image: var(--main-background);
-    background-size: 100% auto;
+    background-size: 50% auto;
 }
 
 .community-message-card {
