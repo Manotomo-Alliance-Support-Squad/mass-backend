@@ -21,7 +21,7 @@ export interface ArtworkMetadata {
     setID: string;
     artistLink: ExternalLink;
     username: string;
-    title: string;    
+    message: string;    
 }
 
 export interface ArtworkMetadataJson {
@@ -29,7 +29,7 @@ export interface ArtworkMetadataJson {
     setID: string;
     artistLink: string;
     username: string;
-    title: string;    
+    message: string;    
 }
 
 export interface MultiArtwork {

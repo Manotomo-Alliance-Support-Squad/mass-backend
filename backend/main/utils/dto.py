@@ -9,8 +9,8 @@ class MultiGalleryDTO:
     setID = None
     artworkLink = None
     artistLink = None
-    title = None
     username = None
+    message = None
 
 @dataclass
 class GalleryDTO:

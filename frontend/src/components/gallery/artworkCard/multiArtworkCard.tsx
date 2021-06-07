@@ -1,6 +1,4 @@
 import BaseCard, { BaseCardProps, BaseCardState } from "../../../shared/components/baseCard/baseCard";
-import DisplayedLanguage from "../../../models/language";
-import handleViewport from 'react-in-viewport';
 import { MultiArtwork, ArtworkMetadata } from '../../../models/artwork';
 import './artworkCard.css';
 import { linkToString } from '../../../models/url';
@@ -74,11 +72,11 @@ export default class MultiArtworkCard extends BaseCard<MultiArtwork, MultiArtwor
             <div className="artwork-card">
                 {this.artworks.map((obj, idx) => {
                     return (
-                        <img className="artwork-card-img" key={idx} src={obj} alt={this.metadata.title} />
+                        <img className="artwork-card-img" key={idx} src={obj} alt={this.metadata.message} />
                     );
                 })}
                 <div className="artwork-card-footer">
-                    <div className="title">{this.metadata.title}</div>
+                    <div className="title">{this.metadata.message}</div>
                     <div className="artist">
                         Artist: <a href={artistLink}>{this.username}</a>
                     </div>
