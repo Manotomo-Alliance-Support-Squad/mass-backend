@@ -34,7 +34,7 @@ class MultiGalleryListResource(Resource):
         if not multigallery:
             return {
                 'status': 'success',
-                'multigallery': {}
+                'multigallery': [{"metadata": {}, "gallery": []}]
             }, 206  # Partial Content Served, the other status code never loads
 
         # Create a map of {mdatadataID: {metadata: {}, gallery: [art1, art2,...]}}
