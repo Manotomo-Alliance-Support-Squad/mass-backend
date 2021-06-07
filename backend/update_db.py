@@ -3,8 +3,8 @@ import argparse
 
 from main.server import db
 from main.server.status import Status
-from main.utils.dto import getDTOFromColData, MessageDTO, GalleryDTO, GameDTO, AnnouncementDTO, VideoDTO
-from main.utils.insert import insertAnnouncement, insertGallery, insertGame, insertMessage, insertVideo
+from main.utils.dto import getDTOFromColData, MessageDTO, MultiGalleryDTO, GalleryDTO, GameDTO, AnnouncementDTO, VideoDTO
+from main.utils.insert import insertAnnouncement, insertMultiGallery, insertGallery, insertGame, insertMessage, insertVideo
 
 def parse_csv(csv_path: str):
     with open(csv_path) as csv_f:
@@ -17,6 +17,7 @@ def main(args):
     switch = {
             "MESSAGES": [insertMessage, MessageDTO],
             "GALLERY": [insertGallery, GalleryDTO],
+            "MULTIGALLERY": [insertMultiGallery, MultiGalleryDTO],
             "GAMES": [insertGame, GameDTO],
             "ANNOUNCEMENTS": [insertAnnouncement, AnnouncementDTO],
             "VIDEO": [insertVideo, VideoDTO],

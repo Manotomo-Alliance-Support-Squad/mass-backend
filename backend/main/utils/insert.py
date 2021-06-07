@@ -1,6 +1,6 @@
 from main.server import db
-from main.server.models import Announcement, Gallery, Games, Message, Video
-from main.utils.dto import AnnouncementDTO, GalleryDTO, GameDTO, MessageDTO, VideoDTO
+from main.server.models import Announcement, MultiGallery, Gallery, Games, Message, Video, SetMetadata
+from main.utils.dto import AnnouncementDTO, MultiGalleryDTO, GalleryDTO, GameDTO, MessageDTO, VideoDTO
 from main.server.status import Status
 
 def insertAnnouncement(data):
@@ -13,6 +13,32 @@ def insertAnnouncement(data):
         return Status.WARN
     res = Announcement(message=data.message)
     db.session.add(res)                                                                                                  
+    return Status.OK
+
+def insertMultiGallery(data):                                                                                                
+    if not isinstance(data, MultiGalleryDTO):
+        raise TypeError('data must be of type MultiGalleryDTO')
+    if not data.artworkLink:
+        return Status.FAIL
+    if not SetMetadata.query.filter_by(setID=data.setID).first():
+        metadata_entry = SetMetadata(
+            setID=data.setID,
+            artistLink=data.artistLink,
+            username=data.username,
+            title=data.title,
+        )
+        db.session.add(metadata_entry)
+        
+    if not MultiGallery.query.filter_by(artworkLink=data.artworkLink).first():
+        multigallery_entry = MultiGallery(
+            setID=data.setID,
+            artworkLink=data.artworkLink,
+        )
+        db.session.add(multigallery_entry)
+    else:
+        # return from this insert with dupe warn
+        return Status.WARN
+
     return Status.OK
 
 def insertGallery(data):                                                                                                

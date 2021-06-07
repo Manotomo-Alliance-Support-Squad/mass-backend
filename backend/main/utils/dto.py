@@ -5,6 +5,14 @@ class AnnouncementDTO:
     message = None
 
 @dataclass
+class MultiGalleryDTO:
+    setID = None
+    artworkLink = None
+    artistLink = None
+    title = None
+    username = None
+
+@dataclass
 class GalleryDTO:
     artworkLink = None
     artistLink = None

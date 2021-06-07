@@ -35,6 +35,14 @@ def main(main_args):
     assert updatedb_main(args) == Status.WARN
     print(f"{GRN}[🗸] Test Pass{CLR}")
 
+    # MultiGallery
+    print(f"{YLW}===RUNNING TESTS FOR MULTIGALLERY==={CLR}")
+    args.csv_path = "./tests/multigallery.csv"
+    args.table_name = "MULTIGALLERY"
+    assert updatedb_main(args) == Status.OK
+    assert updatedb_main(args) == Status.WARN
+    print(f"{GRN}[🗸] Test Pass{CLR}")
+
     # Games
     print(f"{YLW}===RUNNING TESTS FOR GAMES==={CLR}")
     args.csv_path = "./tests/games.csv"
