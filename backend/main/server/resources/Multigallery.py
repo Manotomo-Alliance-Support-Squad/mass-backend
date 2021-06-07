@@ -83,6 +83,7 @@ class MultiGalleryListResource(Resource):
             multigallery_entry = MultiGallery(
                 setID=data.get('setID'),
                 artworkLink=data.get('artworkLink'),
+                message=data.get('message'),
             )
             db.session.add(multigallery_entry)
         else:

@@ -130,14 +130,17 @@ class MultiGallery(db.Model):
     setID = db.Column(db.Integer, db.ForeignKey('SETMETADATA.setID'), nullable=False)
     setmetadata = db.relationship("SetMetadata")
     artworkLink = db.Column(db.String(2048), nullable=False)
+    message = db.Column(db.String(2048), nullable=False)
 
     def __init__(
             self,
             setID,
             artworkLink,
+            message,
     ):
         self.setID = setID
         self.artworkLink = artworkLink
+        self.message = message
 
 
 class SetMetadata(db.Model):
@@ -173,6 +176,7 @@ class MultiGallerySchema(ma.Schema):
     artworkID = fields.Integer()
     metadata = fields.Nested(SetMetadataSchema)
     gallery = fields.List(fields.String(required=True))
+    message = fields.String(required=True)
 
 
 class MultiGalleryImportSchema(ma.Schema):
