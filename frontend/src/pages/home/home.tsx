@@ -1,4 +1,5 @@
 import React from 'react';
+import seedrandom from 'seedrandom';
 import ComboSection from '../../components/comboSection/comboSection';
 import { Message } from "../../models/message";
 import ManoAloeService from "../../controllers/mano-aloe.service";
@@ -6,7 +7,7 @@ import SessionService from "../../services/session.service";
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import { Announcement } from "../../models/announcement"
-import { Artwork } from "../../models/artwork"
+import { Artwork, MultiArtwork } from "../../models/artwork"
 import { Video } from "../../models/video"
 import './home.css';
 import '../../shared/globalStyles/global.css'
@@ -34,6 +35,7 @@ export interface HomePageState {
     messages: Message[];
     announcements: Announcement[];
     artworks: Artwork[];
+    multiArtworks: MultiArtwork[];
     videos: Video[];
 }
 
@@ -74,6 +76,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         announcements: [],
         artworks: [],
         videos: [],
+        multiArtworks: [],
     }
 
     componentDidMount() {
@@ -141,9 +144,24 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 () => SessionService.saveGallery(this.state.artworks)
             );
         }
+
+        // Gallery with multiple images
+        const cachedMultiGallery: MultiArtwork[] | null = SessionService.getMultiGallery();
+        if (cachedMultiGallery && cachedMultiGallery.length) {
+            this.setState({multiArtworks: cachedMultiGallery});
+        } else {
+            this.manoAloeService.getMultiGallery()
+                .then((multiArtworks: MultiArtwork[]) => {
+                    SessionService.saveMultiGallery(multiArtworks);
+                    this.setState({multiArtworks});
+                })
+                .catch((error: Error) => {
+                    console.error(error);
+                })
+        }
     }
 
-    renderCardSection(data: (Message | Artwork | Video)[]) {
+    renderCardSection(data: (Message | Artwork | Video | MultiArtwork)[]) {
         return (
             <div>
                 <div className="wrapper-overlay">
@@ -153,27 +171,63 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         )
     }
 
-    compileCardData() {
-        // We do this because state setting is async and trying to create this in getData yields empty arrays
-        let comboCardData: (Message | Artwork | Video)[] = [];
-        // TODO: This can should be more generalized, but generally there will be fewer art than messages
-        const art_cards_length = this.state.artworks.length;
-        const message_cards_length = this.state.messages.length;
-        const video_cards_length = this.state.videos.length;
-        const index_increment_spacing = Math.floor(message_cards_length / art_cards_length);
+    randomizeArrayWithSeed(unshuffled_arr: any[], seed: string) {
+        let rng = seedrandom(seed);
+        // Schwartzian transform
+        return unshuffled_arr
+            .map((a) => ({sort: rng(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map((a) => a.value);
+    }
 
-        for (let msg_index = 0, art_index = 0, video_index = 0; msg_index < message_cards_length; msg_index++) {
-            comboCardData.push(this.state.messages[msg_index]);
-            if (art_index < art_cards_length && msg_index % index_increment_spacing === 0) {
-                comboCardData.push(this.state.artworks[art_index]);
-                art_index++;
-                // Hack this in...
-                if (video_index < video_cards_length) {
-                    comboCardData.push(this.state.videos[video_index]);
-                    video_index++;
-                }
+    // We do this because state setting is async and trying to create this in getData yields empty arrays
+    compileCardData() {
+        let comboCardData: (Message|Artwork|Video|MultiArtwork)[] = [];
+        let mainContentArray: any[] = [];
+        let subContentArray: any[] = [];
+        let multimediaCount: number = this.state.artworks.length + this.state.videos.length + this.state.multiArtworks.length;
+        let indexIncrementSpacing: number;
+        
+        // The higher count of the two types of content gets to determine the sprinkling of the type of content
+        if (multimediaCount > this.state.messages.length) {
+            mainContentArray = this.randomizeArrayWithSeed(
+                mainContentArray.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
+                "manotomo",  // seed to get the same randomization results every time
+            );
+            // TODO: create a randomly seeded version of the main content array
+            subContentArray = this.state.messages;
+            
+            indexIncrementSpacing = Math.floor(multimediaCount / this.state.messages.length);
+        } else {
+            mainContentArray = this.state.messages;
+            subContentArray = this.randomizeArrayWithSeed(
+                subContentArray.concat(this.state.multiArtworks, this.state.artworks, this.state.videos),
+                "manotomo",  // seed to get the same randomization results every time
+            );
+            if (multimediaCount === 0) {
+                indexIncrementSpacing = -1;
+
+            } else {
+                indexIncrementSpacing = Math.floor(this.state.messages.length / multimediaCount);
             }
         }
+
+        // Main content is the type of content we have more of
+        for (
+                let mainContentIndex = 0, subContentIndex = 0;
+                mainContentIndex < mainContentArray.length;
+                mainContentIndex++) {
+            comboCardData.push(mainContentArray[mainContentIndex]);
+
+            if (indexIncrementSpacing === -1) {
+                continue;
+            }
+            else if (mainContentIndex % indexIncrementSpacing === 0 && subContentIndex < subContentArray.length) {
+                comboCardData.push(subContentArray[subContentIndex]);
+                subContentIndex++;
+            }
+        }
+
         return comboCardData
     }
 

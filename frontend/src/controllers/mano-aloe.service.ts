@@ -1,6 +1,6 @@
 import {Message, messageFromJson} from "../models/message";
-import {CountResponse, GalleryResponse, MessageResponse, ArchiveResponse, AnnouncementResponse, VideoResponse} from "../models/response";
-import {Artwork, artworkFromJson} from "../models/artwork";
+import {CountResponse, GalleryResponse, MultiGalleryResponse, MessageResponse, ArchiveResponse, AnnouncementResponse, VideoResponse} from "../models/response";
+import {Artwork, MultiArtwork, artworkFromJson, multiArtworkFromJson} from "../models/artwork";
 import {Archive, archiveFromJson} from "../models/archive";
 import {Announcement, announcementFromJson} from "../models/announcement";
 import {Video, videoFromJson} from "../models/video";
@@ -86,6 +86,18 @@ export default class ManoAloeService {
         return this.getCount('gallery');
     }
 
+    public getMultiGallery(): Promise<MultiArtwork[]> {
+        return fetch(this.apiURL + 'multigallery')
+            .then((res: { json: () => any; }) => {
+                return res.json();
+            })
+            .then((apiResponse: MultiGalleryResponse) => {
+                return apiResponse.multigallery.map(multiArtworkFromJson);
+            })
+            .catch((error: Error) => {
+                throw error;
+            })
+    }
 
     public getVideo(): Promise<Video[]> {
         return fetch(this.apiURL + 'videos')
