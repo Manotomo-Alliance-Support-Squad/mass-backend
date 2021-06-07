@@ -72,11 +72,9 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
                 <img className="artwork-card-img" src={artworkLink} alt={this.artwork.title} />
                 <div className="artwork-card-footer">
                     <div className="title">{this.artwork.title}</div>
-                    <p>
-                        <div className="artist">
-                            Artist: <a href={artistLink}>{this.username}</a>
-                        </div>
-                    </p>
+                    <div className="artist">
+                        Artist: <a href={artistLink}>{this.username}</a>
+                    </div>
                 </div>
             </div>
         )

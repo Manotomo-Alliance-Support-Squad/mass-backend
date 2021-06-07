@@ -79,11 +79,9 @@ export default class MultiArtworkCard extends BaseCard<MultiArtwork, MultiArtwor
                 })}
                 <div className="artwork-card-footer">
                     <div className="title">{this.metadata.title}</div>
-                    <p>
-                        <div className="artist">
-                            Artist: <a href={artistLink}>{this.username}</a>
-                        </div>
-                    </p>
+                    <div className="artist">
+                        Artist: <a href={artistLink}>{this.username}</a>
+                    </div>
                 </div>
             </div>
         )
