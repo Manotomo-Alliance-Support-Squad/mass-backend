@@ -251,9 +251,9 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                         <div className="notice-container">
                             <div className="notice-content" style={{borderRadius: 0}}>
                                 <p>These are all the messages we managed to collect!</p>
-                                <p>Tweet at #TOBEDECIDED to send us a message!</p>
+                                <p>Tweet at <a href="https://twitter.com/hashtag/Ganbare%E3%81%82%E3%81%8F%E3%81%9F%E3%82%93">#Ganbareあくたん</a> to send us a message!</p>
                                 <p style={{fontSize: 12}}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com or at webmaster@manotomo.com</p>
-                                <p style={{fontSize: 12}}>This is not an official Hololive site. We are just a group of fans</p>
+                                <p style={{fontSize: 12}}>This is not an official Hololive site. We are just a group of fans supporting Aqua!</p>
                             </div>
                         </div>
                     </div>

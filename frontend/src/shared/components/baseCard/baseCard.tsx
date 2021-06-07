@@ -44,7 +44,6 @@ export default class BaseCard<T, P extends BaseCardProps<T>, S extends BaseCardS
         const rootStyles: CSS.Properties = {
             backgroundImage: `url(${CardStyles[this.cardStyleIndex][0]})`,
             opacity: (loaded ? 1 : 0),
-            //backgroundColor: `${CardStyles[this.cardStyleIndex][1]}`,
         };
         return (
             <VisibilitySensor onChange={this.toggleVisibility.bind(this)} partialVisibility active={!loaded}>

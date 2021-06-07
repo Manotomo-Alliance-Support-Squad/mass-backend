@@ -9,7 +9,6 @@
     background-repeat: no-repeat;
     background-size: 100%;
     border-radius: 15px;
-    /*overflow: hidden;*/
     background-color: var(--theme-card-header-background);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -62,7 +61,6 @@
     background-color: var(--main-background-color);
 
     list-style-type: none;
-    /*object-fit: fill;*/
 
     transition: all 0.4s ease;
 }
