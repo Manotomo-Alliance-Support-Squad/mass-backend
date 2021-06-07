@@ -72,7 +72,6 @@ export function multiArtworkFromJson(json: MultiArtworkJson): MultiArtwork {
     }
 }
 
-// TODO: Does this need fixing...?
 export function multiArtworkToJson(artwork: MultiArtwork): MultiArtworkJson {
     const { metadata, gallery } = artwork;
     return {
