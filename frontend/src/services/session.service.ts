@@ -1,5 +1,5 @@
 import {Message, MessageJson, messageFromJson, messageToJson} from "../models/message";
-import {Artwork, ArtworkJson, artworkFromJson, artworkToJson} from "../models/artwork";
+import {Artwork, ArtworkJson, artworkFromJson, artworkToJson, MultiArtwork, MultiArtworkJson, multiArtworkFromJson, multiArtworkToJson} from "../models/artwork";
 import {Archive, ArchiveJson, archiveFromJson, archiveToJson} from "../models/archive";
 import {Video, VideoJson, videoFromJson, videoToJson} from "../models/video";
 import DisplayedLanguage from "../models/language";
@@ -63,6 +63,17 @@ export default class SessionService {
     public static getGallery(): Artwork[] | null {
         let artworks = SessionService.getFromCache<ArtworkJson[]>('gallery');
         return artworks?.map(artworkFromJson) ?? null;
+    }
+
+
+    public static saveMultiGallery(gallery: MultiArtwork[]): void {
+        let json = gallery.map(multiArtworkToJson);
+        SessionService.saveInCache<MultiArtworkJson[]>('gallery', json);
+    }
+
+    public static getMultiGallery(): MultiArtwork[] | null {
+        let artworks = SessionService.getFromCache<MultiArtworkJson[]>('gallery');
+        return artworks?.map(multiArtworkFromJson) ?? null;
     }
 
 

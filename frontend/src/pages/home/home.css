@@ -1,3 +1,7 @@
+.wrapper-overlay {
+    padding: 2vh 4vw;
+}
+
 .main-video-container {
     width: 100%;
     box-sizing: border-box;
