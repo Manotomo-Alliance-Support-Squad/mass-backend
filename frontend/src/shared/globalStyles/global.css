@@ -1,7 +1,7 @@
 :root {
-    --main-color: var(--theme-color1);
-    --main-text-color: var(--theme-color2);
-    --main-text-wrapper-background-color: var(--theme-color3);
+    --main-color: var(--theme-card-text2);
+    --main-text-color: var(--theme-card-text1);
+    --main-text-wrapper-background-color: var(--theme-card-background);
 }
 
 .anchor-link {
@@ -13,7 +13,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    color: var(--theme-color3);
+    color: var(--theme-color-white);
     transition: all 0.25s ease;
 }
 
@@ -23,6 +23,10 @@
 
 .padding-bottom {
     padding-bottom: 2rem;
+}
+
+.wrapper-overlay {
+    padding: 1rem;
 }
 
 .justify-align-center {
@@ -46,7 +50,8 @@
 .separator {
     height: 40px;
     width: 100%;
-    background-color: var(--main-color);
+    background-color: var(--separator-background-color);
+    background-image: url(../../assets/cards/AKUKIN_Card_footer.png);
 }
 
 .notice-container {

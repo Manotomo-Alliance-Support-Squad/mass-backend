@@ -86,13 +86,15 @@ export default class MessageCard extends BaseCard<Message, MessageCardProps, Mes
                         {this.message.orig_msg}
                     </p>
                 </div>
-                <div className="message-card-footer-container">
-                    <div className="message-card-footer-text">
-                        {this.footertext}
+                <div className="message-card-footer-padding-container">
+                    <div className="message-card-footer-container">
+                        <div className="message-card-footer-text">
+                            {this.footertext}
+                        </div>
+                        {this.hasTlMsg &&
+                            <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} cursor="pointer"/>
+                        }
                     </div>
-                    {this.hasTlMsg &&
-                        <TranslateBotan className="message-card-translate" onMouseDown={this.toggleCurrentLanguage} cursor="pointer"/>
-                    }
                 </div>
             </div>
         )

@@ -1,22 +1,66 @@
+:root {
+    --footer-text-height: 25px;
+    --footer-height: 40px;
+}
+
 .base-card {
+    width: 100%;   
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 15px;
+    background-color: var(--theme-card-header-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-header-decal {
+    width: 175px;
+    height: 75px;
+    position: relative;
+    top: -80px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card-header-decal-wrapper {
+    align-content: center;
+    display: flex;
+    height: 0px;
+    justify-content: center;
+}
+
+.card-section {
+    --card-height: 550px;
+    --card-width: var(--card-height);
+
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    /* overflow is required to keep cards 
+     * from segmenting into different columns 
+     * at certain resolutions */
+    overflow: auto;
+    height: 100%;
+}
+
+.card-content {
     --card-text-width: 420px;
 
     display: block;
     width: 100%;
     min-height: 1px;  /*DO NOT REMOVE THIS LINE. OTHERWISE YOU WILL EXPERIENCE PAIN IN TRYING TO FIX COLUMN STACKING ON CHROME/IOS*/
     overflow: auto;
-    border-radius: 15px;
-    padding: 15px;
-
-    margin-bottom: 1rem;
 
     background-repeat: no-repeat;
     background-size: 100%;
 
     color: var(--main-text-color);
+    background-color: var(--main-background-color);
 
     list-style-type: none;
-    /*object-fit: fill;*/
 
     transition: all 0.4s ease;
 }
@@ -39,3 +83,17 @@
     }
 }
 
+.card-header {
+    height: 9vh;
+    background-size: 100% 100%;
+    background-position-x: center;
+    background-repeat: round;
+    background-size: auto 100%;
+    background-image: url(../../../assets/cards/AKUKIN_Card_Header_Base.png);
+}
+
+.card-footer {
+    height: var(--footer-text-height);
+    background-image: url(../../../assets/cards/AKUKIN_Card_footer.png);
+    background-size: 100% 100%;
+}

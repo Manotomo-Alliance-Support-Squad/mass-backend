@@ -1,3 +1,8 @@
+:root {
+    background-image: var(--main-background);
+    background-size: 50% auto;
+}
+
 .community-message-card {
     top:50px;
     padding: 15px;
@@ -42,23 +47,9 @@
     padding: 20px;
 }
 
-.anchor-link {
-  position: absolute;
-  /*make smaller than separator*/
-  padding-top: 1px;
-  height: 35px;
-  width: 35px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  color:var(--theme-color4);
-
-  transition: all 0.25s ease;
-}
-
 .main {
-    background-image: var(--main-background);
-    background-color: var(--main-background-color);
+    /*background-image: var(--main-background);*/
+    /*background-color: var(--main-background-color);*/
     background-repeat: repeat;
     min-height: 100vh;
     background-size: 100%;

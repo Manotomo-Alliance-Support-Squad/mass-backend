@@ -26,6 +26,7 @@
     margin-right: auto;
     margin-left: auto;
     height: var(--card-text-height);
+    padding: 1rem;
 }
 
 ::-webkit-scrollbar {
@@ -67,11 +68,16 @@
     width: 100%;
 }
 
+.message-card-footer-padding-container {
+    padding: 1rem;
+    padding-top: 0px;
+    height: var(--footer-height)
+}
+
 .message-card-footer-container {
     position: relative;
     width: 100%;
-    height: 40px;
-    margin-top: 10px;
+    height: var(--footer-height);
     float: right;
 }
 
@@ -94,10 +100,6 @@
         display: flex;
         justify-content: center;
     }
-}
-
-.card-header {
-    height: 100px;
 }
 
 .notice-container .base-card div .message-card-text-container {

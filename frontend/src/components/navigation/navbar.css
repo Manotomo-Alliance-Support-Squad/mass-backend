@@ -1,21 +1,19 @@
 .navbar {
     width: 100%;
 
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
+    position: relative;
 
     box-sizing: border-box;
-    padding: 0 5vw;
+    padding: 1vh;
 
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 
-    background-color: var(--main-color);
-    box-shadow: 0 5px 50px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px;
+    
+    background-color: var(--header-background-color);
 
     font-size: 2.125rem;
     color: var(--theme-color4);
@@ -25,7 +23,7 @@
 
 @media (max-width: 522px) {
     .navbar > .title {
-        font-size: 16px;
+        font-size: 2rem;
     }
 }
 

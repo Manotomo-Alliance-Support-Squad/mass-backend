@@ -16,10 +16,10 @@ interface InPageNavProps{
 
 const NavButton = withStyles({
       containedPrimary: {
-        color: "#ffffff",
-        backgroundColor: "var(--main-color)",
+        color: "var(--theme-special-text)",
+        backgroundColor: "var(--theme-special-background)",
         '&:hover': {
-          backgroundColor: "#bd2f57",
+          backgroundColor: "var(--theme-special-background-alt)",
         },
       },
 })(Button);
