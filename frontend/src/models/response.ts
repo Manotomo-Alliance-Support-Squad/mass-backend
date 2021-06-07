@@ -1,5 +1,5 @@
 import {MessageJson} from "./message";
-import {ArtworkJson} from "./artwork";
+import {ArtworkJson, MultiArtworkJson} from "./artwork";
 import {ArchiveJson} from "./archive";
 import {AnnouncementJson} from "./announcement";
 import {VideoJson} from "./video";
@@ -14,6 +14,10 @@ export interface MessageResponse extends BaseResponse {
 
 export interface GalleryResponse extends BaseResponse {
     gallery: ArtworkJson[];
+}
+
+export interface MultiGalleryResponse extends BaseResponse {
+    multigallery: MultiArtworkJson[];
 }
 
 export interface VideoResponse extends BaseResponse {

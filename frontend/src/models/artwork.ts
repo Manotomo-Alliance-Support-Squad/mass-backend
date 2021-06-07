@@ -16,6 +16,32 @@ export interface ArtworkJson {
     title: string;
 }
 
+export interface ArtworkMetadata {
+    metadataID: number;
+    setID: string;
+    artistLink: ExternalLink;
+    username: string;
+    title: string;    
+}
+
+export interface ArtworkMetadataJson {
+    metadataID: number;
+    setID: string;
+    artistLink: string;
+    username: string;
+    title: string;    
+}
+
+export interface MultiArtwork {
+    metadata: ArtworkMetadata;
+    gallery: Array<string>;
+}
+
+export interface MultiArtworkJson {
+    metadata: ArtworkMetadata;
+    gallery: Array<string>;
+}
+
 export function artworkFromJson(json: ArtworkJson): Artwork {
     const { artworkID, artworkLink, artistLink, username, title } = json;
     return {
@@ -37,3 +63,20 @@ export function artworkToJson(artwork: Artwork): ArtworkJson {
         title,
     }
 }
+
+export function multiArtworkFromJson(json: MultiArtworkJson): MultiArtwork {
+    const { metadata, gallery } = json;
+    return {
+        metadata,
+        gallery,
+    }
+}
+
+export function multiArtworkToJson(artwork: MultiArtwork): MultiArtworkJson {
+    const { metadata, gallery } = artwork;
+    return {
+        metadata,
+        gallery,
+    }
+}
+
