@@ -25,7 +25,7 @@ def insertMultiGallery(data):
             setID=data.setID,
             artistLink=data.artistLink,
             username=data.username,
-            title=data.title,
+            message=data.message,
         )
         db.session.add(metadata_entry)
         

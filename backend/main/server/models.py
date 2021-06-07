@@ -112,24 +112,20 @@ class VideoSchema(ma.Schema):
     title = fields.String(required=False)
 
 
-# TODO add Message + translated message
 class MultiGallery(db.Model):
     __tablename__ = 'MULTIGALLERY'
     artworkID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     setID = db.Column(db.Integer, db.ForeignKey('SETMETADATA.setID'), nullable=False)
     setmetadata = db.relationship("SetMetadata")
     artworkLink = db.Column(db.String(2048), nullable=False)
-    message = db.Column(db.String(2048), nullable=False)
 
     def __init__(
             self,
             setID,
             artworkLink,
-            message,
     ):
         self.setID = setID
         self.artworkLink = artworkLink
-        self.message = message
 
 
 class SetMetadata(db.Model):
@@ -138,19 +134,19 @@ class SetMetadata(db.Model):
     setID = db.Column(db.String(32), nullable=False)
     artistLink = db.Column(db.String(2048), nullable=True)
     username = db.Column(db.String(64), nullable=False)
-    title = db.Column(db.String(64), nullable=True)
+    message = db.Column(db.String(2048), nullable=True)
 
     def __init__(
             self,
             setID,
             username,
-            title,
+            message,
             artistLink,
     ):
         self.setID = setID
         self.artistLink = artistLink
         self.username = username
-        self.title = title
+        self.message = message
 
 
 class SetMetadataSchema(ma.Schema):
@@ -158,14 +154,13 @@ class SetMetadataSchema(ma.Schema):
     setID = fields.String(required=True)
     artistLink = fields.String(required=False)
     username = fields.String(required=True)
-    title = fields.String(required=False)
+    message = fields.String(required=False)
 
 
 class MultiGallerySchema(ma.Schema):
     artworkID = fields.Integer()
     metadata = fields.Nested(SetMetadataSchema)
     gallery = fields.List(fields.String(required=True))
-    message = fields.String(required=True)
 
 
 class MultiGalleryImportSchema(ma.Schema):
@@ -174,4 +169,4 @@ class MultiGalleryImportSchema(ma.Schema):
     artworkLink = fields.String(required=True)
     artistLink = fields.String(required=False)
     username = fields.String(required=True)
-    title = fields.String(required=False)
+    message = fields.String(required=False)
