@@ -204,7 +204,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 mainContentIndex++) {
             comboCardData.push(mainContentArray[mainContentIndex]);
 
-            if indexIncrementSpacing === -1 {
+            if (indexIncrementSpacing === -1) {
                 continue;
             }
             else if (mainContentIndex % indexIncrementSpacing === 0 && subContentIndex < subContentArray.length) {
