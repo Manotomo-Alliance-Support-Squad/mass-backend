@@ -1,5 +1,7 @@
-import BaseCard, {BaseCardProps, BaseCardState} from "../../../shared/components/baseCard/baseCard";
-import { Artwork } from '../../../models/artwork';
+import BaseCard, { BaseCardProps, BaseCardState } from "../../../shared/components/baseCard/baseCard";
+import DisplayedLanguage from "../../../models/language";
+import handleViewport from 'react-in-viewport';
+import { MultiArtwork, ArtworkMetadata } from '../../../models/artwork';
 import './artworkCard.css';
 import { linkToString } from '../../../models/url';
 
@@ -9,28 +11,30 @@ enum ImageLoadingState {
     Loaded,
 }
 
-interface ArtworkCardProps extends BaseCardProps<Artwork> {
+interface MultiArtworkCardProps extends BaseCardProps<MultiArtwork> {
 }
 
-interface ArtworkCardState extends BaseCardState {
+interface MultiArtworkCardState extends BaseCardState {
     loadingState: ImageLoadingState,
 }
 
-export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, ArtworkCardState> {
-    private readonly artwork: Artwork;
+export default class MultiArtworkCard extends BaseCard<MultiArtwork, MultiArtworkCardProps, MultiArtworkCardState> {
+    private readonly artworks: string[];
+    private readonly metadata: ArtworkMetadata;
     private readonly username: string;
     private imageElement: HTMLImageElement;
 
-    constructor(props: ArtworkCardProps) {
+    constructor(props: MultiArtworkCardProps) {
         super(props);
-        this.artwork = props.object;
-        this.username = this.artwork.username ? props.object.username : "Anonymous";
+        this.artworks = props.object.gallery;
+        this.metadata = props.object.metadata;
+        this.username = this.metadata.username ? props.object.metadata.username : "Anonymous";
         this.imageElement = document.createElement("img");
 
         this.imageLoaded = this.imageLoaded.bind(this);
     }
 
-    state: ArtworkCardState = {
+    state: MultiArtworkCardState = {
         loadingState: ImageLoadingState.NotLoaded,
         loaded: false // From BaseCardState
     }
@@ -45,7 +49,7 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
     private setImage() {
         if (this.state.loadingState === ImageLoadingState.NotLoaded) {
-            this.imageElement.src = linkToString(this.artwork.artworkLink);
+            this.imageElement.src = this.artworks[0];
             this.imageElement.addEventListener("load", this.imageLoaded);
 
             this.setState({
@@ -64,14 +68,17 @@ export default class ArtworkCard extends BaseCard<Artwork, ArtworkCardProps, Art
 
     renderArtwork() {
         const hasLoaded = this.state.loadingState === ImageLoadingState.Loaded;
-        const artworkLink = linkToString(this.artwork.artworkLink);
-        const artistLink = this.artwork.artistLink ? linkToString(this.artwork.artistLink) : "#no_artist_link";
+        const artistLink = this.metadata.artistLink ? linkToString(this.metadata.artistLink) : "#no_artist_link";
 
         return (
             <div className="artwork-card">
-                <img className="artwork-card-img" src={artworkLink} alt={this.artwork.title} />
+                {this.artworks.map((obj, idx) => {
+                    return (
+                        <img className="artwork-card-img" key={idx} src={obj} alt={this.metadata.title} />
+                    );
+                })}
                 <div className="artwork-card-footer">
-                    <div className="title">{this.artwork.title}</div>
+                    <div className="title">{this.metadata.title}</div>
                     <div className="artist">
                         Artist: <a href={artistLink}>{this.username}</a>
                     </div>
