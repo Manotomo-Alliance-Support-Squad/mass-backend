@@ -89,6 +89,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         this.loadAnnouncements();
         this.loadArtwork();
         this.loadVideo();
+        this.loadMultiGallery();
     }
 
     async loadMessages() {
