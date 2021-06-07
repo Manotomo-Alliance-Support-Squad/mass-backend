@@ -233,11 +233,12 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                                 return (
                                     <div className="justify-align-center notice-container" style={{"whiteSpace": "pre-line"}}>
                                         <MessageCard key={1} object={{ messageID: 0,
-                                            orig_msg: "私たちは海外のあくあクルーの代表であり、日本人でもあなたのためにサポートプロジェクトを作りたいと思っていました\n\n\
-                                            それほど多くはありませんが、あくたんは私たちがここにいることを忘れないでください、あなたを待って応援してくれることを願っています〜\n\n\
-                                            そのために、元気を出してください！ あくたんがまた配信をするのを楽しみにしています",
-                                            tl_msg: "We are some representatives of the Aqua Crew from all around the world. We wanted to create a support project for you. It's not much, but I hope Aqutan remember that we’re here waiting and cheering you on~ \n\n\
-                                            With that said, please cheer up! We are looking forward for Aqutan’s return!",
+                                            orig_msg: "あくあたんおかえりなさい！ 私たちはあくあクルーの代表として、あなたのための支援プロジェクトを用意しています。小さなプロジェクトでも、あくたんが私たちがここにいることを覚えておいてください. \n\n\
+                                            私たちはあくたんのおかえりを嬉しく思います。そして、あくたん の歌の配信を楽しみにしています。",
+                                            tl_msg: "We are some representatives of the Aqua Crew, and we have prepared a support project for you! It's not much, but we hope Aqutan remembers that we’re here cheering you up no matter what happens~ \n\n\
+                                            We are happy for your return and we will be looking forward for Aqutan’s streams!\n\n\
+                                            Welcome back, Aqua!\
+                                            ",
                                             country: "", username: "AKUKIN HQ", }} cardStyleIndex={1} language={language} />
                                     </div>
                                 );
@@ -251,7 +252,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             <div className="notice-content" style={{borderRadius: 0}}>
                                 <p>These are all the messages we managed to collect!</p>
                                 <p>Tweet at #TOBEDECIDED to send us a message!</p>
-                                <p style={{fontSize: 12}}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com</p>
+                                <p style={{fontSize: 12}}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com or at webmaster@manotomo.com</p>
                                 <p style={{fontSize: 12}}>This is not an official Hololive site. We are just a group of fans</p>
                             </div>
                         </div>
