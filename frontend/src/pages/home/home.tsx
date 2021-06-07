@@ -66,6 +66,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         this.loadArtwork = this.loadArtwork.bind(this);
         this.loadAnnouncements = this.loadAnnouncements.bind(this);
         this.loadMessages = this.loadMessages.bind(this);
+        this.loadMultiGallery = this.loadMultiGallery.bind(this);
     }
 
     state: HomePageState = {
@@ -144,20 +145,21 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 () => SessionService.saveGallery(this.state.artworks)
             );
         }
+    }
 
-        // Gallery with multiple images
-        const cachedMultiGallery: MultiArtwork[] | null = SessionService.getMultiGallery();
-        if (cachedMultiGallery && cachedMultiGallery.length) {
-            this.setState({multiArtworks: cachedMultiGallery});
+    async loadMultiGallery() {
+        const setMultipleArtworksToState = (multiArtworks: MultiArtwork[]) => this.setState({ multiArtworks });
+        const getMultipleArtworkFromService = () => this.manoAloeService.getMultiGallery()
+            .then(setMultipleArtworksToState)
+            .catch(console.error);
+
+        const multiArtworks = SessionService.getMultiGallery() ?? [];
+        if (multiArtworks?.length) {
+            setMultipleArtworksToState(multiArtworks);
         } else {
-            this.manoAloeService.getMultiGallery()
-                .then((multiArtworks: MultiArtwork[]) => {
-                    SessionService.saveMultiGallery(multiArtworks);
-                    this.setState({multiArtworks});
-                })
-                .catch((error: Error) => {
-                    console.error(error);
-                })
+            getMultipleArtworkFromService().finally(
+                () => SessionService.saveMultiGallery(this.state.multiArtworks)
+            );
         }
     }
 
@@ -175,19 +177,19 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         let rng = seedrandom(seed);
         // Schwartzian transform
         return unshuffled_arr
-            .map((a) => ({sort: rng(), value: a}))
+            .map((a) => ({ sort: rng(), value: a }))
             .sort((a, b) => a.sort - b.sort)
             .map((a) => a.value);
     }
 
     // We do this because state setting is async and trying to create this in getData yields empty arrays
     compileCardData() {
-        let comboCardData: (Message|Artwork|Video|MultiArtwork)[] = [];
+        let comboCardData: (Message | Artwork | Video | MultiArtwork)[] = [];
         let mainContentArray: any[] = [];
         let subContentArray: any[] = [];
         let multimediaCount: number = this.state.artworks.length + this.state.videos.length + this.state.multiArtworks.length;
         let indexIncrementSpacing: number;
-        
+
         // The higher count of the two types of content gets to determine the sprinkling of the type of content
         if (multimediaCount > this.state.messages.length) {
             mainContentArray = this.randomizeArrayWithSeed(
@@ -196,7 +198,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
             );
             // TODO: create a randomly seeded version of the main content array
             subContentArray = this.state.messages;
-            
+
             indexIncrementSpacing = Math.floor(multimediaCount / this.state.messages.length);
         } else {
             mainContentArray = this.state.messages;
@@ -214,9 +216,9 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
 
         // Main content is the type of content we have more of
         for (
-                let mainContentIndex = 0, subContentIndex = 0;
-                mainContentIndex < mainContentArray.length;
-                mainContentIndex++) {
+            let mainContentIndex = 0, subContentIndex = 0;
+            mainContentIndex < mainContentArray.length;
+            mainContentIndex++) {
             comboCardData.push(mainContentArray[mainContentIndex]);
 
             if (indexIncrementSpacing === -1) {
