@@ -1,73 +1,55 @@
-# World Wide Support for SAIKYO Idol
+# Aqua Support Project
 
-Haachama/Haato went on a self discovery journey and we are writing her messages of support! Thanks for visiting the site and looking at the credits!
+This is a collaborative support project between the Aqua HQ server and MASS! Let's support our favorite gaming onion!
 
 # Credits
 
-## WWS Project Managers and Team
-W.Y. Hsieh
+## Aqua HQ Server Moderators
+Corneus/コロネウス
 
-Sakazuki 羽の觴
-
-[Zhadi](https://twitter.com/HaatonZhadi)
-
-## Haato Server
-Veradis (Vera Chama)
+Piniko
 
 ## Holonews
 HoloNews ([u/Sh1fty1060](https://www.reddit.com/user/Sh1fty1060/) and [u/mrmalupet](https://www.reddit.com/user/mrmalupet/)
 
-## WeekInHololive
-https://twitter.com/WeekInHoloLive
-
 ## Website Contributors
-Fishsauce (Frontend, Backend, Devops)
+DuongTyler (Frontend, Backend, Devops)
 
 Zapple (Frontend, Backend)
 
+LrJim (Frontend, Backend)
+
+[Rogue](https://twitter.com/roguedono) (Web concept designer)
+
 ## Art and Design Contributors
-[Rogue](https://twitter.com/roguedono) (MASS Art Lead)
+[Rogue](https://twitter.com/roguedono) (MASS Art Lead, Web designer, footer and header artwork)
 
 [RaRa](https://twitter.com/) (Message Cards)
 
-[Peanuts](https://twitter.com/PistachiosChips)
+[Kenn](https://twitter.com/EyBruhImKenneth) (Awesome main background design)
 
-[Dragvik](https://twitter.com/Tennen_Vik)
+[Chainwalker](https://twitter.com/TheChainwalker) (Header Background)
 
-[ryuran](https://twitter.com/ryuraan) (Site Header Background)
-
-[niconikneecaps](https://twitter.com/niconikneecaps)
-
-[sol](https://twitter.com/popotocurry)
-
-Guy (Find them at the [MASS discord](https://discord.gg/yTY9rdp))
-
-
-## MASS Mods, Coordinators, and Other Awesome Peoples in the Shadows
-Schrodinger
+## Coordinators and Other Awesome Peoples in the Shadows
+Loki_Magikill
 
 The Chainwalker
 
-RazorNaitor
-
-Swhite
-
-Hiroki
-
-Kazento
-
 Necrosis
 
-ChivChav
-
-Blinky Ren
+VintageGhost
 
 # Join the MASS Discord
 
 https://discord.gg/yTY9rdp
 
+# Join the Aqua HQ Discord
+
+https://discord.gg/akukinhq
+
 # Contact Us
 
 Did we forget to credit you? Found a bug on the website? Contact us at manotomo[at]googlegroups.com
 
+Server issue? Contact us at webmaster[at]manotomo.com
 
