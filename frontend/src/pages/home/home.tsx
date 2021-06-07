@@ -1,14 +1,14 @@
 import React from 'react';
 import seedrandom from 'seedrandom';
 import ComboSection from '../../components/comboSection/comboSection';
-import {Message} from "../../models/message";
+import { Message } from "../../models/message";
 import ManoAloeService from "../../controllers/mano-aloe.service";
 import SessionService from "../../services/session.service";
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
-import {Announcement} from "../../models/announcement"
-import {Artwork, MultiArtwork} from "../../models/artwork"
-import {Video} from "../../models/video"
+import { Announcement } from "../../models/announcement"
+import { Artwork, MultiArtwork } from "../../models/artwork"
+import { Video } from "../../models/video"
 import './home.css';
 import '../../shared/globalStyles/global.css'
 import AnnouncementSection from "../../components/announcementSection/announcementSection"
@@ -42,7 +42,7 @@ export interface HomePageState {
 const AltNav = () => {
     const location = useLocation();
     if (location.pathname == "/home") {
-        return <InPageNav navButtons={creditsNav}/>;
+        return <InPageNav navButtons={creditsNav} />;
     }
     return <span />
 };
@@ -59,9 +59,13 @@ const creditsNav = [
 export default class HomePage extends React.Component<HomePageProps, HomePageState> {
 
     constructor(props: HomePageProps,
-                private manoAloeService: ManoAloeService) {
+        private manoAloeService: ManoAloeService) {
         super(props);
         this.manoAloeService = new ManoAloeService();
+        this.loadVideo = this.loadVideo.bind(this);
+        this.loadArtwork = this.loadArtwork.bind(this);
+        this.loadAnnouncements = this.loadAnnouncements.bind(this);
+        this.loadMessages = this.loadMessages.bind(this);
     }
 
     state: HomePageState = {
@@ -80,54 +84,65 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
     }
 
     private getData(): void {
-        const cachedMessages: Message[] | null = SessionService.getMessages();
-        if (cachedMessages && cachedMessages.length) {
-            this.setState({messages: cachedMessages, messageLoaded: true});
+        this.loadMessages()
+        this.loadAnnouncements();
+        this.loadArtwork();
+        this.loadVideo();
+    }
+
+    async loadMessages() {
+        const setMessagesToState = (messages: Message[]) => this.setState({ messages, messageLoaded: true });
+        const getMessagesFromService = () => this.manoAloeService.getAllMessages()
+            .then(setMessagesToState)
+            .catch(console.error);
+
+        const messages = SessionService.getMessages() ?? [];
+        if (messages?.length) {
+            setMessagesToState(messages);
         } else {
-            this.setState({messageLoaded: false});
-            this.manoAloeService.getAllMessages()
-                .then((messages: Message[]) => {
-                    SessionService.saveMessages(messages);
-                    this.setState({messages, messageLoaded: true});
-                })
-                .catch((error: Error) => {
-                    console.error(error);
-                });
+            getMessagesFromService().finally(
+                () => SessionService.saveMessages(this.state.messages)
+            );
         }
+    }
+
+    async loadAnnouncements() {
+        const setAnnouncementsToState = (announcements: Announcement[]) => this.setState({ announcements, announcementLoaded: true });
         this.manoAloeService.getAllAnnouncements()
-            .then((announcements: Announcement[]) => {
-                this.setState({announcements, announcementLoaded: true});
-            })
-            .catch((error: Error) => {
-                console.error(error);
-            });
+            .then(setAnnouncementsToState)
+            .catch(console.error);
+    }
 
-        const cachedArtworks: Artwork[] | null = SessionService.getGallery();
-        if (cachedArtworks && cachedArtworks.length) {
-            this.setState({artloading: false, artworks: cachedArtworks});
+    async loadVideo() {
+        const setVideosToState = (videos: Video[]) => this.setState({ videos });
+        const getVideoFromService = () => this.manoAloeService.getVideo()
+            .then(setVideosToState)
+            .catch(console.error);
+
+        const videos = SessionService.getVideo() ?? [];
+        if (videos?.length) {
+            setVideosToState(videos);
         } else {
-            this.manoAloeService.getGallery()
-                .then((artworks: Artwork[]) => {
-                    SessionService.saveGallery(artworks);
-                    this.setState({artloading: false, artworks});
-                })
-                .catch((error: Error) => {
-                    console.error(error);
-                })
+            getVideoFromService().finally(
+                () => SessionService.saveVideo(this.state.videos)
+            );
         }
+    }
 
-        const cachedVideos: Video[] | null = SessionService.getVideo();
-        if (cachedVideos && cachedVideos.length) {
-            this.setState({videos: cachedVideos});
+
+    async loadArtwork() {
+        const setArtworksToState = (artworks: Artwork[]) => this.setState({ artloading: false, artworks });
+        const getArtworkFromService = () => this.manoAloeService.getGallery()
+            .then(setArtworksToState)
+            .catch(console.error);
+
+        const artworks = SessionService.getGallery() ?? [];
+        if (artworks?.length) {
+            setArtworksToState(artworks);
         } else {
-            this.manoAloeService.getVideo()
-                .then((videos: Video[]) => {
-                    SessionService.saveVideo(videos);
-                    this.setState({videos});
-                })
-                .catch((error: Error) => {
-                    console.error(error);
-                })
+            getArtworkFromService().finally(
+                () => SessionService.saveGallery(this.state.artworks)
+            );
         }
 
         // Gallery with multiple images
@@ -146,11 +161,11 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         }
     }
 
-    renderCardSection(data: (Message|Artwork|Video|MultiArtwork)[]) {
+    renderCardSection(data: (Message | Artwork | Video | MultiArtwork)[]) {
         return (
             <div>
                 <div className="wrapper-overlay">
-                    {this.state.messageLoaded && this.state.announcementLoaded ? <ComboSection data={data}/> : <div/>}
+                    {this.state.messageLoaded && this.state.announcementLoaded ? <ComboSection data={data} /> : <div />}
                 </div>
             </div>
         )
@@ -223,7 +238,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                 <div className="home-root">
                     <div className="separator">
                         <AnchorLink offset='120' href='#video-anchor'>
-                            <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
+                            <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{ width: 36, height: 36 }} />
                         </AnchorLink>
                     </div>
                     <div id="video-anchor" className="main-video-container">
@@ -231,21 +246,22 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                     </div>
                     <div className="separator">
                         <AnchorLink offset='120' href='#message-anchor'>
-                            <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{width: 36, height:36}}/>
+                            <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{ width: 36, height: 36 }} />
                         </AnchorLink>
                     </div>
                     <div id="message-anchor" className="justify-center">
                         <div className="justify-align-center">
-                            <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container wrapper-overlay"/>
+                            <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container wrapper-overlay" />
                         </div>
                     </div>
                     <div className="justify-center padding-top">
                         <LanguageContext.Consumer>
                             {(value: LanguageContextValue) => {
-                                const {language} = value;
+                                const { language } = value;
                                 return (
-                                    <div className="justify-align-center notice-container wrapper-overlay" style={{"whiteSpace": "pre-line"}}>
-                                        <MessageCard key={1} object={{ messageID: 0,
+                                    <div className="justify-align-center notice-container wrapper-overlay" style={{ "whiteSpace": "pre-line" }}>
+                                        <MessageCard key={1} object={{
+                                            messageID: 0,
                                             tl_msg: "To Haato-sama,\n\n\
                                             I am the initiator of this project, W.Y. Hsieh.\n\n\
                                             Although I have been joining your membership for only a month, every time I see you fully engaged in streams and plans, I couldn’t help but feel encouraged by your strong passion. Without consciousness, I eventually started to cry for your touching moments and feel truly-warmed when you look happy.\n\n\
@@ -260,10 +276,11 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                                             きっと、Vtuberになる事も同じだと思います。\n\n\
                                             この企画を参加する人たちはみんな、はあと様の努力に感動されて、応援しに来たのだ。頑張り屋さんのはあと様は、紛れもなくワールドワイドな最強アイドルです！\n\n\
                                             この企画にはまだ第二段階があるので、是非お楽しみにしてください！はあと様、愛しています！",
-                                            country: "(East Asia)", username: "Hsieh", }} cardStyleIndex={1} language={language} />
+                                            country: "(East Asia)", username: "Hsieh",
+                                        }} cardStyleIndex={1} language={language} />
                                     </div>
-                                    );
-                                }
+                                );
+                            }
                             }
                         </LanguageContext.Consumer>
                     </div>
@@ -273,14 +290,14 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                             <div className="notice-content">
                                 <p>These are all the messages we managed to collect!</p>
                                 <p>Welcome back, Haato. おかえり、はあと。</p>
-                                <p style={{fontSize: 12}}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com</p>
+                                <p style={{ fontSize: 12 }}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com</p>
                             </div>
                         </div>
                     </div>
-                    <div style={{height: "25px"}}/>
+                    <div style={{ height: "25px" }} />
                     <AltNav />
                 </div>
-                <div style={{height: "25px"}}/>
+                <div style={{ height: "25px" }} />
             </section>
         )
     }
