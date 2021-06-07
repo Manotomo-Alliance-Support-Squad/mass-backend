@@ -74,7 +74,7 @@ export default class MultiArtworkCard extends BaseCard<MultiArtwork, MultiArtwor
             <div className="artwork-card">
                 {this.artworks.map((obj, idx) => {
                     return (
-                        <img className="artwork-card-img" src={obj} alt={this.metadata.title} />
+                        <img className="artwork-card-img" key={idx} src={obj} alt={this.metadata.title} />
                     );
                 })}
                 <div className="artwork-card-footer">
