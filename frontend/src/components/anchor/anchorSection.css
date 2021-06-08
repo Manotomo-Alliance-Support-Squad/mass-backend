@@ -2,19 +2,18 @@
     position: fixed;
     background-color: transparent;
     z-index: 99;
-    margin: 1em;
+    margin: 5px;
     top: 50%;
     transition: all 0.4s ease;
 }
 
 .active>.anchor-button {
-    border: 2px solid red;
-    /*TODO: change this*/
+    opacity: 1;
 }
 
-.anchor-button:hover p {
+.anchor-button:hover p, .active>.anchor-button p {
     opacity: 1;
-    margin-top: -5px;
+    margin-top: -3px;
 }
 
 .anchor-button p {
@@ -22,29 +21,37 @@
     margin: 0;
     margin-top: -20px;
     transition: all 0.4s ease;
+    margin-bottom: 2px;
+    text-align: center;
 }
 
 .anchor-button a {
     text-decoration: none;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .multiple {
     --element-count: 0;
     opacity: .7;
     margin-top: calc(-1 * 2.5% * var(--element-count));
+    padding: 16px 5px;
+    border-radius: 25px;
+    background-color: #00000036;
 }
 
 .multiple:hover {
-    opacity: 1;
+    opacity: .9;
 }
 
 .multiple>div:nth-child(n+2)>.anchor-seperator {
     height: 20px;
-    border-left: 2px solid white;
-    /*TODO: change this*/
-    margin: 5px 0;
-    margin-left: 50%;
+    border-left: 4px solid #ffffffbf;
+    margin: 5px 0px;
+    margin-left: calc(50% - 2px);
+    border-radius: 8%;
 }
 
 .top {

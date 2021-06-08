@@ -8,13 +8,6 @@ interface AnchorMultipleSectionProps extends AnchorSectionProps {
     activeHref: string;
 }
 
-
-export const ChangeActiveAnchor = (wrapper: React.Component, href: string) => {
-    wrapper.setState({
-        activeHref: href
-    });
-}
-
 export default class AnchorMultipleSection extends React.Component<AnchorMultipleSectionProps> {
     render() {
         const { anchors, position, activeHref } = this.props;

@@ -11,14 +11,16 @@ import { Artwork, MultiArtwork } from "../../models/artwork"
 import { Video } from "../../models/video"
 import './home.css';
 import '../../shared/globalStyles/global.css'
-import AnnouncementSection from "../../components/announcementSection/announcementSection"
-import AnchorSupportedSection from "../../components/anchorSupportedSection"
+import AnnouncementSection from "../../components/announcementSection/announcementSection";
+import AnchorSupportedSection from "../../components/anchorSupportedSection/anchorSupportedSection";
 
 // Hack for community card before messages
 import { LanguageContext, LanguageContextValue } from '../../components/languageSwitch/languageContext';
 import MessageCard from '../../components/messageSection/messageCard/messageCard';
 import '../../components/headerSection/header.css';
-import { Anchor } from '../../models/achor';
+import { Anchor, AnchorSectionPosition } from '../../models/achor';
+import AnchorMultipleSection from '../../components/anchor/anchorMultipleSection';
+import { ReactComponent as AnchorBotan } from "../../assets/icons/anchorIcon.svg";
 
 export interface HomePageProps {
 
@@ -33,10 +35,25 @@ export interface HomePageState {
     artworks: Artwork[];
     multiArtworks: MultiArtwork[];
     videos: Video[];
+    activeHref: string;
 }
 
 const Anchors: Anchor[] = [
-
+    {
+        href: "#video-anchor",
+        svgIcon: AnchorBotan,
+        text: "Video",
+    },
+    {
+        href: "#message-anchor",
+        svgIcon: AnchorBotan,
+        text: "Message",
+    },
+    {
+        href: "#footer-anchor",
+        svgIcon: AnchorBotan,
+        text: "Credit",
+    }
 ]
 
 export default class HomePage extends React.Component<HomePageProps, HomePageState> {
@@ -50,6 +67,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         this.loadAnnouncements = this.loadAnnouncements.bind(this);
         this.loadMessages = this.loadMessages.bind(this);
         this.loadMultiGallery = this.loadMultiGallery.bind(this);
+        this.onAnchorVisible = this.onAnchorVisible.bind(this);
     }
 
     state: HomePageState = {
@@ -61,6 +79,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         artworks: [],
         videos: [],
         multiArtworks: [],
+        activeHref: "",
     }
 
     componentDidMount() {
@@ -73,6 +92,12 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         this.loadArtwork();
         this.loadVideo();
         this.loadMultiGallery();
+    }
+
+    onAnchorVisible(activeHref: string) {
+        this.setState({
+            activeHref
+        })
     }
 
     async loadMessages() {
@@ -219,61 +244,69 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
 
     render() {
         const comboCardData = this.compileCardData()
+        const { activeHref } = this.state;
         return (
-            <section id='anchor'>
-                <div className="home-root">
-                    <AnchorSupportedSection href="#video-anchor" >
-                        <div className="main-video-container">
-                            <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/Snn2gWq-3KY" title="YouTube video player" frameBorder="0"></iframe>
-                        </div>
-                    </AnchorSupportedSection>
-                    <AnchorSupportedSection href="#message-anchor" >
-                        <div className="separator">
-                            <AnchorLink offset='120' href='#message-anchor'>
-                                <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{ width: 36, height: 36 }} />
-                            </AnchorLink>
-                        </div>
-                        <div id="message-anchor" className="justify-center">
-                            <div className="justify-align-center">
-                                <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container wrapper-overlay" />
+            <>
+                <section id='anchor'>
+                    <div className="home-root">
+                        <AnchorSupportedSection href="#video-anchor" onVisible={this.onAnchorVisible} >
+                            <div className="main-video-container">
+                                <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/Snn2gWq-3KY" title="YouTube video player" frameBorder="0"></iframe>
                             </div>
-                        </div>
-                    </AnchorSupportedSection>
-                    <div className="justify-center padding-top">
-                        <LanguageContext.Consumer>
-                            {(value: LanguageContextValue) => {
-                                const { language } = value;
-                                return (
-                                    <div className="justify-align-center notice-container" style={{ "whiteSpace": "pre-line" }}>
-                                        <MessageCard key={1} object={{
-                                            messageID: 0,
-                                            orig_msg: "あくあたんおかえりなさい！ 私たちはあくあクルーの代表として、あなたのための支援プロジェクトを用意しています。小さなプロジェクトでも、あくたんが私たちがここにいることを覚えておいてください. \n\n\
+                        </AnchorSupportedSection>
+                        <AnchorSupportedSection href="#message-anchor" onVisible={this.onAnchorVisible}>
+                            <>
+                                <div className="separator">
+                                    <AnchorLink href='#message-anchor'>
+                                        <ArrowDropDownCircleOutlinedIcon className="anchor-link" style={{ width: 36, height: 36 }} />
+                                    </AnchorLink>
+                                </div>
+                                <div id="message-anchor" className="justify-center">
+                                    <div className="justify-align-center">
+                                        <AnnouncementSection data={this.state.announcements} customSectionStyle="single-column notice-container wrapper-overlay" />
+                                    </div>
+                                </div>
+                                <div className="justify-center padding-top">
+                                    <LanguageContext.Consumer>
+                                        {(value: LanguageContextValue) => {
+                                            const { language } = value;
+                                            return (
+                                                <div className="justify-align-center notice-container" style={{ "whiteSpace": "pre-line" }}>
+                                                    <MessageCard key={1} object={{
+                                                        messageID: 0,
+                                                        orig_msg: "あくあたんおかえりなさい！ 私たちはあくあクルーの代表として、あなたのための支援プロジェクトを用意しています。小さなプロジェクトでも、あくたんが私たちがここにいることを覚えておいてください. \n\n\
                                             私たちはあくたんのおかえりを嬉しく思います。そして、あくたん の歌の配信を楽しみにしています。",
-                                            tl_msg: "We are some representatives of the Aqua Crew, and we have prepared a support project for you! It's not much, but we hope Aqutan remembers that we’re here cheering you up no matter what happens~ \n\n\
+                                                        tl_msg: "We are some representatives of the Aqua Crew, and we have prepared a support project for you! It's not much, but we hope Aqutan remembers that we’re here cheering you up no matter what happens~ \n\n\
                                             We are happy for your return and we will be looking forward for Aqutan’s streams!\n\n\
                                             Welcome back, Aqua!\
                                             ",
-                                            country: "", username: "AKUKIN HQ",
-                                        }} cardStyleIndex={1} language={language} />
+                                                        country: "", username: "AKUKIN HQ",
+                                                    }} cardStyleIndex={1} language={language} />
+                                                </div>
+                                            );
+                                        }
+                                        }
+                                    </LanguageContext.Consumer>
+                                </div>
+                                {this.renderCardSection(comboCardData)}
+                            </>
+                        </AnchorSupportedSection>
+                        <AnchorSupportedSection href="#footer-anchor" onVisible={this.onAnchorVisible}>
+                            <div className="justify-center">
+                                <div className="notice-container">
+                                    <div className="notice-content" style={{ borderRadius: 0 }}>
+                                        <p>These are all the messages we managed to collect!</p>
+                                        <p>Tweet at <a href="https://twitter.com/hashtag/Ganbare%E3%81%82%E3%81%8F%E3%81%9F%E3%82%93">#Ganbareあくたん</a> to send us a message!</p>
+                                        <p style={{ fontSize: 12 }}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com or at webmaster@manotomo.com</p>
+                                        <p style={{ fontSize: 12 }}>This is not an official Hololive site. We are just a group of fans supporting Aqua!</p>
                                     </div>
-                                );
-                            }
-                            }
-                        </LanguageContext.Consumer>
-                    </div>
-                    {this.renderCardSection(comboCardData)}
-                    <div className="justify-center">
-                        <div className="notice-container">
-                            <div className="notice-content" style={{ borderRadius: 0 }}>
-                                <p>These are all the messages we managed to collect!</p>
-                                <p>Tweet at <a href="https://twitter.com/hashtag/Ganbare%E3%81%82%E3%81%8F%E3%81%9F%E3%82%93">#Ganbareあくたん</a> to send us a message!</p>
-                                <p style={{ fontSize: 12 }}>If you find any problems with the website, or if you would like to report a message, please contact us at manotomo@googlegroups.com or at webmaster@manotomo.com</p>
-                                <p style={{ fontSize: 12 }}>This is not an official Hololive site. We are just a group of fans supporting Aqua!</p>
+                                </div>
                             </div>
-                        </div>
+                        </AnchorSupportedSection>
                     </div>
-                </div>
-            </section>
+                </section>
+                <AnchorMultipleSection position={AnchorSectionPosition.RIGHT} activeHref={activeHref} anchors={Anchors} />
+            </>
         )
     }
 }

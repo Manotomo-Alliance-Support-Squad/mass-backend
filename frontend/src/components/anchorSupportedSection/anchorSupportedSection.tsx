@@ -11,7 +11,7 @@ export default class AnchorSupportedSection extends React.Component<AnchorSuppor
         const { href, onVisible, children } = this.props;
         return (
             <div id={href.substring(1)}>
-                <VisibilitySensor onChange={() => onVisible(href)}>
+                <VisibilitySensor onChange={(isVisible: boolean) => { isVisible && onVisible(href) }}>
                     {children}
                 </VisibilitySensor>
             </div>
