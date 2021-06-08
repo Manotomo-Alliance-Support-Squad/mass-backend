@@ -14,7 +14,7 @@ export default class AnchorButton extends React.Component<AnchorButtonProps> {
             <div className="anchor-button">
                 <AnchorLink href={anchor.href}>
                     {anchor.svgIcon && <anchor.svgIcon />}
-                    <p>{anchor.text}</p>
+                    {anchor.text && <p>{anchor.text}</p>}
                 </AnchorLink>
             </div>
         );

@@ -7,6 +7,10 @@
     transition: all 0.4s ease;
 }
 
+.single{
+    margin: 4vh 4vw;
+}
+
 .active>.anchor-button {
     opacity: 1;
 }

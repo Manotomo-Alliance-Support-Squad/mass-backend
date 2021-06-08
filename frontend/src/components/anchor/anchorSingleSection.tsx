@@ -11,7 +11,7 @@ export default class AnchorSingleSection extends React.Component<AnchorSingleSec
     render() {
         const { anchor, position } = this.props;
         return (
-            <div className={"anchor-section " + position}>
+            <div className={"anchor-section single " + position}>
                 <AnchorButton anchor={anchor} />
             </div>
         );
