@@ -1,4 +1,4 @@
-import BaseCard, {BaseCardProps, BaseCardState} from "../../shared/components/baseCard/baseCard";
+import BaseCard, { BaseCardProps, BaseCardState } from "../../shared/components/baseCard/baseCard";
 import { Video } from '../../models/video';
 import './videoCard.css';
 import { linkToString } from '../../models/url';
@@ -71,17 +71,15 @@ export default class VideoCard extends BaseCard<Video, VideoCardProps, VideoCard
             <div className="video-card">
                 <div className="video-container">
                     <iframe title={this.video.title} className="responsive-iframe"
-                            src={videoLink} frameBorder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen/>
+                        src={videoLink} frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen />
                 </div>
 
                 <div className="video-card-footer">
                     <div className="title">{this.video.title}</div>
-                    <p>
-                        <div className="artist">
-                            Artist: <a href={artistLink}>{this.username}</a>
-                        </div>
+                    <p className="artist">
+                        Artist: <a href={artistLink}>{this.username}</a>
                     </p>
                 </div>
             </div>

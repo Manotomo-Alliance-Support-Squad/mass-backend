@@ -14,7 +14,7 @@ export default class AnchorMultipleSection extends React.Component<AnchorMultipl
         return (
             <div className={"anchor-section multiple " + position} style={{ "--element-count": anchors.length } as React.CSSProperties}>
                 {anchors.map(anchor => (
-                    <div className={anchor.href == activeHref ? "active" : ""}>
+                    <div key={anchor.href} className={anchor.href === activeHref ? "active" : ""}>
                         <div className="anchor-seperator" />
                         <AnchorButton anchor={anchor} />
                     </div>
