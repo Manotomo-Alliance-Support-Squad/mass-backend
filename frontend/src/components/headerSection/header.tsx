@@ -2,6 +2,8 @@ import { Component } from 'react';
 import '../../shared/globalStyles/global.css';
 import './header.css';
 
+import Aqua_header from '../../assets/backgrounds/Aqua-Header-by-roguedono.png'
+
 interface HeaderState {
 }
 
@@ -18,6 +20,7 @@ export default class HeaderSection extends Component<HeaderProps, HeaderState>
     render() {
         return (
             <header id="header" className="app-header">
+                <img src={Aqua_header} className="headerArt" />
             </header>
         )
     }
