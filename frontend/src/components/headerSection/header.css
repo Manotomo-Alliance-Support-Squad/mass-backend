@@ -4,7 +4,7 @@
 }
 
 .app-header {
-    height: 15vh;
+    height: calc(15vh + 64px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,13 +17,12 @@
     background-position: 0 0;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-    padding-top: 64px;
 }
 
 @media (max-width: 500px) {
     /*naisu*/
     .app-header {
-        height: 2vh;
+        height: calc(2vh + 64px);
         background-position: 0 60%;
         background-attachment: scroll;
     }
@@ -36,4 +35,8 @@
     100% {
         opacity: 1;
     }
+}
+
+.headerArt {
+    height: 100%;
 }
