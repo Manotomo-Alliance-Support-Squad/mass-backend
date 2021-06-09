@@ -4,8 +4,7 @@
 }
 
 .base-card {
-    width: 100%;   
-
+    width: 100%;
     background-repeat: no-repeat;
     background-size: 100%;
     border-radius: 15px;
@@ -33,7 +32,6 @@
 .card-section {
     --card-height: 550px;
     --card-width: var(--card-height);
-
     padding: 15px;
     display: flex;
     flex-wrap: wrap;
@@ -48,20 +46,16 @@
 
 .card-content {
     --card-text-width: 420px;
-
     display: block;
     width: 100%;
-    min-height: 1px;  /*DO NOT REMOVE THIS LINE. OTHERWISE YOU WILL EXPERIENCE PAIN IN TRYING TO FIX COLUMN STACKING ON CHROME/IOS*/
+    min-height: 1px;
+    /*DO NOT REMOVE THIS LINE. OTHERWISE YOU WILL EXPERIENCE PAIN IN TRYING TO FIX COLUMN STACKING ON CHROME/IOS*/
     overflow: auto;
-
     background-repeat: no-repeat;
     background-size: 100%;
-
     color: var(--main-text-color);
     background-color: var(--main-background-color);
-
     list-style-type: none;
-
     transition: all 0.4s ease;
 }
 
@@ -84,12 +78,23 @@
 }
 
 .card-header {
-    height: 9vh;
+    height: 80px;
     background-size: 100% 100%;
     background-position-x: center;
     background-repeat: round;
-    background-size: auto 100%;
-    background-image: url(../../../assets/cards/AKUKIN_Card_Header_Base.png);
+    background-image: url(../../../assets/cards/AKUKIN_Card_Header_Base_10.png);
+}
+
+@media (max-width: 768px) {
+    .card-header {
+        background-image: url(../../../assets/cards/AKUKIN_Card_Header_Base_8.png);
+    }
+}
+
+@media (max-width: 426px) {
+    .card-header {
+        background-image: url(../../../assets/cards/AKUKIN_Card_Header_Base_6.png);
+    }
 }
 
 .card-footer {
