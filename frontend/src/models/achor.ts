@@ -1,7 +1,7 @@
 export interface Anchor {
     href: string;
     svgIcon: React.FunctionComponent<React.SVGProps<SVGSVGElement>> | null;
-    text: string | null;
+    text?: string;
 }
 
 export enum AnchorSectionPosition {

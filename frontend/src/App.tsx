@@ -59,7 +59,6 @@ export default class App extends React.Component<AppProps, LanguageContextValue>
                 <AnchorSingleSection position={AnchorSectionPosition.BOTTOM_RIGHT} anchor={{
                     href: "#header",
                     svgIcon: AnchorBotan, //TODO: replace this with aqua onion
-                    text: null,
                 }} />
             </LanguageContext.Provider>
         );
