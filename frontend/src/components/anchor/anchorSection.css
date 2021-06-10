@@ -16,11 +16,16 @@
 }
 
 .single {
+    opacity: .7;
     margin: 4vh 4vw;
     padding: 10px 10px;
     border-radius: 50px;
     background-color: var(--single-anchor-background-color);
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.single:hover {
+    opacity: 1;
 }
 
 .anchor-button p {
