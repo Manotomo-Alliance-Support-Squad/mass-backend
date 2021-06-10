@@ -236,10 +236,11 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                                 return (
                                     <div className="justify-align-center notice-container main-message" style={{"whiteSpace": "pre-line"}}>
                                         <MessageCard key={1} object={{ messageID: 0,
-                                            orig_msg: "あくあたんおかえりなさい！ 私たちはあくあクルーの代表として、あなたのための支援プロジェクトを用意しています。小さなプロジェクトでも、あくたんが私たちがここにいることを覚えておいてください. \n\n\
-                                            私たちはあくたんのおかえりを嬉しく思います。そして、あくたん の歌の配信を楽しみにしています。",
-                                            tl_msg: "We are some representatives of the Aqua Crew, and we have prepared a support project for you! It's not much, but we hope Aqutan remembers that we’re here cheering you up no matter what happens~ \n\n\
-                                            We are happy for your return and we will be looking forward for Aqutan’s streams!\n\n\
+                                            orig_msg: "あくあたんおかえりなさい！ 私たちはあくあクルーの代表として、あなたのための支援プロジェクトを用意しています。小さなプロジェクトでも、あくたんが私たちがここにいることを覚えておいてください.\n\n\
+                                            私たちはあくたんのおかえりを嬉しく思います。そして、あくたん の歌の配信を楽しみにしています。\
+                                            ",
+                                            tl_msg: "We are some representatives of the Aqua Crew! We have prepared several messages from fans all around the world for you! It's not much, but we hope Aqutan remembers that we’re here cheering you up no matter what happens~ \n\n\
+                                            We are happy for your return and we will be looking forward to Aqutan’s streams!\n\n\
                                             Welcome back, Aqua!\
                                             ",
                                             country: "", username: "AKUKIN HQ", }} cardStyleIndex={1} language={language} />
