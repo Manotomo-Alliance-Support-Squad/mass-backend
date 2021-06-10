@@ -18,3 +18,15 @@
 .video-tag {
     float: left;
 }
+
+@media (min-width: 768px) {
+    .main-message .card-header {
+        background-image: url(../../assets/cards/AKUKIN_Card_Header_Base_12.png);
+    }
+}
+
+@media (min-width: 1440px) {
+    .main-message .card-header {
+        background-image: url(../../assets/cards/AKUKIN_Card_Header_Base_14.png);
+    }
+}
