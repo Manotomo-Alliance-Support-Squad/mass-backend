@@ -1,3 +1,11 @@
+:root {
+    --single-anchor-background-color: #5e5097;
+    --multiple-anchors-background-color: #0000000e;
+    --multiple-anchors-background-color-hover: #00000050;
+    --multiple-anchors-seperator-color: #ffffff65;
+    --anchor-text-color: white;
+}
+
 .anchor-section {
     position: fixed;
     background-color: transparent;
@@ -11,7 +19,7 @@
     margin: 4vh 4vw;
     padding: 10px 10px;
     border-radius: 50px;
-    background-color: #5e5097;
+    background-color: var(--single-anchor-background-color);
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
@@ -26,7 +34,7 @@
 
 .anchor-button a {
     text-decoration: none;
-    color: white;
+    color: var(--anchor-text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +45,7 @@
     margin-top: calc(-1 * 2.5% * var(--element-count));
     padding: 16px 5px;
     border-radius: 25px;
-    background-color: #0000000e;
+    background-color: var(--multiple-anchors-background-color);
 }
 
 .multiple .anchor-button {
@@ -45,7 +53,7 @@
 }
 
 .multiple:hover {
-    background-color: #00000050;
+    background-color: var(--multiple-anchors-background-color-hover);
 }
 
 .multiple .anchor-button:hover {
@@ -54,7 +62,7 @@
 
 .multiple>div:nth-child(n+2)>.anchor-seperator {
     height: 20px;
-    border-left: 4px solid #ffffff65;
+    border-left: 4px solid var(--multiple-anchors-seperator-color);
     margin: 5px 0px;
     margin-left: calc(50% - 2px);
     border-radius: 8%;
