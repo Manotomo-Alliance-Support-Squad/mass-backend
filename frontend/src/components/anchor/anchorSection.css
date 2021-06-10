@@ -48,6 +48,10 @@
     background-color: #00000050;
 }
 
+.multiple .anchor-button:hover {
+    opacity: .8;
+}
+
 .multiple>div:nth-child(n+2)>.anchor-seperator {
     height: 20px;
     border-left: 4px solid #ffffff65;
