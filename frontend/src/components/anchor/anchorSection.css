@@ -56,6 +56,12 @@
     border-radius: 8%;
 }
 
+@media (max-width: 425px) {
+    .multiple {
+        visibility: hidden;
+    }
+}
+
 .active>.anchor-button {
     opacity: 1;
 }
