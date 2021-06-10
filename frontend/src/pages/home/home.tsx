@@ -47,7 +47,7 @@ const Anchors: Anchor[] = [
     {
         href: "#message-anchor",
         svgIcon: AnchorBotan,
-        text: "Message",
+        text: "Messages",
     },
     {
         href: "#footer-anchor",

@@ -7,17 +7,12 @@
     transition: all 0.4s ease;
 }
 
-.single{
+.single {
     margin: 4vh 4vw;
-}
-
-.active>.anchor-button {
-    opacity: 1;
-}
-
-.anchor-button:hover p, .active>.anchor-button p {
-    opacity: 1;
-    margin-top: -3px;
+    padding: 10px 10px;
+    border-radius: 50px;
+    background-color: #5e5097;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 .anchor-button p {
@@ -39,23 +34,35 @@
 
 .multiple {
     --element-count: 0;
-    opacity: .7;
     margin-top: calc(-1 * 2.5% * var(--element-count));
     padding: 16px 5px;
     border-radius: 25px;
-    background-color: #00000036;
+    background-color: #0000000e;
+}
+
+.multiple .anchor-button {
+    opacity: .4;
 }
 
 .multiple:hover {
-    opacity: .9;
+    background-color: #00000050;
 }
 
 .multiple>div:nth-child(n+2)>.anchor-seperator {
     height: 20px;
-    border-left: 4px solid #ffffffbf;
+    border-left: 4px solid #ffffff65;
     margin: 5px 0px;
     margin-left: calc(50% - 2px);
     border-radius: 8%;
+}
+
+.active>.anchor-button {
+    opacity: 1;
+}
+
+.anchor-button:hover p, .active>.anchor-button p {
+    opacity: 1;
+    margin-top: -3px;
 }
 
 .top {
