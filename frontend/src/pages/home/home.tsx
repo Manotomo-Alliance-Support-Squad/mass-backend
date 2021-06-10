@@ -35,7 +35,7 @@ export interface HomePageState {
     artworks: Artwork[];
     multiArtworks: MultiArtwork[];
     videos: Video[];
-    activeHref: string;
+    activeHrefs: string[];
 }
 
 const Anchors: Anchor[] = [
@@ -79,7 +79,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         artworks: [],
         videos: [],
         multiArtworks: [],
-        activeHref: "",
+        activeHrefs: [],
     }
 
     componentDidMount() {
@@ -94,10 +94,8 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
         this.loadMultiGallery();
     }
 
-    onAnchorVisible(activeHref: string) {
-        this.setState({
-            activeHref
-        })
+    onAnchorVisible(isVisible: boolean, activeHref: string) {
+        AnchorSupportedSection.onSectionVisible(this, isVisible, activeHref);
     }
 
     async loadMessages() {
@@ -244,17 +242,17 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
 
     render() {
         const comboCardData = this.compileCardData()
-        const { activeHref } = this.state;
+        const { activeHrefs } = this.state;
         return (
             <>
                 <section id='anchor'>
                     <div className="home-root">
-                        <AnchorSupportedSection href="#video-anchor" onVisible={this.onAnchorVisible} >
+                        <AnchorSupportedSection anchor={Anchors[0]} onVisible={this.onAnchorVisible} >
                             <div className="main-video-container">
                                 <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/Snn2gWq-3KY" title="YouTube video player" frameBorder="0"></iframe>
                             </div>
                         </AnchorSupportedSection>
-                        <AnchorSupportedSection href="#message-anchor" onVisible={this.onAnchorVisible}>
+                        <AnchorSupportedSection anchor={Anchors[1]} onVisible={this.onAnchorVisible}>
                             <>
                                 <div className="separator">
                                     <AnchorLink href='#message-anchor'>
@@ -291,7 +289,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                                 {this.renderCardSection(comboCardData)}
                             </>
                         </AnchorSupportedSection>
-                        <AnchorSupportedSection href="#footer-anchor" onVisible={this.onAnchorVisible}>
+                        <AnchorSupportedSection anchor={Anchors[2]} onVisible={this.onAnchorVisible}>
                             <div className="justify-center">
                                 <div className="notice-container">
                                     <div className="notice-content" style={{ borderRadius: 0 }}>
@@ -305,7 +303,7 @@ export default class HomePage extends React.Component<HomePageProps, HomePageSta
                         </AnchorSupportedSection>
                     </div>
                 </section>
-                <AnchorMultipleSection position={AnchorSectionPosition.RIGHT} activeHref={activeHref} anchors={Anchors} />
+                <AnchorMultipleSection position={AnchorSectionPosition.RIGHT} activeHrefs={activeHrefs} anchors={Anchors} />
             </>
         )
     }
