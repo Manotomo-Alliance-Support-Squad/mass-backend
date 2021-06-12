@@ -15,7 +15,7 @@ import HomePage from './pages/home/home';
 import AltNav from './components/navigation/altnav';
 import AnchorSingleSection from "./components/anchor/anchorSingleSection";
 import { AnchorSectionPosition } from "./models/achor";
-import { ReactComponent as AnchorBotan } from "./assets/icons/anchorIcon.svg";
+import { ReactComponent as AnchorBotan } from "./assets/icons/toTopAnchorIcon.svg";
 
 interface AppProps {
 }

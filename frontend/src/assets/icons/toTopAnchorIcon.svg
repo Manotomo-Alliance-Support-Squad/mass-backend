@@ -1,0 +1,89 @@
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" stroke="null" style="vector-effect: non-scaling-stroke;">
+ <g stroke="null" id="Layer_1">
+  <title stroke="null">Layer 1</title>
+  <path transform="rotate(64.5239 9.7952 12.6302)" stroke="null" style="vector-effect: non-scaling-stroke;" id="svg_53" d="m11.80257,8.87847c2.3588,5.86255 -2.69577,9.878 -2.67896,9.84584c-0.6672,-2.58807 -1.70167,-5.50916 -1.68485,-5.54132c-0.17604,-0.99205 -1.36471,-6.7941 3.01593,-4.86669c4.38063,1.92742 -1.01092,-5.30039 1.34789,0.56216z" fill="#2828a0"/>
+  <path transform="rotate(122.64 7.99962 8.69376)" stroke="null" id="svg_22" d="m5.71875,4.89799c-2.6802,5.93135 3.06308,9.99392 3.04398,9.96139c0.75812,-2.61843 1.93353,-5.57381 1.91443,-5.60634c0.20003,-1.00369 1.55064,-6.87383 -3.42686,-4.9238c-4.97751,1.95003 1.14866,-5.36259 -1.53154,0.56876z" fill="#2828a0"/>
+  <path transform="rotate(-112.423 51.0756 9.51732)" stroke="null" style="vector-effect: non-scaling-stroke;" id="svg_50" d="m53.42656,5.72154c2.76256,5.93135 -3.15721,9.99392 -3.13753,9.96139c-0.78141,-2.61844 -1.99295,-5.57381 -1.97325,-5.60635c-0.20618,-1.00369 -1.5983,-6.87383 3.53217,-4.9238c5.13047,1.95004 -1.18396,-5.36259 1.57861,0.56876z" fill="#2828a0"/>
+  <path transform="rotate(-46.7391 50.6791 13.2518)" stroke="null" style="vector-effect: non-scaling-stroke;" id="svg_51" d="m48.39822,9.45599c-2.68019,5.93135 3.06308,9.99392 3.04398,9.96139c0.75811,-2.61844 1.93353,-5.57381 1.91442,-5.60635c0.20003,-1.00369 1.55065,-6.87383 -3.42686,-4.9238c-4.9775,1.95004 1.14866,-5.36259 -1.53154,0.56876z" fill="#2828a0"/>
+  <path stroke="#333333" fill="#fff" d="m11.58075,17.0193l-1.37159,-2.34991c-0.32065,-0.65796 -0.23159,-3.10185 1.99505,-3.00785c2.22663,0.094 1.51411,-0.84596 1.4785,-0.84597c-1.03317,-2.63187 -1.4785,-3.57183 -1.51411,-3.57184c-0.94411,-2.44388 3.59823,-5.07577 6.62646,-3.19584c3.02823,1.87991 3.91888,-1.69193 3.88327,-1.69194c-1.03317,-1.69191 9.38748,-3.85382 12.50477,-0.75195c3.11729,3.10186 2.77887,2.06787 3.97234,1.50391c1.19347,-0.56396 4.49987,-0.27674 5.83585,0.9452c0.8491,1.94258 -0.21977,-1.00263 0.98559,2.44388c0.21375,-0.46996 -0.74768,2.45956 0.49924,1.8016c1.24692,-0.65797 0.90895,4.02093 0.87334,4.02091c-0.32065,1.50395 -3.2598,7.51968 -4.95205,7.51968c-1.69225,0 0.2672,-4.6058 0.23158,-4.60581c0.03561,0.00001 -4.86298,-4.98176 -5.75364,-5.16976c-0.89065,-0.18799 -20.30692,-2.63188 -14.4286,1.03395c5.87832,3.66584 6.23458,-9.77557 -10.86598,5.92174l-0.00002,0z" id="svg_5"/>
+  <ellipse stroke="#00007f" fill="none" cx="29.50822" cy="3.3901" id="svg_6" rx="1.95822" ry="2.08877"/>
+  <line stroke="#00007f" fill="none" x1="29.50822" y1="5.21777" x2="29.50822" y2="9.52586" id="svg_7"/>
+  <path stroke="#000" fill="#fff" opacity="NaN" d="m37.08002,7.04545c0,3.7859 -6.39686,4.69974 -6.44906,4.69972" id="svg_10"/>
+  <path stroke="#000" fill="#fff" opacity="NaN" d="m19.9782,6.00106" id="svg_11"/>
+  <path stroke="#00007f" fill="#fff" opacity="NaN" d="m22.87194,7.176c-1.38164,6.6387 13.81643,5.74503 13.81643,5.74503" id="svg_12"/>
+  <ellipse stroke="#7f007f" transform="translate(0.21322 -4.05117)" fill="url(#svg_62)" cx="29.34726" cy="38.16026" id="svg_1" rx="28.19841" ry="25.71786"/>
+  <line stroke="#00007f" fill="none" x1="27.2889" y1="6.52326" x2="31.72754" y2="6.6538" id="svg_13"/>
+  <path transform="rotate(-15.5083 22.4499 7.05723)" stroke="#00007f" fill="none" d="m21.38993,8.00279l1.05995,-1.8911l1.05995,1.8911l-2.1199,0z" id="svg_14"/>
+  <path transform="rotate(10.1382 36.9052 7.15993)" stroke="#00007f" fill="none" d="m35.78377,8.18375l1.12148,-2.04771l1.12148,2.04771l-2.24295,0l-0.00001,0z" id="svg_15"/>
+  <path transform="translate(0.21322 -4.05117) rotate(-88.4061 29.3961 27.1839)" stroke="#7f007f" fill="#ffffff" d="m17.78002,27.00195c0.02159,-3.50676 -0.01382,-7.01822 0.17754,-10.5188c4.70217,1.15154 9.34888,3.03576 13.97181,4.7302c0.24817,-1.71951 0.13137,-3.14586 0.347,-4.73566c2.96996,3.34539 5.91315,6.73842 8.73571,10.29301c-2.70797,4.03215 -5.81412,7.53377 -8.86352,11.11949c-0.09875,-1.66982 -0.19751,-3.33962 -0.29626,-5.00944c-4.49436,1.61547 -9.24731,3.2857 -13.77073,4.76255c-0.30762,-3.40776 -0.29857,-7.11892 -0.30156,-10.64136z" id="svg_16"/>
+  <path transform="rotate(17.6301 38.7072 35.5106)" stroke="#7f007f" fill="none" opacity="NaN" d="m29.66162,11.19144c16.65428,0.27839 24.28858,39.1909 12.13003,48.63832" id="svg_17"/>
+  <path transform="rotate(-178.647 20.1473 34.8188)" stroke="#7f007f" fill="none" opacity="NaN" d="m9.55323,9.84128c20.46332,-0.14714 29.9169,35.81934 10.83295,49.95546" id="svg_18"/>
+  <path stroke="#069b9b" fill="url(#svg_60)" d="m30.5754,12.35938c5.76547,2.44322 5.23053,-4.40971 5.20676,-4.40972c0.02377,0.00001 0.68996,0.4196 -1.62694,2.31521c-2.3169,1.89561 -9.34528,-0.34871 -3.57982,2.09451z" id="svg_19" stroke-width="0" transform="translate(0.21322 -4.05117) rotate(-37.861 32.123 10.4178)"/>
+  <path stroke="url(#svg_71)" fill="url(#svg_52)" d="m32.26897,19.53676c8.39355,2.9739 9.42774,-5.11686 8.70902,-4.50927c-0.71873,0.60759 1.09657,0.45938 -2.58573,2.53478c-3.68231,2.07539 -14.51684,-0.99941 -6.12329,1.97449z" id="svg_24" transform="translate(0.21322 -4.05117) rotate(-115.462 35.1607 17.5953)"/>
+ </g>
+ <defs stroke="null" style="vector-effect: non-scaling-stroke;">
+  <linearGradient stroke="null" style="vector-effect: non-scaling-stroke;" id="svg_52" x1="0.40234" y1="0.725" x2="1" y2="1">
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="#00ffff" offset="0"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="#003f7f" stop-opacity="0.99609" offset="1"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+  </linearGradient>
+  <linearGradient stroke="null" style="vector-effect: non-scaling-stroke;" id="svg_60" x1="0.69922" y1="0.81094" x2="0" y2="0.15078">
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="#00ffff" offset="0"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="#003f7f" stop-opacity="0.99609" offset="1"/>
+  </linearGradient>
+  <linearGradient stroke="null" style="vector-effect: non-scaling-stroke;" id="svg_71" x1="1" y1="0" x2="0.47266" y2="0">
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="#007f7f" stop-opacity="0.99609" offset="0"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="rgba(255,255,255,0)" offset="1"/>
+  </linearGradient>
+  <linearGradient stroke="null" style="vector-effect: non-scaling-stroke;" id="svg_62" x1="0.48047" y1="0.99844" x2="0.46875" y2="0">
+   <stop stop-opacity="0.99609" stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="#00ffff" offset="0"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="#f97cf9" stop-opacity="0.99219" offset="0.28125"/>
+   <stop offset="0.62109" stop-opacity="0.99609" stop-color="#ffaaff"/>
+   <stop offset="1" stop-opacity="0.99609" stop-color="#ffffff"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop stroke="null" style="vector-effect: non-scaling-stroke;" stop-color="0" stop-opacity="0" offset="NaN"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+   <stop offset="NaN" stop-opacity="0" stop-color="0"/>
+  </linearGradient>
+ </defs>
+</svg>
