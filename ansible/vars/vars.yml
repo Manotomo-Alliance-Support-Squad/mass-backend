@@ -1,7 +1,0 @@
----
-siteuser: haachama
-installpath: "/opt/{{ siteuser }}"
-gitrepo: "https://github.com/Manotomo-Alliance-Support-Squad/WWS"
-backend_proto: "http"
-backend_ip: "10.10.6.41"
-backend_port: "80"

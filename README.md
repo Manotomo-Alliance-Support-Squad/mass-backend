@@ -1,55 +1,23 @@
-# Aqua Support Project
+# Mano Aloe messages of support backend
 
-This is a collaborative support project between the Aqua HQ server and MASS! Let's support our favorite gaming onion!
+Flask backend api for distributing and storing the messages of support for the community website project of theMano Aloe Support Squad (M.A.S.S) discord server [Link](https://discord.gg/Y4BBfyM)
 
-# Credits
+## Installation & Usage
 
-## Aqua HQ Server Moderators
-Corneus/コロネウス
+List of commands to run in order to get the server to work.
 
-Piniko
+```bash
+pip install -r requirements.txt
+py3 manage.py db init
+py3 manage.py db migrate
+py3 manage.py create_db
+py3 manage.py runserver
+```
 
-## Holonews
-HoloNews ([u/Sh1fty1060](https://www.reddit.com/user/Sh1fty1060/) and [u/mrmalupet](https://www.reddit.com/user/mrmalupet/)
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Website Contributors
-DuongTyler (Frontend, Backend, Devops)
+Please make sure to update tests as appropriate.
 
-Zapple (Frontend, Backend)
-
-LrJim (Frontend, Backend)
-
-[Rogue](https://twitter.com/roguedono) (Web concept designer)
-
-## Art and Design Contributors
-[Rogue](https://twitter.com/roguedono) (MASS Art Lead, Web designer, footer and header artwork)
-
-[RaRa](https://twitter.com/) (Message Cards)
-
-[Kenn](https://twitter.com/EyBruhImKenneth) (Awesome main background design)
-
-[Chainwalker](https://twitter.com/TheChainwalker) (Header Background)
-
-## Coordinators and Other Awesome Peoples in the Shadows
-Loki_Magikill
-
-The Chainwalker
-
-Necrosis
-
-VintageGhost
-
-# Join the MASS Discord
-
-https://discord.gg/yTY9rdp
-
-# Join the Aqua HQ Discord
-
-https://discord.gg/akukinhq
-
-# Contact Us
-
-Did we forget to credit you? Found a bug on the website? Contact us at manotomo[at]googlegroups.com
-
-Server issue? Contact us at webmaster[at]manotomo.com
-
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
