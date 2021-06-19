@@ -7,6 +7,8 @@ ansible/hosts/hosts.yml
 
 backend/migrations
 
+placeholder.jpg
+
 app.db
 # User-specific stuff
 .idea

@@ -7,13 +7,16 @@ class Gallery(db.Model):
     artworkID = db.Column(db.Integer, 
                 primary_key=True, 
                 autoincrement=True)
-    artworkLink = db.Column(db.String(2048), nullable=False)
-    artistLink = db.Column(db.String(2048), nullable=True)
+    artworkLink = db.Column(db.String(64), nullable=False)
+    blurhash = db.Column(db.String(64), nullable=True)
+    artistLink = db.Column(db.String(64), nullable=True)
     username = db.Column(db.String(64), nullable=True)
-    title = db.Column(db.String(64), nullable=True)
+    # 256 because title can be a message too
+    title = db.Column(db.String(256), nullable=True)
 
-    def __init__(self, artworkLink, username, title, artistLink):
+    def __init__(self, artworkLink, blurhash, username, title, artistLink):
         self.artworkLink = artworkLink
+        self.blurhash = blurhash
         self.artistLink = artistLink
         self.username = username
         self.title = title
@@ -22,6 +25,7 @@ class Gallery(db.Model):
 class GallerySchema(ma.Schema):
     artworkID = fields.Integer()
     artworkLink = fields.String(required=True)
+    blurhash = fields.String(required=True)
     artistLink = fields.String(required=False)
     username = fields.String(required=True)
     title = fields.String(required=False)
@@ -32,11 +36,11 @@ class Games(db.Model):
     gameID = db.Column(db.Integer, 
                 primary_key=True, 
                 autoincrement=True)
-    gameLink = db.Column(db.String(2048), nullable=False)
-    gitLink = db.Column(db.String(2048), nullable=True)
+    gameLink = db.Column(db.String(64), nullable=False)
+    gitLink = db.Column(db.String(64), nullable=True)
     title = db.Column(db.String(64), nullable=False)
     description = db.Column(db.String(256), nullable=True)
-    thumbnail = db.Column(db.String(2048), nullable=True)
+    thumbnail = db.Column(db.String(64), nullable=True)
 
     def __init__(self, gameLink, gitLink, title, description, thumbnail):
         self.gameLink = gameLink
@@ -62,7 +66,7 @@ class Message(db.Model):
                 autoincrement=True)
     orig_msg = db.Column(db.String(2048), nullable=False)
     tl_msg = db.Column(db.String(2048), nullable=True)
-    country = db.Column(db.String(2), nullable=True)
+    country = db.Column(db.String(16), nullable=True)
     username = db.Column(db.String(64), nullable=True)
 
     def __init__(self, orig_msg, tl_msg, country, username):
@@ -85,7 +89,7 @@ class Announcement(db.Model):
     announcementID = db.Column(db.Integer, 
                 primary_key=True, 
                 autoincrement=True)
-    message = db.Column(db.String(1024), nullable=False)
+    message = db.Column(db.String(2048), nullable=False)
 
     def __init__(self, message):
         self.message = message
@@ -101,8 +105,8 @@ class Video(db.Model):
     videoID = db.Column(db.Integer, 
                 primary_key=True, 
                 autoincrement=True)
-    videoLink = db.Column(db.String(2048), nullable=False)
-    artistLink = db.Column(db.String(2048), nullable=True)
+    videoLink = db.Column(db.String(64), nullable=False)
+    artistLink = db.Column(db.String(64), nullable=True)
     username = db.Column(db.String(64), nullable=True)
     title = db.Column(db.String(64), nullable=True)
 
@@ -127,9 +131,12 @@ class SetMetadata(db.Model):
                 primary_key=True, 
                 autoincrement=True)
     setID = db.Column(db.String(32), nullable=False)
-    artistLink = db.Column(db.String(2048), nullable=True)
+    artistLink = db.Column(db.String(64), nullable=True)
     username = db.Column(db.String(64), nullable=False)
     message = db.Column(db.String(2048), nullable=True)
+    # setID must be a unique constraint for foreign keys to work
+    __table_args__ = (db.UniqueConstraint('setID'),
+            )
 
     def __init__(
             self,
@@ -150,21 +157,27 @@ class MultiGallery(db.Model):
                 primary_key=True, 
                 autoincrement=True)
     setID = db.Column(
-                db.String(64), 
+                db.String(32), 
                 db.ForeignKey(SetMetadata.setID), 
                 nullable=False)
     setmetadata = db.relationship(SetMetadata)
-    artworkLink = db.Column(db.String(2048), 
+    artworkLink = db.Column(db.String(64), 
                 nullable=False)
+    blurhash = db.Column(db.String(64), nullable=True)
 
     def __init__(
             self,
             setID,
             artworkLink,
+            blurhash,
     ):
         self.setID = setID
         self.artworkLink = artworkLink
+        self.blurhash = blurhash
 
+class MultiGalleryArtworkSchema(ma.Schema):
+    artworkLink = fields.String(required=True)
+    blurhash = fields.String(request=False)
 
 class SetMetadataSchema(ma.Schema):
     metadataID = fields.Integer()
@@ -177,7 +190,7 @@ class SetMetadataSchema(ma.Schema):
 class MultiGallerySchema(ma.Schema):
     artworkID = fields.Integer()
     metadata = fields.Nested(SetMetadataSchema)
-    gallery = fields.List(fields.String(required=True))
+    gallery = fields.List(fields.Nested(MultiGalleryArtworkSchema))
 
 
 class MultiGalleryImportSchema(ma.Schema):
@@ -185,5 +198,6 @@ class MultiGalleryImportSchema(ma.Schema):
     setID = fields.String(required=True)
     artworkLink = fields.String(required=True)
     artistLink = fields.String(required=False)
+    blurhash = fields.String(request=False)
     username = fields.String(required=True)
     message = fields.String(required=False)
