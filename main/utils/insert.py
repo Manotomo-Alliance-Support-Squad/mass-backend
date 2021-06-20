@@ -2,6 +2,7 @@ from main.server import db
 from main.server.models import Announcement, MultiGallery, Gallery, Games, Message, Video, SetMetadata
 from main.utils.dto import AnnouncementDTO, MultiGalleryDTO, GalleryDTO, GameDTO, MessageDTO, VideoDTO
 from main.server.status import Status
+from main.utils.blur import getBlurCodeFromImage
 
 def insertAnnouncement(data):
     if not isinstance(data, AnnouncementDTO):
@@ -33,6 +34,7 @@ def insertMultiGallery(data):
         multigallery_entry = MultiGallery(
             setID=data.setID,
             artworkLink=data.artworkLink,
+            blurhash=getBlurCodeFromImage(data.artworkLink),
         )
         db.session.add(multigallery_entry)
     else:
@@ -50,6 +52,7 @@ def insertGallery(data):
     if res:
         return Status.WARN
     res = Gallery(artworkLink=data.artworkLink,
+            blurhash=getBlurCodeFromImage(data.artworkLink),
             artistLink=data.artistLink,
             username=data.username,
             title=data.title)
