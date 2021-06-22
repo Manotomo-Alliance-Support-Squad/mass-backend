@@ -1,0 +1,25 @@
+version: '3.2'
+
+services:
+  database:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+      MARIADB_USER: "${aquauser}"
+      MARIADB_PASSWORD: "${aquapassword}"
+      MARIADB_DATABASE: "${aquadb}"
+    volumes:
+      - database-volume:/var/lib/mysql
+
+  aqua:
+    image: mass_backend
+    ports:
+      - 8000:5000
+    environment:
+      DATABASE_URL: "mariadb+mariadbconnector://${aquauser}:${aquapassword}@database/${aquadb}"
+    depends_on:
+      - database
+
+volumes:
+  database-volume:

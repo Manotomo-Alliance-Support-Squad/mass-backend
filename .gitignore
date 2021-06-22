@@ -5,7 +5,7 @@
 
 ansible/hosts/hosts.yml
 
-backend/migrations
+migrations
 
 placeholder.jpg
 
