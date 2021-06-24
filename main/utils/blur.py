@@ -2,7 +2,7 @@ import blurhash
 import requests
 
 def getBlurCodeFromImage(imageUrl):
-        placeHolderImage = "/tmp/placeholder.jpg"
+        placeHolderImage = "./tmp/placeholder.jpg"
         retrieveImageFromUrlAndSaveToLocal(imageUrl, placeHolderImage)
         return blurhash.encode(placeHolderImage, x_components=4, y_components=6)
 

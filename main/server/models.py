@@ -41,13 +41,15 @@ class Games(db.Model):
     title = db.Column(db.String(64), nullable=False)
     description = db.Column(db.String(4096), nullable=True)
     thumbnail = db.Column(db.String(256), nullable=True)
+    blurhash = db.Column(db.String(2048), nullable=True)
 
-    def __init__(self, gameLink, gitLink, title, description, thumbnail):
+    def __init__(self, gameLink, gitLink, title, description, thumbnail, blurhash):
         self.gameLink = gameLink
         self.gitLink = gitLink
         self.title = title
         self.description = description
         self.thumbnail = thumbnail
+        self.blurhash = blurhash
 
 
 class GameSchema(ma.Schema):
@@ -57,6 +59,7 @@ class GameSchema(ma.Schema):
     title = fields.String(required=True)
     description = fields.String(required=False)
     thumbnail = fields.String(required=False)
+    blurhash = fields.String(request=False)
 
 
 class Message(db.Model):

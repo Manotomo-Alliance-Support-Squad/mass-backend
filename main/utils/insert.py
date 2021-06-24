@@ -71,7 +71,8 @@ def insertGame(data):
             gitLink=data.gitLink,
             description=data.description,
             title=data.title,
-            thumbnail=data.thumbnail)
+            thumbnail=data.thumbnail,
+            blurhash=getBlurCodeFromImage(data.thumbnail))
     db.session.add(res)
 
 def insertMessage(data):
